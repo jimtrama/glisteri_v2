@@ -1,0 +1,4 @@
+const HomeText = {
+
+}
+export {HomeText} ;

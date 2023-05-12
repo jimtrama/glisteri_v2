@@ -1,0 +1,154 @@
+
+.backBtn{
+    position: absolute;
+    z-index: 20;
+    top: 10px;
+    left:10px;
+    width: 2rem;
+    height: 2rem;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    animation-name: button;
+    animation-duration: 1.5s;
+    animation-fill-mode: forwards;
+    
+}
+.buttonOut{
+    animation-name: buttonO !important;
+}
+.backBtn>img{
+    width: 50%;
+    height: auto;
+}
+@keyframes button{
+    0%{
+        left:-20vw
+    }
+    100%{
+        left: 10px;
+    }
+}
+@keyframes buttonO{
+    0%{
+        left:10px
+    }
+    100%{
+        left: -30vw;
+    }
+}
+.Main{
+    overflow: hidden;
+    position: relative;
+}
+.header{
+    height: auto;
+    width: 100vw;
+    position: absolute;
+    overflow: hidden;
+    top: -50vh;
+    left: 50vw;
+    transform: translateX(-50vw);
+    z-index: 0;
+    
+    animation-name: head;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+.headOut{
+    animation-name: headO !important;
+}
+@keyframes head{
+    0%{
+        top:-30vh
+    }
+    100%{
+        top: 0;
+    }
+}
+@keyframes headO{
+    0%{
+        top:0;
+    }
+    100%{
+        top: -50vh;
+    }
+}
+.bgim{
+    height: auto;
+    width: 100%;
+}
+.logoImg{
+    position: absolute;
+    top:50%;
+    left: -10vw;
+    transform: translateY(-50%);
+    height: auto;
+    width: 100%;
+}
+.outerContainer{
+    overflow: scroll;
+    position: relative;
+    height: 100vh;
+    top: 100vh;
+    width: 100vw;
+    min-height: 100vh;
+    animation-name: contAn;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+   
+}
+.contOut{
+    animation-name: contAnR !important;
+}
+
+@keyframes contAn{
+    0%{
+        top:100vh
+    }
+    100%{
+        top:0;
+    }
+}
+@keyframes contAnR{
+    0%{
+        top:0
+    }
+    100%{
+        top:100vh;
+    }
+}
+.headerLevOne{
+    position: absolute;
+    top: 0;
+    z-index: 10;
+    width: 100vw;
+    height: 10vh;
+    text-align: center;
+    background-color: white;
+    padding: 5px;
+}
+
+.logoInHeader{
+    width: auto;
+    height: 100%;
+}
+.menu{   
+    overflow: scroll ;
+    padding-top: 10vh;
+    position: relative;
+    min-height: 100vh;
+    height: fit-content;
+    width: 100vw;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform: translateY(50vw);
+    z-index: 3; 
+    border-radius: 10px;
+    padding-bottom: 200px;
+}

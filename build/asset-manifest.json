@@ -1,0 +1,31 @@
+{
+  "files": {
+    "main.css": "/static/css/main.f80cc72c.css",
+    "main.js": "/static/js/main.53e991de.js",
+    "static/js/787.a26c5f2a.chunk.js": "/static/js/787.a26c5f2a.chunk.js",
+    "static/media/p3big.jpg": "/static/media/p3big.93b6885b26d92ee5019c.jpg",
+    "static/media/p1big.jpg": "/static/media/p1big.44fc499d8586977614a8.jpg",
+    "static/media/p4big.jpg": "/static/media/p4big.2b417044eadf0c15513c.jpg",
+    "static/media/p2big.jpg": "/static/media/p2big.bf390a0ac72c18bdfcd6.jpg",
+    "static/media/bg.mp4": "/static/media/bg.908ccb48da841e84b0ac.mp4",
+    "static/media/che_str2.jpg": "/static/media/che_str2.fa29c56d2043a22f8d16.jpg",
+    "static/media/bg.jpg": "/static/media/bg.a97d4b5f15a18f9872d5.jpg",
+    "static/media/mar_str.jpg": "/static/media/mar_str.44db11ba24c17320d169.jpg",
+    "static/media/pizz_it.jpg": "/static/media/pizz_it.fb3bfea5c91245927ced.jpg",
+    "static/media/chor_sal.jpg": "/static/media/chor_sal.0eaf33e1d3beafd4ba93.jpg",
+    "static/media/club_cea.jpg": "/static/media/club_cea.4cdaf369d05048176ebe.jpg",
+    "static/media/burg_egg.jpg": "/static/media/burg_egg.b86aa3886a7e4bb01341.jpg",
+    "static/media/logo.png": "/static/media/logo.41249ee1efb902825b58.png",
+    "static/media/logoC.png": "/static/media/logoC.52c682f1ad495ff8c884.png",
+    "static/media/gflag.png": "/static/media/gflag.8e5f20aaff351dfcaa36.png",
+    "static/media/arrow.png": "/static/media/arrow.e52b523be466a90e7590.png",
+    "index.html": "/index.html",
+    "main.f80cc72c.css.map": "/static/css/main.f80cc72c.css.map",
+    "main.53e991de.js.map": "/static/js/main.53e991de.js.map",
+    "787.a26c5f2a.chunk.js.map": "/static/js/787.a26c5f2a.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f80cc72c.css",
+    "static/js/main.53e991de.js"
+  ]
+}
