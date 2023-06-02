@@ -1,4 +1,0 @@
-const HomeText = {
-
-}
-export {HomeText} ;

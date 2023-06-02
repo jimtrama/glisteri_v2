@@ -1,18 +1,24 @@
+//DEPENDENCIES
 import React, { useEffect, useState } from "react";
-import "./Entry.css";
 import { useNavigate } from "react-router-dom";
-import logo from "./../../images/header/logoC.png";
-
-import bgImage from "./../../images/header/bg.jpg";
-import v from "./../../images/bg.mp4";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 
-import flagG from "./../../images/flags/gflag.png"
-import flagE from "./../../images/flags/eflag.png"
-const photoVertion = false;
+//CSS
+import "./Entry.css";
+
+
+//IMAGES
+import logo from "./../../images/header/s_logoC.png";
+import bgImage from "./../../images/header/s_bg.jpg";
+import v from "./../../images/bg.mp4";
+import flagG from "./../../images/flags/s_gflag.png"
+import flagE from "./../../images/flags/s_eflag.png"
+
+
+const photoVertion = true;
 function Entry() {
     const [langue, setLang] = useState("");
 
@@ -56,7 +62,7 @@ function Entry() {
             {
                 photoVertion?(
                     <>
-                <img className="bgImgae" src={bgImage}></img> 
+                {/* <img className="bgImgae" src={bgImage}></img>  */}
                 <img style={{ zIndex: "30" }} className="logo" src={logo}></img>
                 </>
                 )

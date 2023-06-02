@@ -1,20 +1,22 @@
+//DEPNDENCIES
 import React, { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import "./Home.css";
-import { HomeText } from "../../Utils/textTransaltion";
-import Menu from "./../../Utils/Menu";
 
-//IMAGES
-import bg from "./../../images/header/bg.jpg";
-import logo from "./../../images/header/logo.png";
+//CSS
+import "./Home.css";
+
+//COMPONENTS
+import Menu from "./../../Utils/Menu";
 import Header from "./Header";
 import Category from "../Category/Category";
 
-import logo2 from "./../../images/header/logoC.png";
+//IMAGES
+import bg from "./../../images/header/s_bg.jpg";
+import logo from "./../../images/header/logo.png";
+import logo2 from "./../../images/header/s_logoC.png";
 import arrowImg from "./../../images/header/arrow.png"
 
 function getPos(el) {
-    // yay readability
     for (var lx = 0, ly = 0; el != null; lx += el.offsetLeft, ly += el.offsetTop, el = el.offsetParent);
     return { x: lx, y: ly };
 }

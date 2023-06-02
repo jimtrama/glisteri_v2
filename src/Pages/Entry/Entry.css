@@ -4,15 +4,16 @@
     overflow: hidden;
 
     /* if no video removethe following  */
-    display: flex;
+    /* display: flex; */
     
     justify-content: center;
 }
 .bgImgae{
+    
     /* position: absolute;
     top: 0;
     left: 0; */
-    transform: rotateZ(90deg) translate(-10vw,50%);
+    /* transform: rotateZ(90deg) translate(-10vw,50%); */
     overflow: hidden;
     /* z-index: 10; */
     height: 100vh;
@@ -32,12 +33,12 @@
     transform: translate(-50%,-50%);
     height: 20vh;
     width: auto;
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(255, 255, 255, 0.801);
     border-radius: 50%;
     padding: 5px;
-    box-shadow: -1px 0px 57px 8px rgba(240,152,28,0.25);
+    /* box-shadow: -1px 0px 57px 8px rgba(240,152,28,0.25);
 -webkit-box-shadow: -1px 0px 57px 8px rgba(240,152,28,0.25);
--moz-box-shadow: -1px 0px 57px 8px rgba(240,152,28,0.25);
+-moz-box-shadow: -1px 0px 57px 8px rgba(240,152,28,0.25); */
 }
 .bgTrans{
     

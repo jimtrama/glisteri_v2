@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import logo from "./../../images/header/logo.png";
+import logo from "./../../images/header/s_logo.png";
 import cart from "./../../images/header/cart.png";
 import "./Header.css";
 
