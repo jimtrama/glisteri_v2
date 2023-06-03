@@ -21,7 +21,7 @@ function Product({ product, sera, array,setPro ,pro}) {
             <div className="productInfo">
                 <span className="productTitle">{product.title}</span>
                 <span className="productDesc">{product.desc}</span>
-                <span className="productPrice">{product.price }</span>
+                <span className="productPrice">{product.price + " €"} </span>
             </div>
             <div className="productPhotoCont">
                 <img id={sera} loading="lazy" className="productPhoto" src={product.photo}></img>
