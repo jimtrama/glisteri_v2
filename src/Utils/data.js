@@ -450,18 +450,7 @@ const data = {
                     price: "90.00",
                     photo: photo,
                 },
-                {
-                    title: { el: "Costa Lazaridi Amethystos sauvignon", en: "Costa Lazaridi Amethystos sauvignon" },
-                    desc: { el: "", en: "" },
-                    price: "45",
-                    photo: photo,
-                },
-                {
-                    title: { el: "Costa Lazaridi Julia", en: "Costa Lazaridi Julia" },
-                    desc: { el: "", en: "" },
-                    price: "35",
-                    photo: photo,
-                },
+                
             ]
         },
         //Roze krasia
