@@ -111,7 +111,7 @@ const data = {
                     title: { el: "Έζα Πιλς", en: "Eza Pils" },
                     desc: { el: "330 ml", en: "330 ml" },
                     price: "6.00",
-                    photo: weeis_bear,
+                    photo: photo,
                 },
                 {
                     title: { el: "Έζα Χωρίς αλκοόλ", en: "Eza No Alcohol" },
@@ -126,7 +126,7 @@ const data = {
                     photo: photo,
                 },
                 {
-                    title: { el: "Weis Beer", en: "Weis Beer" },
+                    title: { el: "Weiss Beer", en: "Weiss Beer" },
                     desc: { el: "500 ml", en: "500 ml" },
                     price: "7.00",
                     photo: weeis_bear,
@@ -242,7 +242,7 @@ const data = {
                 },
                 {
                     title: { el: "Κάκα Κόλα", en: "Coca-Cola" },
-                    desc: { el: "Normal / Light / Zero", en: "Normal / Light / Zero" },
+                    desc: { el: "Normal / Light ", en: "Normal / Light " },
                     price: "5.00",
                     photo: photo,
                 },
@@ -272,7 +272,7 @@ const data = {
                 },
                 {
                     title: { el: "Red Bull", en: "Red Bull" },
-                    desc: { el: "Kανονικό / Xωρίς ζάχαρη", en: "Normal / No sugar" },
+                    desc: { el: "Kανονικό", en: "Normal" },
                     price: "6.00",
                     photo: photo,
                 },
@@ -296,99 +296,37 @@ const data = {
             title:{el:"Ποτά",en:"Drinks"},
             products:[
                 {
-                    title: { el: "Μαύρη Havana", en: "Havana Black" },
+                    title: { el: "Ποτό απλό", en: "Simple Drink" },
+                    desc: { el: "" },
+                    price: "9.00",
+                    photo: photo,
+                },
+                {
+                    title: { el: "Ποτό σπέσιαλ ", en: "Special Drink" },
                     desc: { el: "" },
                     price: "12.00",
                     photo: photo,
                 },
                 {
-                    title: { el: "Λευκή Havana", en: "Havana White" },
-                    desc: { el: "" },
-                    price: "9.00",
-                    photo: photo,
-                },
-                {
-                    title: { el: "Absolute Vodka", en: "Absolute Vodka" },
-                    desc: { el: "" },
-                    price: "9.00",
-                    photo: photo,
-                },
-                {
-                    title: { el: "Beefeater", en: "Beefeater" },
-                    desc: { el: "" },
-                    price: "9.00",
-                    photo: photo,
-                },
-                {
-                    title: { el: "Grey Goose", en: "Grey Goose" },
+                    title: { el: "Ποτό premium", en: "Premium Drink" },
                     desc: { el: "" },
                     price: "16.00",
                     photo: photo,
                 },
-                {
-                    title: { el: "Patron", en: "Patron" },
-                    desc: { el: "" },
-                    price: "16.00",
-                    photo: photo,
-                },
-                {
-                    title: { el: "Chivas 18", en: "Chivas 18" },
-                    desc: { el: "" },
-                    price: "16.00",
-                    photo: photo,
-                },
-                {
-                    title: { el: "Hendrick's", en: "Hendrick's" },
-                    desc: { el: "" },
-                    price: "16.00",
-                    photo: photo,
-                },
-                {
-                    title: { el: "Johnnie Black", en: "Johnnie Black" },
-                    desc: { el: "" },
-                    price: "16.00",
-                    photo: photo,
-                },
-                {
-                    title: { el: "Jameson", en: "Jameson" },
-                    desc: { el: "" },
-                    price: "9.00",
-                    photo: photo,
-                },
-                {
-                    title: { el: "Diplomatico", en: "Diplomatico" },
-                    desc: { el: "" },
-                    price: "16.00",
-                    photo: photo,
-                },
-                {
-                    title: { el: "Beefeater 24", en: "Beefeater 24" },
-                    desc: { el: "" },
-                    price: "12.00",
-                    photo: photo,
-                },
-                {
-                    title: { el: "Olmeca tequila", en: "Olmeca tekila" },
-                    desc: { el: "" },
-                    price: "9.00",
-                    photo: photo,
-                },
-                {
-                    title: { el: "Aperol", en: "Aperol" },
-                    desc: { el: "" },
-                    price: "9.00",
-                    photo: photo,
-                },
-                {
-                    title: { el: "Campari", en: "Campari" },
-                    desc: { el: "" },
-                    price: "9.00",
-                    photo: photo,
-                },
+                
                 {
                     title: { el: "Σφηνάκι", en: "Shot" },
                     desc: { el: "" },
-                    price: "3.00",
+                    price: "4.00",
+                    photo: photo,
+                },
+                {
+                    title: { el: "Σέικερ Σφηνάκια", en: "Shot Shaker" },
+                    desc: { 
+                        el: "", 
+                        en: ""
+                    },
+                    price: "30.00",
                     photo: photo,
                 },
                 {
@@ -397,32 +335,78 @@ const data = {
                     price: "6.00",
                     photo: photo,
                 }
+                ,
+                {
+                    title: { el: "Φιάλη απλή", en: "Simple Bottle" },
+                    desc: { 
+                        el: "", 
+                        en: ""
+                    },
+                    price: "90.00",
+                    photo: photo,
+                },
+                {
+                    title: { el: "Φιάλη σπέσιαλ", en: "Special Bottle" },
+                    desc: { 
+                        el: "", 
+                        en: ""
+                    },
+                    price: "120.00",
+                    photo: photo,
+                },
+                {
+                    title: { el: "Φιάλη premium", en: "Premium Bottle" },
+                    desc: { 
+                        el: "", 
+                        en: ""
+                    },
+                    price: "160.00",
+                    photo: photo,
+                },
                 
                 
             ]
         },
         //Wines 
         {
-            title:{el:"Κρασιά",en:"Wines"},
+            title:{el:"Sparkling",en:"Sparkling"},
             products:[
                 {
-                    title: { el: "Ατομικό Λευκό", en: "White Wine" },
-                    desc: { el: "187 ml", en: "187 ml" },
-                    price: "5.00",
-                    photo: photo,
-                },
-                {
-                    title: { el: "Ατομικό Ροζέ", en: "Roze Wine" },
-                    desc: { el: "187 ml", en: "187 ml" },
-                    price: "5.00",
-                    photo: photo,
-                },
-                {
                     title: { el: "Ατομικό Προσέκο", en: "Prosecco" },
-                    desc: { el: "187 ml", en: "187 ml" },
-                    price: "5.00",
+                    desc: { el: "200 ml", en: "200 ml" },
+                    price: "8.00",
                     photo: photo,
                 },
+                {
+                    title: { el: "Προσέκο", en: "Prosecco" },
+                    desc: { el: "750 ml", en: "750 ml" },
+                    price: "40.00",
+                    photo: photo,
+                },
+                {
+                    title: { el: "Moscato D'Asti", en: "Moscato D'Asti" },
+                    desc: { el: "200 ml", en: "200 ml" },
+                    price: "8.00",
+                    photo: photo,
+                },
+                {
+                    title: { el: "Moscato D'Asti", en: "Moscato D'Asti" },
+                    desc: { el: "750 ml", en: "750 ml" },
+                    price: "40.00",
+                    photo: photo,
+                },
+            ]
+        },
+        {
+            title:{el:"Λευκά Κρασιά",en:"White Wines"},
+            products:[
+                {
+                    title: { el: "Μοσχοφίλερο Μπουτάρι", en: "Moschofilero Boytari" },
+                    desc: { el: "187 ml", en: "187 ml" },
+                    price: "6.00",
+                    photo: photo,
+                },
+                
                 {
                     title: { el: "Φιάλες Κρασιού 750ml", en: "Bottles of Wine 750ml" },
                     desc: { el: "Ρωτήστε Σερβιτόρο", en: "Ask waiter" },
@@ -431,33 +415,39 @@ const data = {
                 },
                 
                 {
-                    title: { el: "Βιβλία χώρα chardonnay", en: "Bibliaxora chardonnay" },
+                    title: { el: "Σημείο Στίξης", en: "Simeio Stixis" },
                     desc: { el: "", en: "" },
-                    price: "45",
+                    price: "23.00",
                     photo: photo,
                 },
                 {
-                    title: { el: "Ψηλές Κορφές Λευκό", en: "Psiles Korfes White Wine" },
+                    title: { el: "Μαλαγουζιά Μάτσα", en: "Malagoyzia Matsa" },
                     desc: { el: "", en: "" },
-                    price: "35",
+                    price: "37.00",
                     photo: photo,
                 },
                 {
-                    title: { el: "Costa Lazaridi Amethystos Roze ", en: "Costa Lazaridi Amethystos Roze " },
+                    title: { el: "Σαντορίνη Μπουτάρι ", en: "Santorini Boutari" },
                     desc: { el: "", en: "" },
-                    price: "45",
+                    price: "49.00",
                     photo: photo,
                 },
                 {
-                    title: { el: "Costa Lazaridi Roze Merlot", en: "Costa Lazaridi Roze Merlot" },
+                    title: { el: "Sauvignon Blanc Boutari", en: "Sauvignon Blanc Boutari" },
                     desc: { el: "", en: "" },
-                    price: "45",
+                    price: "37.00",
                     photo: photo,
                 },
                 {
-                    title: { el: "Costa Lazaridi malagouzia", en: "Costa Lazaridi malagouzia" },
+                    title: { el: "Κτήμα Γεροβασιλείου", en: "Ktima Gerovasileiou" },
                     desc: { el: "", en: "" },
-                    price: "45",
+                    price: "44.00",
+                    photo: photo,
+                },
+                {
+                    title: { el: "Miraval Blanc", en: "Miraval Blanc" },
+                    desc: { el: "", en: "" },
+                    price: "90.00",
                     photo: photo,
                 },
                 {
@@ -470,6 +460,68 @@ const data = {
                     title: { el: "Costa Lazaridi Julia", en: "Costa Lazaridi Julia" },
                     desc: { el: "", en: "" },
                     price: "35",
+                    photo: photo,
+                },
+            ]
+        },
+        //Roze krasia
+        {
+            title:{el:"Ροζέ Κρασιά",en:"Roze Wines"},
+            products:[
+                {
+                    title: { el: "Rose Boutari Demi-Sec", en: "Rose Boutari Demi-Sec" },
+                    desc: { el: "187 ml", en: "187 ml" },
+                    price: "6.00",
+                    photo: photo,
+                },
+                
+                {
+                    title: { el: "Σημείο Στίξης", en: "Simeio Stixis" },
+                    desc: { el: "", en: "" },
+                    price: "23.00",
+                    photo: photo,
+                },
+                {
+                    title: { el: "Rose Boutari Demi-Sec", en: "Rose Boutari Demi-Sec" },
+                    desc: { el: "", en: "" },
+                    price: "28.00",
+                    photo: photo,
+                },
+                {
+                    title: { el: "Κτήμα Αλφα Ξινόμαυρο", en: " Kita ALFA Xinomayro" },
+                    desc: { el: "", en: "" },
+                    price: "49.00",
+                    photo: photo,
+                },
+                {
+                    title: { el: "Miraval whispering Angel", en: "Miraval whispering Angel" },
+                    desc: { el: "", en: "" },
+                    price: "49.00",
+                    photo: photo,
+                },
+            ]
+
+            
+        },
+        {
+            title:{el:"Champagne",en:"Champagne"},
+            products:[
+                {
+                    title: { el: "Moet & Chandon Rose", en: "Moet Rose" },
+                    desc: { el: "", en: "" },
+                    price: "120.00",
+                    photo: photo,
+                },
+                {
+                    title: { el: "Moet & Chandon Blanc", en: "Moet Rose" },
+                    desc: { el: "", en: "" },
+                    price: "120.00",
+                    photo: photo,
+                },
+                {
+                    title: { el: "Moet & Chandon Ice", en: "Moet Rose" },
+                    desc: { el: "", en: "" },
+                    price: "160.00",
                     photo: photo,
                 },
             ]
@@ -542,7 +594,7 @@ const data = {
                     photo: photo,
                 },
                 {
-                    title: { el: "Cuba Limbre", en: "Cuba Limbre" },
+                    title: { el: "Cuba Libre", en: "Cuba Libre" },
                     desc: { 
                         el: "ρούμι / λάιμ / κόκα κόλα", 
                         en: "rum / lime / coca-cola"
@@ -615,15 +667,7 @@ const data = {
                     price: "15.00",
                     photo: photo,
                 },
-                {
-                    title: { el: "Σέικερ Σφηνάκια", en: "Shot Shaker" },
-                    desc: { 
-                        el: "", 
-                        en: ""
-                    },
-                    price: "30.00",
-                    photo: photo,
-                },
+                
             ]
         },
         //signatures
@@ -760,7 +804,7 @@ const data = {
                     photo: photo,
                 },
                 {
-                    title: { el: "Ομελέτα Σπέσιαλ", en: "Secial omelette" },
+                    title: { el: "Ομελέτα Σπέσιαλ", en: "Special omelette" },
                     desc: { el: "τυρί / ζαμπόν / μπέικον / μανιτάρια / πιπεριά ,σερβίρεται με ανάμεικτη πράσινη σαλάτα", en: "cheese / ham / bacon / mushrooms / papper ,served with mixed green salad" },
                     price: "14.00",
                     photo: photo,
@@ -850,10 +894,10 @@ const data = {
         },
         // bao bans
         {
-            title:{el:"Bao Buns",en:"Bao Buns"},
+            title:{el:"Bao Bun",en:"Bao Bun"},
             products:[
                 {
-                    title: { el: "Bao Bun κοτόπουλο (2 τεμ.)", en: "Bao Buns chicken (2 pic.)" },
+                    title: { el: "Bao Bun κοτόπουλο (2 τεμ.)", en: "Bao Bun chicken (2 pic.)" },
                     desc: { 
                         el: "παναρισμένες μπουκιές κοτόπουλου / coleslaw / ραπανάκι / σχοινόπρασο", 
                         en: "chicken nuggets / coleslaw / radish / lemongrass" },
@@ -1064,14 +1108,7 @@ const data = {
                     price: "10.00",
                     photo: photo,
                 },
-                {
-                    title: { el: "Σκοπελίτικη Τυρόπιτα ", en: "Skopelos cheese pie" },
-                    desc: { 
-                        el: "", 
-                        en: "" },
-                    price: "10.00",
-                    photo: photo,
-                },
+                
                 {
                     title: { el: "Γαλατόπιτα Σκοπέλου", en: "Skopelos sweet milk pie" },
                     desc: { 
