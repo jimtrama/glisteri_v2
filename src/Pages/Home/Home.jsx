@@ -14,40 +14,38 @@ import Category from "../Category/Category";
 import bg from "./../../images/header/s_bg.jpg";
 import logo from "./../../images/header/logo.png";
 import logo2 from "./../../images/header/s_logoC.png";
-import arrowImg from "./../../images/header/arrow.png"
+import downArr from "./../../images/down_arrow.png"
 
-function getPos(el) {
-    for (var lx = 0, ly = 0; el != null; lx += el.offsetLeft, ly += el.offsetTop, el = el.offsetParent);
-    return { x: lx, y: ly };
-}
+
+
 function Home({setPro,pro}) {
-    const [searchParams, setSearchParams] = useSearchParams();
-  const navigator = useNavigate();
     const [levelOne, setLevelOne] = useState(false);
     const [levelTwo, setLevelTwo] = useState(false);
     const [selectedCategory, setSelectedCategory] = useState(0);
-    const [menu, setMenu] = useState(new Menu());
-    const [lang,setLang] = useState("")
-    useEffect(() => {
-        let lang = searchParams.get("lang");
-        setLang(lang);
-        setMenu(new Menu(lang));
-    }, []);
-    const leavingPage = ()=>{
-      document.getElementsByClassName("outerContainer")[0].classList.add("contOut")
-      document.getElementsByClassName("header")[0].classList.add("headOut")
-      document.getElementsByClassName("backBtn")[0].classList.add("buttonOut")
-  
-      setTimeout(()=>{
-        navigator('/',{ replace: true });
-      },700)
+    const [menu, setMenu] = useState(new Menu("el"));
+    const [isEl,setIsEl] = useState(true);
+    const switchLang = () =>{
+        if(isEl){
+            setMenu(new Menu('en'))
+        }else{
+            setMenu(new Menu('el'))
+        }
+        setIsEl(!isEl);
     }
+   
+    
+    
+    
     const clicked = (i) => {
         let y = getPos(document.getElementsByClassName("categoryContainer")[i]).y;
         const offset = window.innerWidth / 6;
         document.getElementsByClassName("outerContainer")[0].scrollTo({ top: y + offset, behavior: "smooth" });
         setSelectedCategory(i);
     };
+    function getPos(el) {
+        for (var lx = 0, ly = 0; el != null; lx += el.offsetLeft, ly += el.offsetTop, el = el.offsetParent);
+        return { x: lx, y: ly };
+    }
     const onScroll = (e) => {
         const point1 = window.innerWidth / 2 - 80;
         const point2 = window.innerWidth / 2;
@@ -78,9 +76,7 @@ function Home({setPro,pro}) {
     return (
         <div className="Main">
           <img className="logo" src={logo2}></img>
-            <div onClick={leavingPage} className="backBtn">
-              <img src={arrowImg}></img>
-            </div>
+            
             <div className="header">
                 <img style={{borderBottomLeftRadius:"20px",borderBottomRightRadius:"20px"}} src={bg} className="bgim" />
                 <img src={logo} className="logoImg" />
@@ -90,12 +86,14 @@ function Home({setPro,pro}) {
                     <img src={logo} className="logoInHeader" />
                 </div>
             )}
-            {levelTwo && <Header menu={menu} clicked={clicked} selected={selectedCategory} pro={pro} lang={lang} />}
+            {levelTwo && <Header menu={menu} clicked={clicked} selected={selectedCategory}  m={isEl}  switchLang={switchLang} />}
 
             <div onScroll={onScroll} className="outerContainer">
+               
                 <div className="menu">
+                    <img className="downArrow" src={downArr}></img>
                     {menu.categories.map((category, i) => {
-                        return <Category id={"c" + i} key={i} category={category} setPro={setPro} pro={pro} />;
+                        return <Category id={"c" + i} key={i} category={category} setPro={setPro}  />;
                     })}
                 </div>
             </div>

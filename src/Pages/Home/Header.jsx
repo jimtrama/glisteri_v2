@@ -1,22 +1,28 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
 import logo from "./../../images/header/s_logo.png";
-import cart from "./../../images/header/cart.png";
+import el_flag from "./../../images/flags/s_eflag.png";
+import en_flag from "./../../images/flags/s_gflag.png";
 import "./Header.css";
 
-function Header({ menu, clicked, selected ,pro,lang}) {
-    const navigator = useNavigate();
 
-    function goToCart (){
-        navigator('/cart?lang='+lang,{ replace: true });
+function Header({ menu, clicked, selected , switchLang}) {
+    
+    const [isEl,setIsEl] = useState(true)
+    const innnerSwitch = ()=>{
+        setIsEl(!isEl);
+        switchLang();
     }
 
     return (
         <div className="mainHeaderContainer">
-            <img className="imageL" src={logo}></img>
-            <div className="cartContainer" onClick={goToCart}>
-                <img className="cartImg" src={cart} ></img>
-                <span className="lengthOfCart">{pro.length}</span>
+            <img alt="problem loading" className="imageL" src={logo}></img>
+            <div className="cartContainer" >
+                {
+                    !isEl?
+                    <img alt="problem loading" style={{height:"2.2vh",width:"auto"}} src={en_flag} onClick={innnerSwitch} ></img>
+                    :
+                    <img alt="problem loading" style={{height:"2.2vh",width:"auto"}} src={el_flag} onClick={innnerSwitch}></img>
+                }
             </div>
             <div className="headerLevTwo">
                 {menu.categories.map((categorie, i) => (
@@ -25,7 +31,7 @@ function Header({ menu, clicked, selected ,pro,lang}) {
                         onClick={(e) => {
                             clicked(e.target.id);
                         }}
-                        className={selected == i ? "categoryHeaderContainer selected" : "categoryHeaderContainer"}
+                        className={selected === i ? "categoryHeaderContainer selected" : "categoryHeaderContainer"}
                         id={i}
                     >
                         {categorie.title}
