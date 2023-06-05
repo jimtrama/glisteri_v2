@@ -9,10 +9,11 @@ import "./Header.css";
 function Header({ menu, clicked, selected , switchLang}) {
     
     const [isEl,setIsEl] = useState(true)
-    const innnerSwitch = ()=>{
-        setIsEl(!isEl);
+    const innerSwitch = ()=>{
         switchLang();
+        setIsEl(!isEl);
     }
+    
     
     return (
         <div className="mainHeaderContainer">
@@ -20,9 +21,9 @@ function Header({ menu, clicked, selected , switchLang}) {
             <div className="cartContainer" >
                 {
                     !isEl?
-                    <img alt="problem loading" style={{height:"2.2vh",width:"auto"}} src={en_flag} onClick={innnerSwitch} ></img>
+                    <img alt="problem loading" style={{height:"2.2vh",width:"auto"}} src={en_flag} onClick={innerSwitch} ></img>
                     :
-                    <img alt="problem loading" style={{height:"2.2vh",width:"auto"}} src={el_flag} onClick={innnerSwitch}></img>
+                    <img alt="problem loading" style={{height:"2.2vh",width:"auto"}} src={el_flag} onClick={innerSwitch}></img>
                 }
                
                 

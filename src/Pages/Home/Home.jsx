@@ -1,7 +1,6 @@
 //DEPNDENCIES
 import React, { useState } from "react";
 
-
 //CSS
 import "./Home.css";
 
@@ -15,29 +14,26 @@ import { FormControlLabel, Switch } from "@mui/material";
 import bg from "./../../images/header/s_bg.jpg";
 import logo from "./../../images/header/logo.png";
 import logo2 from "./../../images/header/s_logoC.png";
-import downArr from "./../../images/down_arrow.png"
+import downArr from "./../../images/down_arrow.png";
+import el_flag from "./../../images/flags/s_eflag.png";
+import en_flag from "./../../images/flags/s_gflag.png";
 
-
-
-function Home({setPro,pro}) {
+function Home({ setPro, pro }) {
     const [levelOne, setLevelOne] = useState(false);
     const [levelTwo, setLevelTwo] = useState(false);
     const [selectedCategory, setSelectedCategory] = useState(0);
-    const [menu, setMenu] = useState(new Menu("el",false));
-    const [isEl,setIsEl] = useState(true);
-  
-    const switchLang = () =>{
-        if(isEl){
-            setMenu(new Menu('en',menu.isRest))
-        }else{
-            setMenu(new Menu('el',menu.isRest))
+    const [menu, setMenu] = useState(new Menu("el", false));
+    const [isEl, setIsEl] = useState(true);
+
+    const switchLang = () => {
+        if (isEl) {
+            setMenu(new Menu("en", menu.isRest));
+        } else {
+            setMenu(new Menu("el", menu.isRest));
         }
         setIsEl(!isEl);
-    }
-   
-    
-    
-    
+    };
+
     const clicked = (i) => {
         let y = getPos(document.getElementsByClassName("categoryContainer")[i]).y;
         const offset = window.innerWidth / 6;
@@ -75,17 +71,17 @@ function Home({setPro,pro}) {
             }
         }
     };
-    const changed = (e)=>{
+    const changed = (e) => {
         console.log(e);
-        setMenu(new Menu(isEl?"el":"en",e.target.checked));
-    }
-   
+        setMenu(new Menu(isEl ? "el" : "en", e.target.checked));
+    };
+
     return (
         <div className="Main">
-          <img className="logo" src={logo2}></img>
-            
+            <img className="logo" src={logo2}></img>
+
             <div className="header">
-                <img style={{borderBottomLeftRadius:"20px",borderBottomRightRadius:"20px"}} src={bg} className="bgim" />
+                <img style={{ borderBottomLeftRadius: "20px", borderBottomRightRadius: "20px" }} src={bg} className="bgim" />
                 <img src={logo} className="logoImg" />
             </div>
             {levelOne && (
@@ -93,21 +89,19 @@ function Home({setPro,pro}) {
                     <img src={logo} className="logoInHeader" />
                 </div>
             )}
-            {levelTwo && <Header menu={menu} clicked={clicked} selected={selectedCategory}  m={isEl}  switchLang={switchLang} />}
+            {levelTwo && <Header menu={menu} clicked={clicked} selected={selectedCategory} m={isEl} switchLang={switchLang} />}
 
             <div onScroll={onScroll} className="outerContainer">
-               
                 <div className="menu">
-                    <div style={{display:"flex",justifyContent:"space-evenly",width:"100%"}} >
+                    <div style={{ display: "flex", justifyContent: "space-evenly",alignItems:"center", width: "100%" }}>
                         <img className="downArrow" src={downArr}></img>
-                        
-                        <FormControlLabel control={<Switch onChange={changed} color="secondary" />} label={!isEl?"Switch for Restaurant Menu":"Για Μενού εστιατορίου"} />
-                       
 
+                        <FormControlLabel control={<Switch onChange={changed} color="secondary" />} label={!isEl ? "Switch for Restaurant Menu" : "Για Μενού εστιατορίου"} />
+                        {!isEl ? <img alt="problem loading" style={{ height: "2.2vh", width: "auto" }} src={en_flag} onClick={switchLang}></img> : <img alt="problem loading" style={{ height: "2.2vh", width: "auto" }} src={el_flag} onClick={switchLang}></img>}
                     </div>
-                    
+
                     {menu.categories.map((category, i) => {
-                        return <Category id={"c" + i} key={i} category={category} setPro={setPro}  />;
+                        return <Category id={"c" + i} key={i} category={category} setPro={setPro} />;
                     })}
                 </div>
             </div>
