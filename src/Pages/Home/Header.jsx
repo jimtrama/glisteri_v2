@@ -5,6 +5,7 @@ import en_flag from "./../../images/flags/s_gflag.png";
 import "./Header.css";
 
 
+
 function Header({ menu, clicked, selected , switchLang}) {
     
     const [isEl,setIsEl] = useState(true)
@@ -12,7 +13,7 @@ function Header({ menu, clicked, selected , switchLang}) {
         setIsEl(!isEl);
         switchLang();
     }
-
+    
     return (
         <div className="mainHeaderContainer">
             <img alt="problem loading" className="imageL" src={logo}></img>
@@ -23,6 +24,8 @@ function Header({ menu, clicked, selected , switchLang}) {
                     :
                     <img alt="problem loading" style={{height:"2.2vh",width:"auto"}} src={el_flag} onClick={innnerSwitch}></img>
                 }
+               
+                
             </div>
             <div className="headerLevTwo">
                 {menu.categories.map((categorie, i) => (

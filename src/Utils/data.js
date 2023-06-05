@@ -22,6 +22,7 @@ const data = {
         // Kafedes
         {
             title: { el: "Καφέδες", en: "Coffees" },
+            isRest:false,
             products: [
                 {
                     title: { el: "Εσπρέσο", en: "Espresso" },
@@ -100,6 +101,7 @@ const data = {
         //Beers
         {
             title: { el: "Μπύρες", en: "Beers" },
+            isRest:false,
             products: [
                 {
                     title: { el: "Έζα Λάγκερ", en: "Eza Lager" },
@@ -149,6 +151,7 @@ const data = {
         //Ximoi
         {
             title: { el: "Χυμοί", en: "Juices" },
+            isRest:false,
             products: [
                 {
                     title: { el: "Φυσικός Χυμός Πορτοκάλι", en: "Fresh Orange Juice" },
@@ -173,6 +176,7 @@ const data = {
         //smoothies
         {
             title: { el: "Smoothies", en: "Smoothies" },
+            isRest:false,
             products : [
                 {
                     title: { el: "Green Power", en: "Green Power" },
@@ -221,6 +225,7 @@ const data = {
         //soft drinks
         {
             title:{el:"Αναψυκτικά",en:"Soft drinks"},
+            isRest:false,
             products:[
                 {
                     title: { el: "Λεμονάδα", en: "Lemonade" },
@@ -284,7 +289,7 @@ const data = {
                 },
                 {
                     title: { el: "Σουρωτή", en: "Sparkling water" },
-                    desc: { el: "Ροδάκινο / Λεμόνι / Πράσινο", en: "Peach / Lemon / Green" },
+                    desc: { el: " Κλασική / Λεμόνι / Μέντα / Αγγούρι", en: "Classic / Lemon / Mint / Cucumber" },
                     price: "6.00",
                     photo: photo,
                 },
@@ -294,6 +299,7 @@ const data = {
         //driks
         {
             title:{el:"Ποτά",en:"Drinks"},
+            isRest:false,
             products:[
                 {
                     title: { el: "Ποτό απλό", en: "Simple Drink" },
@@ -367,9 +373,10 @@ const data = {
                 
             ]
         },
-        //Wines 
+        //sparkling Wines 
         {
             title:{el:"Sparkling",en:"Sparkling"},
+            isRest:false,
             products:[
                 {
                     title: { el: "Ατομικό Προσέκο", en: "Prosecco" },
@@ -397,8 +404,10 @@ const data = {
                 },
             ]
         },
+        //white wines
         {
             title:{el:"Λευκά Κρασιά",en:"White Wines"},
+            isRest:false,
             products:[
                 {
                     title: { el: "Μοσχοφίλερο Μπουτάρι", en: "Moschofilero Boytari" },
@@ -456,6 +465,7 @@ const data = {
         //Roze krasia
         {
             title:{el:"Ροζέ Κρασιά",en:"Roze Wines"},
+            isRest:false,
             products:[
                 {
                     title: { el: "Rose Boutari Demi-Sec", en: "Rose Boutari Demi-Sec" },
@@ -492,8 +502,10 @@ const data = {
 
             
         },
+        //champen wines
         {
             title:{el:"Champagne",en:"Champagne"},
+            isRest:false,
             products:[
                 {
                     title: { el: "Moet & Chandon Rose", en: "Moet Rose" },
@@ -510,7 +522,7 @@ const data = {
                 {
                     title: { el: "Moet & Chandon Ice", en: "Moet Rose" },
                     desc: { el: "", en: "" },
-                    price: "160.00",
+                    price: "150.00",
                     photo: photo,
                 },
             ]
@@ -518,12 +530,49 @@ const data = {
         //Kokteils
         {
             title:{el:"Κοκτέιλ",en:"Cocktails"},
+            isRest:false,
             products:[
                 {
-                    title: { el: "Τσιχλόφουσκα", en: "Bubble Gum" },
+                    title: { el: "Cuba Libre", en: "Cuba Libre" },
                     desc: { 
-                        el: "βότκα / 3sec (λικέρ Πορτοκάλι) / λάιμ / σιρόπι τσιχλόφουσκας", 
-                        en: "voldka / 3sec (liquer Orange) / lime / bubblegum sirop" 
+                        el: "ρούμι / λάιμ / κόκα κόλα", 
+                        en: "rum / lime / coca-cola"
+                    },
+                    price: "11.00",
+                    photo: photo,
+                },
+                {
+                    title: { el: "Electric Lemonade", en: "Electric Lemonade" },
+                    desc: { 
+                        el: "βότκα / blue curacao / λάιμ / σιρόπι ζάχαρης / σπράιτ", 
+                        en: "voldka / blue curacao / lime / sugar syrup / sprite" 
+                    },
+                    price: "11.00",
+                    photo: photo,
+                },
+                {
+                    title: { el: "Μοχίτο Κλασικό", en: "Mojito Classic" },
+                    desc: { 
+                        el: "ρούμι / ζαχάρη / λάιμ / μέντα / σόδα", 
+                        en: "rum / sugar / lime / mint / soda"
+                    },
+                    price: "12.00",
+                    photo: mohito_coc,
+                },
+                {
+                    title: { el: "Μοχίτο Μάνγκο/Φράουλα", en: "Mojito Mango / Strawberry" },
+                    desc: { 
+                        el: "ρούμι / ζαχάρη / λάιμ / μέντα / σόδα / πουρές μάνγκο , πουρές φράουλας ", 
+                        en: "rum / sugar / lime / mint / soda / mango , strawberry puree"
+                    },
+                    price: "12.00",
+                    photo: photo,
+                },
+                {
+                    title: { el: "Ουζίτο", en: "Ouzito" },
+                    desc: { 
+                        el: "ούζο / ζαχάρη / λάιμ / μέντα / σόδα ", 
+                        en: "ouzo / sugar / lime / mint / soda"
                     },
                     price: "12.00",
                     photo: photo,
@@ -547,16 +596,7 @@ const data = {
                     photo: photo,
                 },
                 {
-                    title: { el: "Μοχίτο", en: "Mojito" },
-                    desc: { 
-                        el: "ρούμι / ζαχάρη / λάιμ / μέντα", 
-                        en: "rum / sugar / lime / mint"
-                    },
-                    price: "12.00",
-                    photo: mohito_coc,
-                },
-                {
-                    title: { el: "Μαργαρίτα", en: "Marghrita" },
+                    title: { el: "Μαργαρίτα / Παγωμένη", en: "Marghrita / Frozen" },
                     desc: { 
                         el: "τεκίλα / 3sec (λικέρ Πορτοκάλι) / αλάτι / λάιμ ", 
                         en: "tekila / 3sec (liquer Orange) / lime / salt"
@@ -564,47 +604,67 @@ const data = {
                     price: "12.00",
                     photo: marg_coc,
                 },
+                
                 {
-                    title: { el: "Μαργαρίτα Φράουλα", en: "Marghrita Strawberry" },
+                    title: { el: "Μαργαρίτα Φράουλα / Παγωμένη", en: "Marghrita Strawberry /Frozen" },
                     desc: { 
                         el: "τεκίλα / 3sec (λικέρ Πορτοκάλι) / αλάτι / Πουρές Φράουλα", 
                         en: "tekila / 3sec (liquer Orange) / salt / Strawberry Jam"
                     },
-                    price: "12.00",
+                    price: "12.00 / 14.00",
                     photo: margarit_str,
                 },
+                
                 {
-                    title: { el: "Aperol Spritz", en: "Aperol Spritz" },
-                    desc: { 
-                        el: "Aperol / Prosecco / soda", 
-                        en: "Aperol / Prosecco / soda"
-                    },
-                    price: "12.00",
-                    photo: photo,
-                },
-                {
-                    title: { el: "Cuba Libre", en: "Cuba Libre" },
-                    desc: { 
-                        el: "ρούμι / λάιμ / κόκα κόλα", 
-                        en: "rum / lime / coca-cola"
-                    },
-                    price: "11.00",
-                    photo: photo,
-                },
-                {
-                    title: { el: "Ντάκιουρι", en: "Daiquiri" },
+                    title: { el: "Ντάκιουρι / Παγωμένo", en: "Daiquiri / Frozen" },
                     desc: { 
                         el: "ρούμι / 3sec (λικέρ Πορτοκάλι) / λάιμ / ζάχαρη", 
                         en: "rum / 3sec (liquer Orange) / lime / sugar"
                     },
-                    price: "12.00",
+                    price: "12.00 / 14.00",
                     photo: photo,
                 },
                 {
-                    title: { el: "Ντάκιουρι Φράουλα", en: "Daiquiri Strawberry" },
+                    title: { el: "Ντάκιουρι Φράουλα / Παγωμένo", en: "Daiquiri Strawberry /Frozen" },
                     desc: { 
                         el: "ρούμι / 3sec (λικέρ Πορτοκάλι) / Πουρέ Φράουλας / ζάχαρη", 
                         en: "rum / 3sec (liquer Orange) / Strawberry jam  / sugar"
+                    },
+                    price: "12.00 / 14.00",
+                    photo: photo,
+                },
+                {
+                    title: { el: "Πίνα Κολάντα / Παγωμένη", en: "Pina colada /Frozen" },
+                    desc: { 
+                        el: "malibu / batida de coco / χυμός ανανά  / πουρέ ανανά / γάλα καρύδας", 
+                        en: "malibu /  babatida de coco / pinnapple juice / pinnapple puree / coconut milk"
+                    },
+                    price: "12.00 / 14.00",
+                    photo: photo,
+                },
+                {
+                    title: { el: "Πίνα Κολάντα Φράουλα / Παγωμένη", en: "Pina colada Strawberry /Frozen" },
+                    desc: { 
+                        el: "malibu / batida de coco / χυμός ανανά  / πουρέ φράουλα / γάλα καρύδας", 
+                        en: "malibu /  babatida de coco / pinnapple juice / strawberry puree / coconut milk"
+                    },
+                    price: "12.00 / 14.00",
+                    photo: photo,
+                },
+                {
+                    title: { el: "Πίνα Κολάντα Μάνγκο / Παγωμένη", en: "Pina colada  Mango /Frozen" },
+                    desc: { 
+                        el: "malibu / batida de coco / χυμός ανανά  / πουρέ μάνγκο / γάλα καρύδας", 
+                        en: "malibu /  babatida de coco / pinnapple juice /  mango puree / coconut milk"
+                    },
+                    price: "12.00 / 14.00",
+                    photo: photo,
+                },
+                {
+                    title: { el: "Τσιχλόφουσκα", en: "Bubble Gum" },
+                    desc: { 
+                        el: "βότκα /  λάιμ / σιρόπι τσιχλόφουσκας", 
+                        en: "voldka / lime / bubblegum sirop" 
                     },
                     price: "12.00",
                     photo: photo,
@@ -619,12 +679,75 @@ const data = {
                     photo: photo,
                 },
                 {
+                    title: { el: "Aperol Spritz", en: "Aperol Spritz" },
+                    desc: { 
+                        el: "Aperol / Prosecco / soda", 
+                        en: "Aperol / Prosecco / soda"
+                    },
+                    price: "12.00",
+                    photo: photo,
+                },
+                {
                     title: { el: "Παλόμα", en: "Paloma" },
                     desc: { 
-                        el: "τεκίλα / αλάτι / σόδα γρέιπφρουτ / λάιμ", 
-                        en: "tekila / salt / soda grapefruit / lime"
+                        el: "τεκίλα / agave syrup / σόδα γρέιπφρουτ / λάιμ", 
+                        en: "tekila / agave syrup / soda grapefruit / lime"
                     },
                     price: "13.00",
+                    photo: photo,
+                },
+                {
+                    title: { el: "Mai Tai", en: "Mai Tai" },
+                    desc: { 
+                        el: "λευκό ρούμι , μαύρο ρούμι , 3sec (λικέρ Πορτοκάλι) , σιρόπι αμυγδάλου , λάιμ , σιρόπι ζάχαρης", 
+                        en: "white rum , Dark rum , 3sec (liquer Orange) , almond syrup , lime , sugar syrup"
+                    },
+                    price: "13.00",
+                    photo: photo,
+                },
+                {
+                    title: { el: "Melonball", en: "Melonball" },
+                    desc: { 
+                        el: "βότκα , λικέρ πεπόνι , χυμός ανανά", 
+                        en: "vodka , melon liquer , pineapple juice"
+                    },
+                    price: "13.00",
+                    photo: photo,
+                },
+                {
+                    title: { el: "Mastiha Cosmo", en: "Mastiha Cosmo" },
+                    desc: { 
+                        el: "λικέρ ματσίχας , 3sec , λάιμ , χυμός κράμπερι", 
+                        en: "matsiha liquer , 3sec ,lime , cranberry juice"
+                    },
+                    price: "13.00",
+                    photo: photo,
+                },
+                {
+                    title: { el: "Jungle Bird", en: "Jungle Bird" },
+                    desc: { 
+                        el: "μαυρο ρούμι , καμπάρι , χυμός ανανά , λάιμ , σιρόπι ζάχαρης", 
+                        en: "dark rum , campari , pineapple juice , lime , sugar syrup"
+                    },
+                    price: "14.00",
+                    photo: photo,
+                },
+                {
+                    title: { el: "Porn star", en: "Porn star" },
+                    desc: { 
+                        el: "βότκα , συρόπι βανίλιας , λάιμ , πουρέ πασίονφρουτ , προσέκο", 
+                        en: "vodka , vanilla syrup , lime , passion fruit puree , prosecco"
+                    },
+                    price: "14.00",
+                    photo: photo,
+                },
+                {
+                    title: { el: "Logn Island IceTea / Beach", en: "Logn Island IceTea / Beach" },
+                    desc: { 
+                        el: "βότκα , ρούμι , τεκίλα , τζίν , 3sec , λάιμ , κοκα-κόλα / χυμός κράμπερι", 
+                        en: "vodka , rum , tequilla , gin , 3sec , lime , coca-cola / cranberry juice"
+                    },
+                    price: "12.00",
                     photo: photo,
                 },
                 {
@@ -637,21 +760,10 @@ const data = {
                     photo: photo,
                 },
                 {
-                    title: { el: "Πίνα Κολάντα", en: "Pina colada" },
-                    desc: { 
-                        el: "ρούμι / malibu / batida de coco / χυμός ανανά  / γάλα καρύδας", 
-                        en: "rum  / malibu /  babatida de coco / pinnapple juice / coconut milk"
-                    },
-                    price: "12.00",
-                    photo: photo,
-                },
-                
-                
-                {
                     title: { el: "Ζόμπι", en: "Zombie" },
                     desc: { 
-                        el: "ρούμια / παπάγια / λάιμ / σόδα γρέιπφρουτ / πάσιον φρουτ", 
-                        en: "rums  / malibu /  babatida de coco / pinnapple juice / coconut milk"
+                        el: "λευκό ρουμι / μαύρο ρουμι / καπνιστό ρουμι /  falernum σιρόπι / λάιμ / χυμός ανανά / πάσιον φρουτ πουρέ", 
+                        en: "white rum / dark rum / spiced rum / falernum syrup / lime  / pinneapple juice / passion fruit puree"
                     },
                     price: "15.00",
                     photo: photo,
@@ -662,6 +774,7 @@ const data = {
         //signatures
         {
             title:{el:"Signatures",en:"Signatures"},
+            isRest:false,
             products:[
                 {
                     title: { el: "Glysteri Spritz", en: "Glysteri Spritz" },
@@ -713,6 +826,7 @@ const data = {
         //mocktails
         {
             title:{el:"Mocktails",en:"Mocktails"},
+            isRest:false,
             products:[
                 {
                     title: { el: "Mojito 0%", en: "Mojito 0%" },
@@ -747,6 +861,7 @@ const data = {
         //salates
         {
             title: { el: "Σαλάτες", en: "Salads" },
+            isRest:false,
             products: [
                 {
                     title: { el: "Χωριάτικη", en: "Greek Salad" },
@@ -778,6 +893,7 @@ const data = {
         //breakfast
         {
             title:{el:"Πρωινά",en:"Breakfast"},
+            isRest:false,
             products:
             [
                 {
@@ -787,14 +903,14 @@ const data = {
                     photo: photo,
                 },
                 {
-                    title: { el: "Ομελέτα με τυρί , ζαμπόν ή γαλοπούλα", en: "Omelette with cheese , ham or turckey" },
+                    title: { el: "Ομελέτα με τυρί , ζαμπόν ή γαλοπούλα", en: "Omelette with cheese , ham or turkey" },
                     desc: {el: "σερβίρεται με ανάμεικτη πράσινη σαλάτα", en: "served with mixed green salad"  },
                     price: "12.00",
                     photo: photo,
                 },
                 {
                     title: { el: "Ομελέτα Σπέσιαλ", en: "Special omelette" },
-                    desc: { el: "τυρί / ζαμπόν / μπέικον / μανιτάρια / πιπεριά ,σερβίρεται με ανάμεικτη πράσινη σαλάτα", en: "cheese / ham / bacon / mushrooms / papper ,served with mixed green salad" },
+                    desc: { el: "τυρί / ζαμπόν / μπέικον / μανιτάρια / πιπεριά ,σερβίρεται με ανάμεικτη πράσινη σαλάτα", en: "cheese / ham / bacon / mushrooms / pepper ,served with mixed green salad" },
                     price: "14.00",
                     photo: photo,
                 },
@@ -803,6 +919,7 @@ const data = {
         // snacks
         {
             title:{el:"Σνακ",en:"Snacks"},
+            isRest:false,
             products:[
                 {
                     title: { el: "Τοστ", en: "Toast" },
@@ -814,7 +931,7 @@ const data = {
                     title: { el: "Γλυστέρι Χοτ Ντογκ", en: "Glysteri Hot Dog" },
                     desc: { 
                         el: "φρέσκο ψωμί / τοπικό λουκάνικο / καραμελωμένα κρεμμύδια / λάχανο / καρότο / μαγιονέζα / κέτσαπ / μουστάρδα , σερβίρεται με τηγανητές πατάτες", 
-                        en: "fresh bread / local sausage / caramelised onions / cabbag / carrot / mayonnaise / ketchup / mustard served with fried fries" 
+                        en: "fresh bread / local sausage / caramelised onions / cabbage / carrot / mayonnaise / ketchup / mustard , served with fried fries" 
                     },
                     price: "12.00",
                     photo: photo,
@@ -824,6 +941,7 @@ const data = {
         //giaourtia
         {
             title:{el:"Γιαούρτια",en:"Yogurts"},
+            isRest:false,
             products:[
                 {
                     title: { el: "Γιαούρτι", en: "Yoghurt" },
@@ -862,6 +980,7 @@ const data = {
         //sandwich
         {
             title:{el:"Σάντουις",en:"Sandwich"},
+            isRest:false,
             products:[
                 {
                     title: { el: "Σάντουις Αβοκάντο", en: "Sandwich Αvocado" },
@@ -884,12 +1003,13 @@ const data = {
         // bao bans
         {
             title:{el:"Bao Bun",en:"Bao Bun"},
+            isRest:false,
             products:[
                 {
                     title: { el: "Bao Bun κοτόπουλο (2 τεμ.)", en: "Bao Bun chicken (2 pic.)" },
                     desc: { 
                         el: "παναρισμένες μπουκιές κοτόπουλου / coleslaw / ραπανάκι / σχοινόπρασο", 
-                        en: "chicken nuggets / coleslaw / radish / lemongrass" },
+                        en: "chicken nuggets / coleslaw / radish / chives" },
                     price: "12.00",
                     photo: photo,
                 },
@@ -897,7 +1017,7 @@ const data = {
                     title: { el: "Bao Bun vegan (2 τεμ.)", en: "Bao Bun vegan (2 pic.)" },
                     desc: { 
                         el: "αβοκάντο / πιπεριές / αγγούρι / καρότο / παπαρδέλες κολοκυθιού / ραπανάκι / σχοινόπρασο", 
-                        en: "avocado / peppers/ cucumber / carrot / zucchini / radish / lemongrass" },
+                        en: "avocado / peppers/ cucumber / carrot / zucchini / radish / chives" },
                     price: "12.00",
                     photo: photo,
                 }
@@ -906,6 +1026,7 @@ const data = {
         //Club
         {
             title:{el:"Κλάμπ Σάντουιτς",en:"Club Sandwich"},
+            isRest:false,
             products:[
                 {
                     title: { el: "Κλασικό", en: "Classic" },
@@ -927,9 +1048,52 @@ const data = {
                 
             ]
         },
+        //pites
+        {
+            title:{el:"Πίτες",en:"Pies"},
+            isRest:false,
+            products:
+            [
+                {
+                    title: { el: "Σκοπελίτικη τυρόπιτα ", en: "Skopelos cheese pie" },
+                    desc: { 
+                        el: "", 
+                        en: "" },
+                    price: "10.00",
+                    photo: photo,
+                },
+                {
+                    title: { el: "Σκοπελίτικη χορτόπιτα ", en: "Skopelos vegetables-greens pie" },
+                    desc: { 
+                        el: "", 
+                        en: "" },
+                    price: "10.00",
+                    photo: photo,
+                },
+                {
+                    title: { el: "Σκοπελίτικη Ντοματοτυρόπιτα ", en: "Skopelos tomatocheese pie" },
+                    desc: { 
+                        el: "", 
+                        en: "" },
+                    price: "10.00",
+                    photo: photo,
+                },
+                
+                {
+                    title: { el: "Γαλατόπιτα Σκοπέλου", en: "Skopelos sweet milk pie" },
+                    desc: { 
+                        el: "", 
+                        en: "" },
+                    price: "10.00",
+                    photo: photo,
+                },
+     
+            ]
+        },
         //burgers
         {
             title:{el:"Μπέργκερ",en:"Burgers"},
+            isRest:false,
             products:
             [
                 {
@@ -963,6 +1127,7 @@ const data = {
         //pissa
         {
             title:{el:"Πίτσες",en:"Pizzas"},
+            isRest:false,
             products:[
                 {
                     title: { el: "Μαργαρίτα", en: "Margherita" },
@@ -1030,9 +1195,10 @@ const data = {
         //Marakonades
         {
             title:{el:"Μακαρονάδες",en:"Pasta"},
+            isRest:false,
             products:[
                 {
-                    title: { el: "Αλ όλιο", en: "Al olio " },
+                    title: { el: "Aglio e olio", en: "Aglio e olio" },
                     desc: { 
                         el: "λιγκουίνι , κομματάκια τσίλι , σκόρδο , ελαιόλαδο , βούτυρο , παρμεζάνα", 
                         en: "linguini , chilli flakes , garlic , olive oil , butter , parmezan" },
@@ -1068,50 +1234,148 @@ const data = {
                 
             ]
         },
-        //pites
         {
-            title:{el:"Πίτες",en:"Pies"},
-            products:
-            [
+            title: { el: "Σαλάτες", en: "Salads" },
+            isRest:true,
+            products: [
                 {
-                    title: { el: "Σκοπελίτικη τυρόπιτα ", en: "Skopelos cheese pie" },
+                    title: { el: "Χωριάτικη", en: "Greek Salad" },
+                    desc: { el: "ντομάτα , αγγούρι , πιπεριά , κρεμμύδι, ρίγανη , ελιές, φέτα , ελαιόλαδο", 
+                            en: "tomato, cucumber , pepper, onion , oregano, olives, feta cheese , olive oil" },
+                    price: "12.00",
+                    photo: xoriatiki,
+                },
+                {
+                    title: { el: "Kαίσαρα", en: "Ceasars" },
                     desc: { 
-                        el: "", 
-                        en: "" },
-                    price: "10.00",
+                        el: "iceberg, ντοματίνια , καλαμπόκι , κοτόπουλο , κρουτόν , μπέικον , παρμεζάνα , σως αντζούγιας", 
+                        en: "iceberg, cherry tomatoes , corn , chicken , croutons, parmesan, bacon, , anchovies dressing" 
+                    },
+                    price: "14.00",
                     photo: photo,
                 },
                 {
-                    title: { el: "Σκοπελίτικη χορτόπιτα ", en: "Skopelos vegetables-greens pie" },
-                    desc: { 
-                        el: "", 
-                        en: "" },
-                    price: "10.00",
+                    title: { el: "Υγιεινη  Σαλάτα", en: "Healthy Salad" },
+                    desc: { el: "μαρούλι , iceberg , ντοματίνια , ψητό μανούρι , καραμελωμένα καρύδια , γκράνμπερι , dressing λιαστής ντομάτας", 
+                            en: "lettuce , iceberg , cherry tomatoes , grilled manouri cheese , caramelized walnuts ,  cranberries , dried tomatoes dressing" },
+                    price: "14.00",
+                    photo: photo,
+                },
+
+                {
+                    title: { el: "Μεσογειακή", en: "Mediterranean" },
+                    desc: { el: "τομάτα , αγγούρι , κρεμμύδι , πιπεριά , ελιές , κάππαρι , φέτα , ρίγανη , ελαιόλαδο", 
+                            en: "tomato , cucumber , onion , pepper , olives , caper , feta cheese , oregano , olive oil" },
+                    price: "14.00",
                     photo: photo,
                 },
                 {
-                    title: { el: "Σκοπελίτικη Ντοματοτυρόπιτα ", en: "Skopelos tomatocheese pie" },
-                    desc: { 
-                        el: "", 
-                        en: "" },
-                    price: "10.00",
+                    title: { el: "Summer Dream", en: "Summer Dream" },
+                    desc: { el: "μαρούλι , λόλα , φέτες καρπουζιού , τριμμένη φέτα , κρουτόν , dressing καρπουζιού", 
+                            en: "lettuce , lola , sclices of watermelon , pieces of feta cheese , crouton , watermelon dressing" },
+                    price: "15.00",
+                    photo: photo,
+                },
+                {
+                    title: { el: "Γλυστέρι", en: "Glysteri" },
+                    desc: { el: "σπανάκι , ρόκα , παντζαρόφυλλα , λιαστή τομάτα , παξιμάδι , κουκουνάρι , αποξηραμένα σύκα , ανθότυρο , dressing βαλσάμικο", 
+                            en: "spinach , fresh rocket , beetroot leaves , dried tomato , rusk ,  pine , dried figs , soft greek cheese (anthotyro) , balsamic dressing" },
+                    price: "16.00",
+                    photo: photo,
+                },
+                {
+                    title: { el: "Ντάκος", en: "Dakos" },
+                    desc: { el: "κριθαροκούλουρα , τριμμένη τομάτα , σως φέτας , ελιές , ρίγανη , ελαιόλαδο", 
+                            en: "barley roll , grated tomato , feta cheese sauce , olives , oregano , olive oil" },
+                    price: "14.00",
                     photo: photo,
                 },
                 
+            ],
+        },
+        {
+            title:{el:"Ορεκτικά",en:"Starters"},
+            isRest:true,
+            products:[
                 {
-                    title: { el: "Γαλατόπιτα Σκοπέλου", en: "Skopelos sweet milk pie" },
+                    title: { el: "Μανιτάρια Γεμιστά", en: "Stuffed Mushrooms" },
                     desc: { 
-                        el: "", 
-                        en: "" },
+                        el: "μπέικον , κρέμα τυριού , κίτρινα τυριά , κρέμα γάλακτος", 
+                        en: "bacon , cheese cream , yellow cheeses , milk cream" },
+                    price: "12.00",
+                    photo: photo,
+                },
+                {
+                    title: { el: "Χαλούμι", en: "Haloumi Cheese" },
+                    desc: { 
+                        el: "τσάντνει τομάτας", 
+                        en: "tomato chutney" },
                     price: "10.00",
                     photo: photo,
                 },
-     
+                {
+                    title: { el: "Κεφτεδάκι", en: "Meatballs" },
+                    desc: { 
+                        el: "με σώς γιαουρτιού", 
+                        en: "with Yoghurt sauce" },
+                    price: "14.00",
+                    photo: photo,
+                },
+                {
+                    title: { el: "Φάβα", en: "Fava" },
+                    desc: { 
+                        el: "με καραμελωμένα κρεμμύδια", 
+                        en: "with caramelized onions" },
+                    price: "12.00",
+                    photo: photo,
+                },
+                {
+                    title: { el: "Γουακαμόλε", en: "Guacamole" },
+                    desc: { 
+                        el: "με πιτάκια", 
+                        en: "with small pies" },
+                    price: "18.00",
+                    photo: photo,
+                },
+                {
+                    title: { el: "Μπρουσκέτα", en: "Bruschetta" },
+                    desc: { 
+                        el: "με τυρί κρέμα , τομάτα , κάππαρη , ελαιόλαδο , θυμάρι", 
+                        en: "with cream cheese , tomato , caper , olive oil , thyme" },
+                    price: "12.00",
+                    photo: photo,
+                },
+                {
+                    title: { el: "Χταπόδι", en: "Octapus" },
+                    desc: { 
+                        el: "με φάβα", 
+                        en: "with fava" },
+                    price: "18.00",
+                    photo: photo,
+                },
+                {
+                    title: { el: "Τηγανητές Πατάτες", en: "French Fries" },
+                    desc: { 
+                        el: "με σως τσένταρ , ρίγανη", 
+                        en: "with cheddar sauce , oregano" },
+                    price: "8.00",
+                    photo: photo,
+                },
+                {
+                    title: { el: "Πλατό Τυριών 2 Ατόμων", en: "Cheese Plate fro 2 people" },
+                    desc: { 
+                        el: "", 
+                        en: "" },
+                    price: "16.00",
+                    photo: photo,
+                },
             ]
         },
+        
         //psaria
         {
             title:{el:"Ψάρια",en:"Fishes"},
+            isRest:true,
             products:[
                 {
                     title: { el: "Τούνα", en: "Tuna fish" },
@@ -1149,15 +1413,17 @@ const data = {
                     title: { el: "Καλαμάρια ψητά", en: "Grilled Squid" },
                     desc: { 
                         el: "λαδολέμονο , κουρκουμά / συνοδευόμενο από βραστά λαχανικά και χόρτα εποχής", 
-                        en: "oil lemon , turmeric dressing / surved with vegetables and seasonal greens" },
+                        en: "oil lemon , turmeric dressing / served with vegetables and seasonal greens" },
                     price: "22.00",
                     photo: photo,
                 },
                 
             ]
         },
+        //meat
         {
             title:{el:"Kρεατικά",en:"Μeat"},
+            isRest:true,
             products:[
                 {
                     title: { el: "Μπιφτέκι απλό", en: "Simple meat patty" },
@@ -1168,7 +1434,7 @@ const data = {
                     photo: photo,
                 },
                 {
-                    title: { el: "Μπιφτέκι γεμιστό μετσοβόνε - τυρί κρέμα", en: "Staffed meat patty with metsovone and cream cheese" },
+                    title: { el: "Μπιφτέκι γεμιστό μετσοβόνε - τυρί κρέμα", en: "Stuffed meat patty with metsovone and cream cheese" },
                     desc: { 
                         el: "coleslaw(λάχανο,καρότο,κρεμύδι,σέλερι,μαγιονέζα) και τηγανητές πατάτες", 
                         en: "coleslaw(cabbage,carrot,onion,selery,mayonnaise) and fried fries" },
@@ -1195,7 +1461,20 @@ const data = {
                 
             ]
         },
-
+        {
+            title:{el:"Παραδοσιακό τοπικό πιάτο ημέρας",en:"Traditional local dish of the day"},
+            isRest:true,
+            products:[
+                {
+                    title: { el: "Γεμιστά", en: "Stuffed Tomato & Pepper" },
+                    desc: { 
+                        el: "με γέμιση από ρύζι , φέτα , κολοκύθι , μελιτζάνα , τραχανά , μυρωδικά και σερβίρονται με πατάτες φούρνου", 
+                        en: "stuffed with rice , feta cheese , zucchini , eggplant , fresh herbs , trachana and served with baked potatoes" },
+                    price: "14.00",
+                    photo: photo,
+                },
+            ]
+        },
         //Glika
         {
             title:{el:"Γλυκά",en:"Desserts"},
