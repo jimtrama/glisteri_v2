@@ -6,12 +6,12 @@ import "./Header.css";
 
 
 
-function Header({ menu, clicked, selected , switchLang}) {
+function Header({ menu, clicked, selected , switchLang,isEl}) {
     
-    const [isEl,setIsEl] = useState(true)
-    const innerSwitch = ()=>{
-        switchLang();
-        setIsEl(!isEl);
+   
+    const innerSwitch = (value)=>{
+        switchLang(value);
+       console.log("edede");
     }
     
     
@@ -19,12 +19,12 @@ function Header({ menu, clicked, selected , switchLang}) {
         <div className="mainHeaderContainer">
             <img alt="problem loading" className="imageL" src={logo}></img>
             <div className="cartContainer" >
-                {
+                {/* {
                     !isEl?
-                    <img alt="problem loading" style={{height:"2.2vh",width:"auto"}} src={en_flag} onClick={innerSwitch} ></img>
+                    <img alt="problem loading" style={{height:"2.2vh",width:"auto"}} src={en_flag} onClick={()=>{innerSwitch(true)}} ></img>
                     :
-                    <img alt="problem loading" style={{height:"2.2vh",width:"auto"}} src={el_flag} onClick={innerSwitch}></img>
-                }
+                    <img alt="problem loading" style={{height:"2.2vh",width:"auto"}} src={el_flag} onClick={()=>{innerSwitch(false)}}></img>
+                } */}
                
                 
             </div>

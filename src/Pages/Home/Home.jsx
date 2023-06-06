@@ -24,14 +24,17 @@ function Home({ setPro, pro }) {
     const [selectedCategory, setSelectedCategory] = useState(0);
     const [menu, setMenu] = useState(new Menu("el", false));
     const [isEl, setIsEl] = useState(true);
+    const [show, setShow] = useState(true);
 
-    const switchLang = () => {
-        if (isEl) {
+    const switchLang = (value) => {
+        if (value) {
             setMenu(new Menu("en", menu.isRest));
+            setIsEl(false);
         } else {
             setMenu(new Menu("el", menu.isRest));
+            setIsEl(true);
         }
-        setIsEl(!isEl);
+        
     };
 
     const clicked = (i) => {
@@ -72,12 +75,36 @@ function Home({ setPro, pro }) {
         }
     };
     const changed = (e) => {
-        console.log(e);
+        
         setMenu(new Menu(isEl ? "el" : "en", e.target.checked));
     };
 
     return (
         <div className="Main">
+            {show && (
+                <div className="modalContainer">
+                    <div style={{width:"100%",textAlign:"center"}}>
+                        <span style={{fontSize:"20px"}}>{"Γλώσσα / Language"}</span>
+                        <div style={{ width: "100%", display: "flex", justifyContent: "space-evenly", marginTop: "10px" }}>
+                            <img alt="problem loading" style={{ height: "10vw", width: "auto" }} src={en_flag} onClick={()=>{switchLang(false)}}></img>
+                            <img alt="problem loading" style={{ height: "10vw", width: "auto" }} src={el_flag} onClick={()=>{switchLang(true)}}></img>
+                        </div>
+
+                    </div>
+                    <div style={{height:"30%",width:"100%",textAlign:"center",display:"flex",flexDirection:"column",justifyContent:"space-between",alignItems:"center"}}>
+                        <button  className="buttonModal"  onClick={()=>{changed({target:{checked:true}})}} >
+                            {isEl?"Μενού Εστιατορίου":"Restaurant Menu"}
+                        </button>
+                        <button className="buttonModal" onClick={()=>{changed({target:{checked:false}})}}>
+                        {isEl?"Μενού Παραλίας":"Beach Menu"}
+                        </button>
+                    </div>
+
+
+
+                    <button className="buttonModal" style={{color:"black"}} onClick={()=>{setShow(false)}} >{!isEl?"Close":"Κλείσιμο"}</button>
+                </div>
+            )}
             <img className="logo" src={logo2}></img>
 
             <div className="header">
@@ -89,15 +116,17 @@ function Home({ setPro, pro }) {
                     <img src={logo} className="logoInHeader" />
                 </div>
             )}
-            {levelTwo && <Header menu={menu} clicked={clicked} selected={selectedCategory} m={isEl} switchLang={switchLang} />}
+            {levelTwo && <Header menu={menu} clicked={clicked} selected={selectedCategory} m={isEl} switchLang={switchLang} isEl={isEl} />}
 
             <div onScroll={onScroll} className="outerContainer">
                 <div className="menu">
-                    <div style={{ display: "flex", justifyContent: "space-evenly",alignItems:"center", width: "100%" }}>
+                    <div style={{ display: "flex", justifyContent: "space-evenly", alignItems: "center", width: "100%" }}>
                         <img className="downArrow" src={downArr}></img>
 
-                        <FormControlLabel control={<Switch onChange={changed} color="secondary" />} label={!isEl ? "Switch for Restaurant Menu" : "Για Μενού εστιατορίου"} />
-                        {!isEl ? <img alt="problem loading" style={{ height: "2.2vh", width: "auto" }} src={en_flag} onClick={switchLang}></img> : <img alt="problem loading" style={{ height: "2.2vh", width: "auto" }} src={el_flag} onClick={switchLang}></img>}
+                        <FormControlLabel control={<Switch onChange={changed} color="primary" />} label={!isEl ? `Switch for ${menu.isRest?"Beach":"Restaurant"} Menu` :`Για Μενού ${menu.isRest?"Παραλίας":"Εστιατορίου"}` } />
+                        {!isEl ? 
+                        <img alt="problem loading" style={{ height: "2.2vh", width: "auto" }} src={en_flag} onClick={()=>{switchLang(false)}}></img> 
+                        : <img alt="problem loading" style={{ height: "2.2vh", width: "auto" }} src={el_flag} onClick={()=>{switchLang(true)}}></img>}
                     </div>
 
                     {menu.categories.map((category, i) => {
