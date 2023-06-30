@@ -1,28 +1,35 @@
 {
   "files": {
     "main.css": "/static/css/main.57aae563.css",
-    "main.js": "/static/js/main.ee8c20c9.js",
+    "main.js": "/static/js/main.5964823b.js",
     "static/js/787.a26c5f2a.chunk.js": "/static/js/787.a26c5f2a.chunk.js",
     "static/media/bg.jpg": "/static/media/bg.a97d4b5f15a18f9872d5.jpg",
+    "static/media/s_special_pissa.jpg": "/static/media/s_special_pissa.0f7e8b5188d3dc0d588b.jpg",
     "static/media/s_p2big.jpg": "/static/media/s_p2big.600b63f0c78a98fd7d41.jpg",
-    "static/media/s_bg.jpg": "/static/media/s_bg.97ffa57b9efa5008b51a.jpg",
+    "static/media/s_armenovile.jpg": "/static/media/s_armenovile.6ecb750bd02ad1dc57d4.jpg",
     "static/media/s_p1big.jpg": "/static/media/s_p1big.ead5f914af1104009c8f.jpg",
+    "static/media/s_gemista.jpg": "/static/media/s_gemista.dc21cb3b2aff0c474f0f.jpg",
     "static/media/logo.png": "/static/media/logo.41249ee1efb902825b58.png",
+    "static/media/s_bageta_kot.jpg": "/static/media/s_bageta_kot.71cd88ff78a69ddfe4f8.jpg",
+    "static/media/s_toast.jpg": "/static/media/s_toast.1bfec607b3e4c9cd588a.jpg",
     "static/media/s_p3big.jpg": "/static/media/s_p3big.207d372d346760208dff.jpg",
     "static/media/s_p4big.jpg": "/static/media/s_p4big.0fb5155b88e2813a0767.jpg",
-    "static/media/s_che_str2.jpg": "/static/media/s_che_str2.40128200d386a3b5a777.jpg",
-    "static/media/s_logoC.png": "/static/media/s_logoC.31f42157bbbedf8334d2.png",
-    "static/media/s_logo.png": "/static/media/s_logo.13cefa04eed8bce817e3.png",
+    "static/media/s_karbonara.jpg": "/static/media/s_karbonara.807f7a4a8c7b67bbd334.jpg",
+    "static/media/s_bg.jpg": "/static/media/s_bg.b707f3c2eec8a1935861.jpg",
     "static/media/s_pizz_it.jpg": "/static/media/s_pizz_it.5658909f25bb80b908cd.jpg",
     "static/media/s_mar_str.jpg": "/static/media/s_mar_str.7f8a48c343b81f3f056b.jpg",
+    "static/media/s_club_kot.jpg": "/static/media/s_club_kot.73e361bbaf0afc04c088.jpg",
+    "static/media/s_chicken.jpg": "/static/media/s_chicken.254eadeb5c79a1cdde26.jpg",
     "static/media/s_club_cea.jpg": "/static/media/s_club_cea.55c4009e41024a1c1ba3.jpg",
+    "static/media/s_shrimps_pasta.jpg": "/static/media/s_shrimps_pasta.57680e47897be0c8a77d.jpg",
+    "static/media/s_logoC.png": "/static/media/s_logoC.9e5acd0c25d94ca2b123.png",
     "index.html": "/index.html",
     "main.57aae563.css.map": "/static/css/main.57aae563.css.map",
-    "main.ee8c20c9.js.map": "/static/js/main.ee8c20c9.js.map",
+    "main.5964823b.js.map": "/static/js/main.5964823b.js.map",
     "787.a26c5f2a.chunk.js.map": "/static/js/787.a26c5f2a.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.57aae563.css",
-    "static/js/main.ee8c20c9.js"
+    "static/js/main.5964823b.js"
   ]
 }

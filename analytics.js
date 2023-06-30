@@ -1,3 +1,4 @@
+const { log } = require('console');
 const fs = require('fs');
 
 function countUniqueIPs(filePath) {
@@ -5,14 +6,26 @@ function countUniqueIPs(filePath) {
     const fileData = fs.readFileSync(filePath, 'utf8');
     const lines = fileData.split('\n');
     const data = {};
-    for (let i = 0; i < lines.length; i++) {
+    for (let i = 1; i < lines.length; i++) {
         const line = lines[i].trim();
         // Extract the IP address from each line
-        const date = line.split(' ')[1];
-        const ipAddress = line.split(' ')[4];
+        const vals = line.split(" ");
+        let date = null;
+        let ipAddress = null;
+        for (let val of vals){
+            if(val.includes("/")&&date == null) date = val;
+            if(val.includes(":")&&ipAddress == null) ipAddress = -1;
+            if(val.includes(":")&&ipAddress == -1) {
+                ipAddress = val;
+                break;
+            }
+        }
+        
+        
         if(data.hasOwnProperty(date)){
             let exists = false;
-            for ( let ip of data[date].values ){
+            
+            for ( let ip of data[date].values() ){
                 if (ip == ipAddress){
                     exists = true;
                     break;
@@ -22,12 +35,13 @@ function countUniqueIPs(filePath) {
                 data[date].add(ipAddress);
             }
         
-        }else{
+        }else if(date != null){
             data[date] = new Set();
+            
         }
     }
     for(let date in data){
-        console.log(date + " : "+data[date].size());
+        console.log(date + " : "+data[date].size);
     }
 
   } catch (error) {
@@ -40,4 +54,4 @@ function countUniqueIPs(filePath) {
 const logFilePath = './out.log';
 
 const uniqueIPCount = countUniqueIPs(logFilePath);
-console.log('Unique IP count:', uniqueIPCount);
+
