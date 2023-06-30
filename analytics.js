@@ -13,12 +13,14 @@ function countUniqueIPs(filePath) {
         let date = null;
         let ipAddress = null;
         for (let val of vals){
-            if(val.includes("/")&&date == null) date = val;
-            if(val.includes(":")&&ipAddress == null) ipAddress = -1;
+            console.log(val);
+            if(val.includes("/")&&date == null) {date = val};
             if(val.includes(":")&&ipAddress == -1) {
                 ipAddress = val;
                 break;
             }
+            if(val.includes(":")&&ipAddress == null) {ipAddress = -1};
+            
         }
         
         
