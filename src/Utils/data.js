@@ -2,10 +2,11 @@ import weeis_bear from "./../images/menu/beers/s_p1big.jpg";
 
 import burger_Gli from "./../images/menu/Glysteri_photos/Food/s_burg_egg.jpg"
 import xoriatiki from "./../images/menu/Glysteri_photos/Food/s_chor_sal.jpg"
-import cheesecake from "./../images/menu/Glysteri_photos/Food/s_che_str2.jpg"
+
 import club_kot from "./../images/menu/Glysteri_photos/Food/s_club_cea.jpg"
 import pizz_it from "./../images/menu/Glysteri_photos/Food/s_pizz_it.jpg"
 import margarit_str from "./../images/menu/Glysteri_photos/Drinks/s_mar_str.jpg"
+
 // Change
 import pizz_gr from "./../images/menu/pizza/s_p1big.jpg"
 import past_nap from "./../images/menu/pasta/s_p1big.jpg"
@@ -14,6 +15,16 @@ import marg_coc from "./../images/menu/coctails/s_p2big.jpg"
 import mohito_coc from "./../images/menu/coctails/s_p3big.jpg"
 import passionito from "./../images/menu/coctails/s_p4big.jpg"
 
+//cange
+import armenovil from "./../images/menu/photos_extra/s_armenovile.jpg"
+import backeta_koto from "./../images/menu/photos_extra/s_bageta_kot.jpg"
+import toast from "./../images/menu/photos_extra/s_toast.jpg"
+import gemista from "./../images/menu/photos_extra/s_gemista.jpg"
+import club_clas from "./../images/menu/photos_extra/s_club_kot.jpg"
+import garidomak from "./../images/menu/photos_extra/s_shrimps_pasta.jpg"
+import special_pissa from "./../images/menu/photos_extra/s_special_pissa.jpg"
+import karbonara from "./../images/menu/photos_extra/s_karbonara.jpg"
+import chicken_burger from "./../images/menu/photos_extra/s_chicken.jpg"
 
 
 const photo = null;
@@ -925,7 +936,7 @@ const data = {
                     title: { el: "Τοστ", en: "Toast" },
                     desc: { el: "τυρί / ζαμπόν ή γαλοπούλα", en: "cheese / ham or turkey" },
                     price: "5.00",
-                    photo: photo,
+                    photo: toast,
                 },
                 {
                     title: { el: "Γλυστέρι Χοτ Ντογκ", en: "Glysteri Hot Dog" },
@@ -996,7 +1007,7 @@ const data = {
                         el: "χειροποίητες κοτομπουκιές / μαρούλι / ντομάτα / σως μουστάρδας , σερβίρεται με τηγανητές πατάτες", 
                         en: "homemade chicken nuggets / lettuce / tomato / mustard sauce  , served with fried fries" },
                     price: "10.00",
-                    photo: photo,
+                    photo: backeta_koto,
                 }
             ]
         },
@@ -1034,7 +1045,7 @@ const data = {
                         el: "τυρί /  ζαμπόν ή γαλοπούλα / μπέικον / μαρούλι / ντομάτα / μαγιονέζα , σερβίρεται με τηγανητές πατάτες", 
                         en: "cheese / ham or turkey / bacon / lettuce / tomato / mayonnaise , served with fried fries" },
                     price: "14.00",
-                    photo: photo,
+                    photo: club_clas,
                 },
                 {
                     title: { el: "Κοτόπουλο", en: "Chicken" },
@@ -1118,7 +1129,7 @@ const data = {
                         el: "κοτόπουλο  , iceberg , μπέικον , ντομάτα , τηγανητό αυγό , τσένταρ σως , σερβίρεται με τηγανητές πατάτες", 
                         en: "chicken  , iceberg , bacon , tomato , fried egg , cheddar sauce , served with fried fries" },
                     price: "16.00",
-                    photo: photo,
+                    photo: chicken_burger,
                 },
                 
      
@@ -1143,7 +1154,7 @@ const data = {
                         el: "σάλτσα ντομάτας , κίτρινα τυριά , μπέικον , μανιτάρια , πιπεριές ", 
                         en: "tomato sauce , yellow cheeses , bacon , mushrooms , peppers " },
                     price: "16.00",
-                    photo: photo,
+                    photo: special_pissa,
                 },
                 {
                     title: { el: "Πεπερόνι", en: "Pepperoni" },
@@ -1211,7 +1222,7 @@ const data = {
                         el: "σπαγγέτι , παρμεζάνα , μπέικον , κρεμμύδι , κρέμα γάλακτος , λευκό κρασί", 
                         en: "spaghetti , parmesan , bacon , onion , cream , white wine " },
                     price: "18.00",
-                    photo: photo,
+                    photo: karbonara,
                 },
                 {
                     title: { el: "Ναπολιτέν", en: "Napoliten" },
@@ -1228,12 +1239,13 @@ const data = {
                         el: "λιγκουίνι , μπίσκ γαρίδας , σάλτσα ντομάτας , γαρίδες , σκόρδο , κρεμμύδι , βούτυρο , ελαιόλαδο , φρέσκο βασιλικό", 
                         en: "linguini , shrimp bisque , tomato sauce , shrimps , garlic , onion , butter , olive oil , fresh basil" },
                     price: "24.00",
-                    photo: photo,
+                    photo: garidomak,
                 },
                 
                 
             ]
         },
+        //salates
         {
             title: { el: "Σαλάτες", en: "Salads" },
             isRest:true,
@@ -1293,6 +1305,7 @@ const data = {
                 
             ],
         },
+        //orektika
         {
             title:{el:"Ορεκτικά",en:"Starters"},
             isRest:true,
@@ -1371,7 +1384,6 @@ const data = {
                 },
             ]
         },
-        
         //psaria
         {
             title:{el:"Ψάρια",en:"Fishes"},
@@ -1471,13 +1483,14 @@ const data = {
                         el: "με γέμιση από ρύζι , φέτα , κολοκύθι , μελιτζάνα , τραχανά , μυρωδικά και σερβίρονται με πατάτες φούρνου", 
                         en: "stuffed with rice , feta cheese , zucchini , eggplant , fresh herbs , trachana and served with baked potatoes" },
                     price: "14.00",
-                    photo: photo,
+                    photo: gemista,
                 },
             ]
         },
         //Glika
         {
             title:{el:"Γλυκά",en:"Desserts"},
+            isRest:true,
             products:
             [
                 {
@@ -1486,7 +1499,7 @@ const data = {
                         el: "", 
                         en: "" },
                     price: "10.00",
-                    photo: photo,
+                    photo: armenovil,
                 },
                 {
                     title: { el: "Τιραμισού", en: "Tiramisu" },
