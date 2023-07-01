@@ -21,6 +21,7 @@ class Menu {
                     products.push(new Product(product.title[this.lang], product.price, product.desc[this.lang], product.photo));
                 }
                 category.setProducts(products);
+                category.icon = data.categories[i].icon;
                 this.categories.push(category);
             }
         }

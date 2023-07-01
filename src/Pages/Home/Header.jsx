@@ -18,18 +18,10 @@ function Header({ menu, clicked, selected , switchLang,isEl}) {
     return (
         <div className="mainHeaderContainer">
             <img alt="problem loading" className="imageL" src={logo}></img>
-            <div className="cartContainer" >
-                {/* {
-                    !isEl?
-                    <img alt="problem loading" style={{height:"2.2vh",width:"auto"}} src={en_flag} onClick={()=>{innerSwitch(true)}} ></img>
-                    :
-                    <img alt="problem loading" style={{height:"2.2vh",width:"auto"}} src={el_flag} onClick={()=>{innerSwitch(false)}}></img>
-                } */}
-               
-                
-            </div>
+            
             <div className="headerLevTwo">
                 {menu.categories.map((categorie, i) => (
+                    <div style={{display:"flex",alignItems:"center"}}>
                     <div
                         key={i}
                         onClick={(e) => {
@@ -39,7 +31,11 @@ function Header({ menu, clicked, selected , switchLang,isEl}) {
                         id={i}
                     >
                         {categorie.title}
+                         
                     </div>
+                    <img style={{height:"25px",width:"auto",marginRight:"10px"}} src={categorie.icon} ></img>
+                     </div>
+                    
                 ))}
             </div>
             

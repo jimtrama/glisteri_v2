@@ -10,6 +10,7 @@
     font-family: myFirstFont;
     src: url("./../src/fonts/mono.ttf");
 }
+
 *::-webkit-scrollbar {
     display: none;
 }

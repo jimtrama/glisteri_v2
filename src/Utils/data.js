@@ -26,6 +26,38 @@ import special_pissa from "./../images/menu/photos_extra/s_special_pissa.jpg"
 import karbonara from "./../images/menu/photos_extra/s_karbonara.jpg"
 import chicken_burger from "./../images/menu/photos_extra/s_chicken.jpg"
 
+//icons
+
+import coffees_icon from "./../images/icons/beach/coffee.png"
+import beers_icon from "./../images/icons/beach/beer.png"
+import juice_icon from "./../images/icons/beach/juice.png"
+import smothie_icon from "./../images/icons/beach/smoothie.png"
+import soda_icon from "./../images/icons/beach/soda.png"
+import drinks_icon from "./../images/icons/beach/drinks.png"
+import sparkling_icon from "./../images/icons/beach/sparkling-wine.png"
+import champen_icon from "./../images/icons/beach/champagne.png"
+import clubsand_icon from "./../images/icons/beach/clubsandwich.png"
+import burger_icon from "./../images/icons/beach/burger.png"
+import pizzas_icon from "./../images/icons/beach/pizza.png"
+import baquet_icon from "./../images/icons/beach/baguet.png"
+import pasta_icon from "./../images/icons/beach/pasta.png"
+import cocktail_icon from "./../images/icons/beach/cocktail.png"
+import breakfast_icon from "./../images/icons/beach/breakfast.png"
+import baobun_icon from "./../images/icons/beach/baobun.png"
+import mocktail_icon from "./../images/icons/beach/mocktail.png"
+import pie_icon from "./../images/icons/beach/pie.png"
+import yogurt_icon from "./../images/icons/beach/yogurt.png"
+import wine_icon from "./../images/icons/beach/wine-bottle.png"
+import snak_icon from "./../images/icons/beach/toast.png"
+
+import salads_icon from "./../images/icons/rest/salad.png"
+import meat_icon from "./../images/icons/rest/meat.png"
+import starters_icon from "./../images/icons/rest/starters.png"
+import fish_icon from "./../images/icons/rest/fish.png"
+import sweet_icon from "./../images/icons/rest/cake.png"
+import trad_icon from "./../images/icons/rest/cuisine.png"
+
+
 
 const photo = null;
 const data = {
@@ -34,6 +66,7 @@ const data = {
         {
             title: { el: "Καφέδες", en: "Coffees" },
             isRest:false,
+            icon:coffees_icon,
             products: [
                 {
                     title: { el: "Εσπρέσο", en: "Espresso" },
@@ -113,6 +146,7 @@ const data = {
         {
             title: { el: "Μπύρες", en: "Beers" },
             isRest:false,
+            icon:beers_icon,
             products: [
                 {
                     title: { el: "Έζα Λάγκερ", en: "Eza Lager" },
@@ -163,6 +197,7 @@ const data = {
         {
             title: { el: "Χυμοί", en: "Juices" },
             isRest:false,
+            icon:juice_icon,
             products: [
                 {
                     title: { el: "Φυσικός Χυμός Πορτοκάλι", en: "Fresh Orange Juice" },
@@ -188,6 +223,7 @@ const data = {
         {
             title: { el: "Smoothies", en: "Smoothies" },
             isRest:false,
+            icon:smothie_icon,
             products : [
                 {
                     title: { el: "Green Power", en: "Green Power" },
@@ -237,6 +273,7 @@ const data = {
         {
             title:{el:"Αναψυκτικά",en:"Soft drinks"},
             isRest:false,
+            icon:soda_icon,
             products:[
                 {
                     title: { el: "Λεμονάδα", en: "Lemonade" },
@@ -311,6 +348,7 @@ const data = {
         {
             title:{el:"Ποτά",en:"Drinks"},
             isRest:false,
+            icon:drinks_icon,
             products:[
                 {
                     title: { el: "Ποτό απλό", en: "Simple Drink" },
@@ -388,6 +426,7 @@ const data = {
         {
             title:{el:"Sparkling",en:"Sparkling"},
             isRest:false,
+            icon:sparkling_icon,
             products:[
                 {
                     title: { el: "Ατομικό Προσέκο", en: "Prosecco" },
@@ -419,6 +458,7 @@ const data = {
         {
             title:{el:"Λευκά Κρασιά",en:"White Wines"},
             isRest:false,
+            icon:wine_icon,
             products:[
                 {
                     title: { el: "Μοσχοφίλερο Μπουτάρι", en: "Moschofilero Boytari" },
@@ -477,6 +517,7 @@ const data = {
         {
             title:{el:"Ροζέ Κρασιά",en:"Roze Wines"},
             isRest:false,
+            icon:wine_icon,
             products:[
                 {
                     title: { el: "Rose Boutari Demi-Sec", en: "Rose Boutari Demi-Sec" },
@@ -517,6 +558,7 @@ const data = {
         {
             title:{el:"Champagne",en:"Champagne"},
             isRest:false,
+            icon:champen_icon,
             products:[
                 {
                     title: { el: "Moet & Chandon Rose", en: "Moet Rose" },
@@ -542,6 +584,7 @@ const data = {
         {
             title:{el:"Κοκτέιλ",en:"Cocktails"},
             isRest:false,
+            icon:cocktail_icon,
             products:[
                 {
                     title: { el: "Cuba Libre", en: "Cuba Libre" },
@@ -786,6 +829,7 @@ const data = {
         {
             title:{el:"Signatures",en:"Signatures"},
             isRest:false,
+            icon:drinks_icon,
             products:[
                 {
                     title: { el: "Glysteri Spritz", en: "Glysteri Spritz" },
@@ -838,6 +882,7 @@ const data = {
         {
             title:{el:"Mocktails",en:"Mocktails"},
             isRest:false,
+            icon:mocktail_icon,
             products:[
                 {
                     title: { el: "Mojito 0%", en: "Mojito 0%" },
@@ -873,6 +918,7 @@ const data = {
         {
             title: { el: "Σαλάτες", en: "Salads" },
             isRest:false,
+            icon:salads_icon,
             products: [
                 {
                     title: { el: "Χωριάτικη", en: "Greek Salad" },
@@ -905,6 +951,7 @@ const data = {
         {
             title:{el:"Πρωινά",en:"Breakfast"},
             isRest:false,
+            icon:breakfast_icon,
             products:
             [
                 {
@@ -931,6 +978,7 @@ const data = {
         {
             title:{el:"Σνακ",en:"Snacks"},
             isRest:false,
+            icon:snak_icon,
             products:[
                 {
                     title: { el: "Τοστ", en: "Toast" },
@@ -953,6 +1001,7 @@ const data = {
         {
             title:{el:"Γιαούρτια",en:"Yogurts"},
             isRest:false,
+            icon:yogurt_icon,
             products:[
                 {
                     title: { el: "Γιαούρτι", en: "Yoghurt" },
@@ -992,6 +1041,7 @@ const data = {
         {
             title:{el:"Σάντουις",en:"Sandwich"},
             isRest:false,
+            icon:baquet_icon,
             products:[
                 {
                     title: { el: "Σάντουις Αβοκάντο", en: "Sandwich Αvocado" },
@@ -1015,6 +1065,7 @@ const data = {
         {
             title:{el:"Bao Bun",en:"Bao Bun"},
             isRest:false,
+            icon:baobun_icon,
             products:[
                 {
                     title: { el: "Bao Bun κοτόπουλο (2 τεμ.)", en: "Bao Bun chicken (2 pic.)" },
@@ -1038,6 +1089,7 @@ const data = {
         {
             title:{el:"Κλάμπ Σάντουιτς",en:"Club Sandwich"},
             isRest:false,
+            icon:clubsand_icon,
             products:[
                 {
                     title: { el: "Κλασικό", en: "Classic" },
@@ -1063,6 +1115,7 @@ const data = {
         {
             title:{el:"Πίτες",en:"Pies"},
             isRest:false,
+            icon:pie_icon,
             products:
             [
                 {
@@ -1105,6 +1158,7 @@ const data = {
         {
             title:{el:"Μπέργκερ",en:"Burgers"},
             isRest:false,
+            icon:burger_icon,
             products:
             [
                 {
@@ -1139,6 +1193,7 @@ const data = {
         {
             title:{el:"Πίτσες",en:"Pizzas"},
             isRest:false,
+            icon:pizzas_icon,
             products:[
                 {
                     title: { el: "Μαργαρίτα", en: "Margherita" },
@@ -1207,6 +1262,7 @@ const data = {
         {
             title:{el:"Μακαρονάδες",en:"Pasta"},
             isRest:false,
+            icon:pasta_icon,
             products:[
                 {
                     title: { el: "Aglio e olio", en: "Aglio e olio" },
@@ -1249,6 +1305,7 @@ const data = {
         {
             title: { el: "Σαλάτες", en: "Salads" },
             isRest:true,
+            icon:salads_icon,
             products: [
                 {
                     title: { el: "Χωριάτικη", en: "Greek Salad" },
@@ -1309,6 +1366,7 @@ const data = {
         {
             title:{el:"Ορεκτικά",en:"Starters"},
             isRest:true,
+            icon:starters_icon,
             products:[
                 {
                     title: { el: "Μανιτάρια Γεμιστά", en: "Stuffed Mushrooms" },
@@ -1388,6 +1446,7 @@ const data = {
         {
             title:{el:"Ψάρια",en:"Fishes"},
             isRest:true,
+            icon:fish_icon,
             products:[
                 {
                     title: { el: "Τούνα", en: "Tuna fish" },
@@ -1436,6 +1495,7 @@ const data = {
         {
             title:{el:"Kρεατικά",en:"Μeat"},
             isRest:true,
+            icon:meat_icon,
             products:[
                 {
                     title: { el: "Μπιφτέκι απλό", en: "Simple meat patty" },
@@ -1476,6 +1536,7 @@ const data = {
         {
             title:{el:"Παραδοσιακό τοπικό πιάτο ημέρας",en:"Traditional local dish of the day"},
             isRest:true,
+            icon:trad_icon,
             products:[
                 {
                     title: { el: "Γεμιστά", en: "Stuffed Tomato & Pepper" },
@@ -1491,6 +1552,7 @@ const data = {
         {
             title:{el:"Γλυκά",en:"Desserts"},
             isRest:true,
+            icon:sweet_icon,
             products:
             [
                 {

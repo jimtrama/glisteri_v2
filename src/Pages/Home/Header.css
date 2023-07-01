@@ -42,22 +42,25 @@
     display: none;
 }
 .categoryHeaderContainer{
-    width: 30vw;
-    min-width: fit-content;
+    width: fit-content;
+   
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 5px 10px 5px 10px;
-    padding: 2vw 6vw 2vw 6vw;
+    margin-left: 10px;
+    padding: 2vw 2vw 2vw 6vw;
     font-size: 0.9rem;
     font-weight: bold;
+    white-space: nowrap;
     
 }
 
 .selected{
     background-color: #3E3E3D;
-    border-radius: 5px;
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
     color: white;
+    margin-right: 2px;
 }
 .cartContainer{
     position: absolute;
