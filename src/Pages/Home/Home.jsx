@@ -116,6 +116,7 @@ function Home({ setPro, pro }) {
                             className="buttonModal"
                             onClick={() => {
                                 changed({ target: { checked: true } });
+                                setShow(false);
                             }}
                         >
                             <img style={{height:"30px",width:"auto"}} src={menu_icon} ></img>
@@ -126,6 +127,7 @@ function Home({ setPro, pro }) {
                             className="buttonModal"
                             onClick={() => {
                                 changed({ target: { checked: false } });
+                                setShow(false);
                             }}
                         >
                             <img style={{height:"30px",width:"auto"}} src={menu_icon} >
