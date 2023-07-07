@@ -8,12 +8,11 @@ import "./Home.css";
 import Menu from "./../../Utils/Menu";
 import Header from "./Header";
 import Category from "../Category/Category";
-import { FormControlLabel, Switch } from "@mui/material";
+import { Switch } from "@mui/material";
 
 //IMAGES
 import bg from "./../../images/header/s_bg.jpg";
 import logo from "./../../images/header/logo.png";
-import logo2 from "./../../images/header/s_logoC.png";
 import downArr from "./../../images/down_arrow.png";
 import el_flag from "./../../images/flags/s_eflag.png";
 import en_flag from "./../../images/flags/s_gflag.png";
@@ -29,6 +28,7 @@ function Home({ setPro, pro }) {
     const [menu, setMenu] = useState(new Menu("el", false));
     const [isEl, setIsEl] = useState(true);
     const [show, setShow] = useState(true);
+   
    
 
     const switchLang = (value) => {
@@ -54,7 +54,7 @@ function Home({ setPro, pro }) {
     
     const onScroll = (e) => {
         const point1 = window.innerWidth / 2 - 80;
-        const point2 = window.innerWidth / 2;
+        const point2 = window.innerWidth / 2 + 20;
         const scroll = e.target.scrollTop;
         const categories = document.getElementsByClassName("categoryContainer");
 
@@ -74,7 +74,7 @@ function Home({ setPro, pro }) {
             if (getPos(categories[i]).y < scroll) {
                 
                 let x = getPos(document.getElementsByClassName("categoryHeaderContainer")[i]).x;
-                document.getElementsByClassName("headerLevTwo")[0].scrollTo({ behavior: "smooth", left: x - 50 });
+                document.getElementsByClassName("headerLevTwo")[0]?.scrollTo({ behavior: "smooth", left: x - 50 });
                 setSelectedCategory(i);
                 break;
             }
@@ -82,6 +82,7 @@ function Home({ setPro, pro }) {
     };
     const changed = (e) => {
         setMenu(new Menu(isEl ? "el" : "en", e.target.checked));
+        
     };
 
     return (
@@ -99,7 +100,7 @@ function Home({ setPro, pro }) {
                                     switchLang(false);
                                 }}
                             ></img>
-                            <img src={lang_icon}  style={{height:"40px",width:"auto"}}></img>
+                            <img alt="error" src={lang_icon}  style={{height:"40px",width:"auto"}}></img>
                             <img
                                 alt="problem loading"
                                 style={{ height: "10vw", width: "auto" }}
@@ -112,25 +113,25 @@ function Home({ setPro, pro }) {
                     </div>
                     <div style={{ height: "30%", width: "100%", textAlign: "center", display: "flex", flexDirection: "column", justifyContent: "space-between", alignItems: "center" }}>
                         <button
-                        style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}
+                        style={{display:"flex",justifyContent:"center",alignItems:"center"}}
                             className="buttonModal"
                             onClick={() => {
                                 changed({ target: { checked: true } });
                                 setShow(false);
                             }}
                         >
-                            <img style={{height:"30px",width:"auto"}} src={menu_icon} ></img>
+                            <img alt="error" style={{height:"30px",width:"auto"}} src={menu_icon} ></img>
                             {isEl ? "Εστιατορίου" : "Restaurant"}
                         </button>
                         <button
-                        style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}
+                        style={{display:"flex",justifyContent:"center",alignItems:"center"}}
                             className="buttonModal"
                             onClick={() => {
                                 changed({ target: { checked: false } });
                                 setShow(false);
                             }}
                         >
-                            <img style={{height:"30px",width:"auto"}} src={menu_icon} >
+                            <img alt="error" style={{height:"30px",width:"auto"}} src={menu_icon} >
                             </img>
                             {isEl ? "Παραλίας" : "Beach"}
                         </button>
@@ -147,27 +148,27 @@ function Home({ setPro, pro }) {
                     </button>
                 </div>
             )}
-            <img className="logo" src={logo2}></img>
+           
 
             <div className="header">
-                <img style={{ borderBottomLeftRadius: "20px", borderBottomRightRadius: "20px" }} src={bg} className="bgim" />
-                <img src={logo} className="logoImg" />
+                <img alt="error" style={{ borderBottomLeftRadius: "20px", borderBottomRightRadius: "20px" }} src={bg} className="bgim" />
+                <img alt="error" src={logo} className="logoImg" />
             </div>
             {levelOne && (
                 <div className="headerLevOne">
-                    <img src={logo} className="logoInHeader" />
+                    <img alt="error" src={logo} className="logoInHeader" />
                 </div>
             )}
-            {levelTwo && <Header menu={menu} clicked={clicked} selected={selectedCategory} m={isEl} switchLang={switchLang} isEl={isEl} />}
+            {levelTwo && <Header menu={menu} clicked={clicked} selected={selectedCategory} switchLanguege={switchLang} switchMenu={changed} isEl={isEl}/>}
 
             <div  onScroll={onScroll} className="outerContainer">
                 <div className="menu">
                     <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", width: "90%" }}>
-                        <img className="downArrow" src={downArr}></img>
+                        <img alt="error" className="downArrow" src={downArr}></img>
 
                         <div style={{display:"flex",justifyContent:"space-between",alignItems:"center"}} >
-                            <Switch onChange={changed} color="primary" />
-                            <img style={{height:"40px",width:"auto"}} src={menu_icon} ></img>
+                            <Switch onChange={changed} color="primary"  checked={menu.isRest}/>
+                            <img alt="error" style={{height:"40px",width:"auto"}} src={menu_icon} ></img>
                             <span id="gg" style={{marginLeft:"15px"}} >
                                 {!isEl ? `${menu.isRest ? "Beach" : "Restaurant"}` : `${menu.isRest ? "Παραλιας" : "Εστιατοριου"}`}
                             </span>
@@ -179,7 +180,7 @@ function Home({ setPro, pro }) {
                                 switchLang(isEl);
                             }}
                         >
-                            <img style={{height:"30px",width:"auto",marginRight:"10px"}}  src={lang_icon} ></img>
+                            <img alt="error" style={{height:"30px",width:"auto",marginRight:"10px"}}  src={lang_icon} ></img>
                             {!isEl ? (
                                 <img
                                     alt="problem loading"
@@ -201,7 +202,7 @@ function Home({ setPro, pro }) {
                     </div>
 
                     {menu.categories.map((category, i) => {
-                        return <Category id={"c" + i} key={i} category={category} setPro={setPro} />;
+                        return <Category id={"c" + i} key={i} category={category} setPro={setPro} addMargin={i===0 && levelTwo} />;
                     })}
                 </div>
             </div>

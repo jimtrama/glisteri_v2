@@ -2,13 +2,12 @@ import React from "react";
 import Product from "../Product/Product";
 import "./Category.css";
 
-function Category({ category ,setPro,pro}) {
-    console.log(category.icon);
+function Category({ category ,setPro,pro,addMargin}) {
     return (
-        <div className="categoryContainer">
+        <div className={`categoryContainer ${addMargin&&"extraMargin"} `}>
             <div className="headerContainer">
                 <span className="title">{category.title}</span>
-                <img style={{marginLeft:"20px",height:"35px",width:"auto"}} src={category.icon}></img>
+                <img alt="" style={{marginLeft:"20px",height:"35px",width:"auto"}} src={category.icon}></img>
                 
             </div>
             <div className="line"></div>

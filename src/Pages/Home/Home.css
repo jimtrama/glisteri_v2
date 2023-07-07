@@ -140,6 +140,18 @@
     text-align: center;
     background-color: white;
     padding: 5px;
+    animation-name: levelOneHeaderAnimation;
+    animation-duration: 0.2s;
+    animation-fill-mode: forwards;
+
+}
+@keyframes levelOneHeaderAnimation {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
 }
 
 .logoInHeader{
@@ -188,3 +200,4 @@
         scale: 0.8;
     }
 }
+
