@@ -294,7 +294,7 @@ const data = {
                     photo: photo,
                 },
                 {
-                    title: { el: "Κάκα Κόλα", en: "Coca-Cola" },
+                    title: { el: "Κοκα Κόλα", en: "Coca-Cola" },
                     desc: { el: "Normal / Light ", en: "Normal / Light " },
                     price: "5.00",
                     photo: photo,
