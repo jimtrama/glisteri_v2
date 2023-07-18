@@ -9,40 +9,42 @@ function countUniqueIPs(filePath) {
     for (let i = 1; i < lines.length; i++) {
         const line = lines[i].trim();
         // Extract the IP address from each line
+        
         const vals = line.split(" ");
-        let date = null;
+        
+        
+        let date = "";
         let ipAddress = null;
         for (let val of vals){
-            if(val.includes("/")&&date == null) {date = val};
-            if(val.includes(":")&&ipAddress == -1) {
+            if(val.includes("/") && date == ""){date = val};
+            if(val.includes(".")&&date != ""&&!val.includes("μ")) {
                 ipAddress = val;
                 break;
             }
-            if(val.includes(":")&&ipAddress == null) {ipAddress = -1};
-            
         }
         
         
         if(data.hasOwnProperty(date)){
             let exists = false;
             
-            for ( let ip of data[date].values() ){
+            for ( let ip of data[date] ){
                 if (ip == ipAddress){
                     exists = true;
                     break;
                 }
             }
             if(!exists){
-                data[date].add(ipAddress);
+                data[date].push(ipAddress);
             }
         
-        }else if(date != null){
-            data[date] = new Set();
+        }else if(date != ""){
+            data[date] = [];
             
         }
     }
     for(let date in data){
-        console.log(date + " : "+data[date].size);
+
+        console.log(date + " : "+data[date].length);
     }
 
   } catch (error) {
