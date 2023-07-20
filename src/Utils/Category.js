@@ -1,4 +1,4 @@
-import Product from './Product'
+
 class Category{
     constructor(title){
         this.title = title;

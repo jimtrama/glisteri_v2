@@ -1,6 +1,4 @@
 import Category from "./Category";
-import Product from "./Product";
-import photo from "./../images/header/bg.jpg";
 import data from "./data";
 
 class Menu {
@@ -18,7 +16,13 @@ class Menu {
                 let products = [];
                 for (let j = 0; j < data.categories[i].products.length; j++) {
                     const product = data.categories[i].products[j];
-                    products.push(new Product(product.title[this.lang], product.price, product.desc[this.lang], product.photo));
+                    products.push({
+                        title:product.title[this.lang], 
+                        price:product.price, 
+                        desc:product.desc[this.lang],
+                        photo:product.photo,
+                        isVideo:product.isVideo
+                        });
                 }
                 category.setProducts(products);
                 category.icon = data.categories[i].icon;

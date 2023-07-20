@@ -57,11 +57,29 @@ import fish_icon from "./../images/icons/rest/fish.png"
 import sweet_icon from "./../images/icons/rest/cake.png"
 import trad_icon from "./../images/icons/rest/cuisine.png"
 
+import mov from "./../images/cheesecake.mov"
+
 
 
 const photo = null;
 const data = {
     categories: [
+        {
+            title: { el: "Δημοφιλέστερα", en: "Popular" },
+            isRest:false,
+            icon:cocktail_icon,
+            products: [
+                {
+                    title: { el: "Cheesecake Cocktail", en: "Cheesecake Cocktail" },
+                    desc: { el: "Gin , Γιαούρτι , πουρέ φράουλας , σιρόπι βα πισκοτο", en: "" },
+                    price: "14.00",
+                    photo: mov,
+                    isVideo:true
+                    
+                },
+                
+            ],
+        },
         // Kafedes
         {
             title: { el: "Καφέδες", en: "Coffees" },
