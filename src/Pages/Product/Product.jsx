@@ -6,7 +6,6 @@ import { toUnitless } from "@mui/material/styles/cssUtils";
 function Product({ product, sera, array}) {
   
    
-    console.log(product);
   
   
     return (

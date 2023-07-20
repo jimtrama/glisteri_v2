@@ -71,7 +71,8 @@ const data = {
             products: [
                 {
                     title: { el: "Cheesecake Cocktail", en: "Cheesecake Cocktail" },
-                    desc: { el: "Gin , Γιαούρτι , πουρέ φράουλας , σιρόπι βα πισκοτο", en: "" },
+                    desc: { el: "Gin , Ελληνικό Γιαούρτι , πουρέ φράουλας , σιρόπι βανίλιας , φραουλες , λιμε", 
+                    en: "Gin , Greek Yoguhrt , pure strawberry , strawberries ,vanilla syrup , lime " },
                     price: "14.00",
                     photo: mov,
                     isVideo:true
