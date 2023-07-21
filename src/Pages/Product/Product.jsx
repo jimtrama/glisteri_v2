@@ -21,7 +21,7 @@ function Product({ product, sera, array}) {
                     <img alt="error" id={sera} loading="lazy" className="productPhoto" src={product.photo}></img> 
                     ):(
                     product.isVideo?
-                    <video id={sera} muted autoPlay loop className="productPhoto" src={product.photo}></video>:<></>
+                    <video playsInline id={sera} muted autoPlay loop className="productPhoto" src={product.photo}></video>:<></>
                     )
                 }
                 
