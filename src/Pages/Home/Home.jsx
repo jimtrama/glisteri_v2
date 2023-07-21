@@ -1,5 +1,5 @@
 //DEPNDENCIES
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 //CSS
 import "./Home.css";
@@ -20,7 +20,14 @@ import en_flag from "./../../images/flags/s_gflag.png";
 //icons
 import menu_icon from "./../../images/icons/general/menu.png"
 import lang_icon from "./../../images/icons/general/language.png"
-
+import info_icon from "./../../images/info.png"
+import close_icon from "./../../images/close.png"
+import fb_icon from "./../../images/facebook.png"
+import insta_icon from "./../../images/instagram.png"
+import google_icon from "./../../images/googlemaps.png"
+import taxi_icon from "./../../images/taxi.png"
+import reserve_icon from "./../../images/reserve.png"
+import sunbed_icon from "./../../images/sunbed.png"
 function Home({ setPro, pro }) {
     const [levelOne, setLevelOne] = useState(false);
     const [levelTwo, setLevelTwo] = useState(false);
@@ -28,8 +35,9 @@ function Home({ setPro, pro }) {
     const [menu, setMenu] = useState(new Menu("el", false));
     const [isEl, setIsEl] = useState(true);
     const [show, setShow] = useState(true);
+    const [infoShow,setInfoShow] = useState(false);
    
-   
+
 
     const switchLang = (value) => {
         if (value) {
@@ -60,6 +68,7 @@ function Home({ setPro, pro }) {
 
         if (point1 < scroll && scroll < point2) {
             setLevelOne(true);
+            setInfoShow(false);
         } else {
             setLevelOne(false);
         }
@@ -87,6 +96,15 @@ function Home({ setPro, pro }) {
 
     return (
         <div className="Main">
+            <img src={info_icon} onClick={()=>{
+                if(infoShow){
+                    document.getElementById("info").classList.remove("moveIn");
+                    document.getElementById("info").classList.add("moveOut");
+                    setTimeout(()=>{setInfoShow(!infoShow)},1000)
+                }else
+                setInfoShow(!infoShow);
+                
+                }} className="info" ></img>
             {show && (
                 <div className="modalContainer">
                     <div style={{ width: "100%", textAlign: "center" }}>
@@ -148,6 +166,43 @@ function Home({ setPro, pro }) {
                     </button>
                 </div>
             )}
+
+            {
+                infoShow&&
+                <div id="info" className="infoCont moveIn">
+                    <img onClick={()=>{
+                        document.getElementById("info").classList.remove("moveIn");
+                        document.getElementById("info").classList.add("moveOut");
+                        setTimeout(()=>{setInfoShow(false)},1000)
+                    }} src={close_icon} className="closeIcon" ></img>
+                    <a href="tel:+302424023569" >
+                        <img src={reserve_icon} className="reserve_icon" ></img>
+                    </a>
+                    
+                    <img src={sunbed_icon} className="sun_icon" ></img>
+                    
+                    
+                    <div className="taxi_cont">
+                        <img src={taxi_icon} className="taxi_icon" ></img>
+                        <a href="tel:+306944318154">CLICK TO CALL</a>
+                    </div>
+
+                    
+                    <div className="social_cont">
+                        <a target="_blank" href="https://web.facebook.com/glysteriskopelos" >
+                            <img src={fb_icon} className="social_icon" ></img>
+                        </a>
+                        <a target="_blank" href="https://www.instagram.com/glysteribeachbar/" >
+                            <img src={insta_icon} className="social_icon" ></img>
+                        </a>
+                        <a target="_blank" href="https://goo.gl/maps/EJ2KNv4JvEXsi8128" >
+                            <img src={google_icon}  className="social_icon" ></img>
+                        </a>
+                    </div>
+                </div>
+            }
+
+
            
 
             <div className="header">
