@@ -175,7 +175,7 @@ function Home({ setPro, pro }) {
                         document.getElementById("info").classList.add("moveOut");
                         setTimeout(()=>{setInfoShow(false)},1000)
                     }} src={close_icon} className="closeIcon" ></img>
-                    <a href="tel:+302424023569" >
+                    <a href="tel:+306937604194" >
                         <img src={reserve_icon} className="reserve_icon" ></img>
                     </a>
                     
