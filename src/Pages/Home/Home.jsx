@@ -184,7 +184,7 @@ function Home({ setPro, pro }) {
                     
                     <div className="taxi_cont">
                         <img src={taxi_icon} className="taxi_icon" ></img>
-                        <a href="tel:+306944318154">CLICK TO CALL</a>
+                        <a href="tel:+306972429568">CLICK TO CALL</a>
                     </div>
 
                     

@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.605f3def.css",
-    "main.js": "/static/js/main.26de320f.js",
+    "main.css": "/static/css/main.5b2400d5.css",
+    "main.js": "/static/js/main.c57ffd4e.js",
     "static/js/787.a26c5f2a.chunk.js": "/static/js/787.a26c5f2a.chunk.js",
     "static/media/cheesecake.mov": "/static/media/cheesecake.c4afa5b952fe67127ac4.mov",
     "static/media/r.ttf": "/static/media/r.ab34839f557a23921ec9.ttf",
@@ -31,16 +31,22 @@
     "static/media/baguet.png": "/static/media/baguet.2fd8106da3970c12ce92.png",
     "static/media/cake.png": "/static/media/cake.da4bce922cca5680f810.png",
     "static/media/drinks.png": "/static/media/drinks.bf1cc8ef36fe5794ae40.png",
+    "static/media/googlemaps.png": "/static/media/googlemaps.331482282b17d4ab1127.png",
     "static/media/s_bg.jpg": "/static/media/s_bg.b707f3c2eec8a1935861.jpg",
+    "static/media/instagram.png": "/static/media/instagram.776d16d0e9daa177afd5.png",
     "static/media/yogurt.png": "/static/media/yogurt.9e10ffe547743579a9c2.png",
     "static/media/mocktail.png": "/static/media/mocktail.c09fb45d0f84ff14497d.png",
     "static/media/smoothie.png": "/static/media/smoothie.d2358693784f77c300a9.png",
+    "static/media/facebook.png": "/static/media/facebook.ec5c730cfe163b1e5ed8.png",
     "static/media/s_pizz_it.jpg": "/static/media/s_pizz_it.5658909f25bb80b908cd.jpg",
     "static/media/baobun.png": "/static/media/baobun.aa842600f705324b9789.png",
     "static/media/s_mar_str.jpg": "/static/media/s_mar_str.7f8a48c343b81f3f056b.jpg",
     "static/media/s_club_kot.jpg": "/static/media/s_club_kot.73e361bbaf0afc04c088.jpg",
+    "static/media/reserve.png": "/static/media/reserve.79402478ea461046b9d2.png",
     "static/media/coffee.png": "/static/media/coffee.feaa3c71c823a8270b71.png",
     "static/media/menu.png": "/static/media/menu.60ac155cf386b162df4c.png",
+    "static/media/info.png": "/static/media/info.d26a1b28d33780a08999.png",
+    "static/media/close.png": "/static/media/close.785aa15ad2021922596e.png",
     "static/media/s_chicken.jpg": "/static/media/s_chicken.254eadeb5c79a1cdde26.jpg",
     "static/media/language.png": "/static/media/language.16fc1a9aa2a430392aa6.png",
     "static/media/s_club_cea.jpg": "/static/media/s_club_cea.55c4009e41024a1c1ba3.jpg",
@@ -48,15 +54,17 @@
     "static/media/soda.png": "/static/media/soda.30732bacd7988551f74b.png",
     "static/media/s_shrimps_pasta.jpg": "/static/media/s_shrimps_pasta.57680e47897be0c8a77d.jpg",
     "static/media/wine-bottle.png": "/static/media/wine-bottle.3b8e102d6e4ea168a9b3.png",
+    "static/media/taxi.png": "/static/media/taxi.334429a7e23e612713db.png",
+    "static/media/sunbed.png": "/static/media/sunbed.65f1952aebe60585c994.png",
     "static/media/starters.png": "/static/media/starters.71e499804584b23be59f.png",
     "static/media/pie.png": "/static/media/pie.fe4e784af95b79fcda3c.png",
     "index.html": "/index.html",
-    "main.605f3def.css.map": "/static/css/main.605f3def.css.map",
-    "main.26de320f.js.map": "/static/js/main.26de320f.js.map",
+    "main.5b2400d5.css.map": "/static/css/main.5b2400d5.css.map",
+    "main.c57ffd4e.js.map": "/static/js/main.c57ffd4e.js.map",
     "787.a26c5f2a.chunk.js.map": "/static/js/787.a26c5f2a.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.605f3def.css",
-    "static/js/main.26de320f.js"
+    "static/css/main.5b2400d5.css",
+    "static/js/main.c57ffd4e.js"
   ]
 }
