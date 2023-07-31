@@ -1,19 +1,18 @@
-import weeis_bear from "./../images/menu/beers/s_p1big.jpg";
 
 import burger_Gli from "./../images/menu/Glysteri_photos/Food/s_burg_egg.jpg"
 import xoriatiki from "./../images/menu/Glysteri_photos/Food/s_chor_sal.jpg"
 
 import club_kot from "./../images/menu/Glysteri_photos/Food/s_club_cea.jpg"
 import pizz_it from "./../images/menu/Glysteri_photos/Food/s_pizz_it.jpg"
-import margarit_str from "./../images/menu/Glysteri_photos/Drinks/s_mar_str.jpg"
+
 
 // Change
 import pizz_gr from "./../images/menu/pizza/s_p1big.jpg"
 import past_nap from "./../images/menu/pasta/s_p1big.jpg"
 import ntakos_nap from "./../images/menu/salads/s_p2big.jpg"
-import marg_coc from "./../images/menu/coctails/s_p2big.jpg"
-import mohito_coc from "./../images/menu/coctails/s_p3big.jpg"
-import passionito from "./../images/menu/coctails/s_p4big.jpg"
+
+
+
 
 //cange
 import armenovil from "./../images/menu/photos_extra/s_armenovile.jpg"
@@ -59,6 +58,23 @@ import trad_icon from "./../images/icons/rest/cuisine.png"
 
 import mov from "./../images/cheesecake.mov"
 
+
+//new 
+import alolio from "./../images/menu/resized_images/alolio_sort.jpg"
+import aperol from "./../images/menu/resized_images/aperol_sort.jpg"
+import brumble from "./../images/menu/resized_images/brumb_sort.jpg"
+import electric from "./../images/menu/resized_images/elect_sort.jpg"
+import marg_coc from "./../images/menu/resized_images/fr_mag_sort.jpg"
+import margarit_str from "./../images/menu/resized_images/fr_mag_str_sort.jpg"
+import glyst_salad from "./../images/menu/resized_images/glyst_sal_sort.jpg"
+import lager from "./../images/menu/resized_images/lager_sort.jpg"
+import mai_tai from "./../images/menu/resized_images/mai_tai_free_sort.jpg"
+import mohito_coc from "./../images/menu/resized_images/moji_sort.jpg"
+import passionito from "./../images/menu/resized_images/passionito_sort.jpg"
+import pils from "./../images/menu/resized_images/pils_sort.jpg"
+import pizza_marg from "./../images/menu/resized_images/pissa_mag_sort.jpg"
+import porn from "./../images/menu/resized_images/porn_sort.jpg"
+import weis from "./../images/menu/resized_images/weis_sort.jpg"
 
 
 const photo = null;
@@ -171,13 +187,13 @@ const data = {
                     title: { el: "Έζα Λάγκερ", en: "Eza Lager" },
                     desc: { el: "330 ml", en: "330 ml" },
                     price: "6.00",
-                    photo: photo,
+                    photo: lager,
                 },
                 {
                     title: { el: "Έζα Πιλς", en: "Eza Pils" },
                     desc: { el: "330 ml", en: "330 ml" },
                     price: "6.00",
-                    photo: photo,
+                    photo: pils,
                 },
                 {
                     title: { el: "Έζα Χωρίς αλκοόλ", en: "Eza No Alcohol" },
@@ -195,7 +211,7 @@ const data = {
                     title: { el: "Weiss Beer", en: "Weiss Beer" },
                     desc: { el: "500 ml", en: "500 ml" },
                     price: "7.00",
-                    photo: weeis_bear,
+                    photo: weis,
                 },
                 {
                     title: { el: "Μηλίτης", en: "Cyder" },
@@ -621,7 +637,7 @@ const data = {
                         en: "voldka / blue curacao / lime / sugar syrup / sprite" 
                     },
                     price: "11.00",
-                    photo: photo,
+                    photo: electric,
                 },
                 {
                     title: { el: "Μοχίτο Κλασικό", en: "Mojito Classic" },
@@ -758,7 +774,7 @@ const data = {
                         en: "Aperol / Prosecco / soda"
                     },
                     price: "12.00",
-                    photo: photo,
+                    photo: aperol,
                 },
                 {
                     title: { el: "Παλόμα", en: "Paloma" },
@@ -812,7 +828,7 @@ const data = {
                         en: "vodka , vanilla syrup , lime , passion fruit puree , prosecco"
                     },
                     price: "14.00",
-                    photo: photo,
+                    photo: porn,
                 },
                 {
                     title: { el: "Logn Island IceTea / Beach", en: "Logn Island IceTea / Beach" },
@@ -857,7 +873,7 @@ const data = {
                         en: "aperol / moscato d'asti / grapefruit soda", 
                     },
                     price: "13.00",
-                    photo: photo,
+                    photo: aperol,
                 },
                 {
                     title: { el: "Glysteri Bramble", en: "Glysteri Bramble" },
@@ -866,7 +882,7 @@ const data = {
                         en: "gin / triple sec / rasperry syrup / lime", 
                     },
                     price: "13.00",
-                    photo: photo,
+                    photo: brumble,
                 },
                 {
                     title: { el: "Πασιονίτο", en: "Passionito" },
@@ -928,7 +944,7 @@ const data = {
                         en: "pineapple juice / orange juice / lime / almond syrup / grenadine", 
                     },
                     price: "9.00",
-                    photo: photo,
+                    photo: mai_tai,
                 },
                 
             ]
@@ -1220,7 +1236,7 @@ const data = {
                         el: "σάλτσα ντομάτας , κίτρινα τυριά , μοσταρέλα , βασιλικό", 
                         en: "tomato sauce , yellow cheeses , mozzarella , fresh basil" },
                     price: "14.00",
-                    photo: photo,
+                    photo: pizza_marg,
                 },
                 {
                     title: { el: "Σπέσιαλ", en: "Special" },
@@ -1289,7 +1305,7 @@ const data = {
                         el: "λιγκουίνι , κομματάκια τσίλι , σκόρδο , ελαιόλαδο , βούτυρο , παρμεζάνα", 
                         en: "linguini , chilli flakes , garlic , olive oil , butter , parmezan" },
                     price: "16.00",
-                    photo: photo,
+                    photo: alolio,
                 },
                 {
                     title: { el: "Καρμπονάρα", en: "Carbonara" },
@@ -1369,14 +1385,14 @@ const data = {
                     desc: { el: "σπανάκι , ρόκα , παντζαρόφυλλα , λιαστή τομάτα , παξιμάδι , κουκουνάρι , αποξηραμένα σύκα , ανθότυρο , dressing βαλσάμικο", 
                             en: "spinach , fresh rocket , beetroot leaves , dried tomato , rusk ,  pine , dried figs , soft greek cheese (anthotyro) , balsamic dressing" },
                     price: "16.00",
-                    photo: photo,
+                    photo: glyst_salad,
                 },
                 {
                     title: { el: "Ντάκος", en: "Dakos" },
                     desc: { el: "κριθαροκούλουρα , τριμμένη τομάτα , σως φέτας , ελιές , ρίγανη , ελαιόλαδο", 
                             en: "barley roll , grated tomato , feta cheese sauce , olives , oregano , olive oil" },
                     price: "14.00",
-                    photo: photo,
+                    photo: ntakos_nap,
                 },
                 
             ],
