@@ -263,7 +263,7 @@ const data = {
                 {
                     title: { el: "Green Power", en: "Green Power" },
                     desc: { el: "", en: "" },
-                    price: "8.00",
+                    price: "8.00",  
                     photo: photo,
                 },
                 {
@@ -1440,7 +1440,7 @@ const data = {
                     desc: { 
                         el: "με πιτάκια", 
                         en: "with small pies" },
-                    price: "18.00",
+                    price: "12.00",
                     photo: photo,
                 },
                 {
