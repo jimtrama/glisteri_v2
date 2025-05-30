@@ -1,5 +1,5 @@
 //DEPNDENCIES
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 //CSS
 import "./Home.css";
@@ -13,7 +13,6 @@ import { Switch } from "@mui/material";
 //IMAGES
 import bg from "./../../images/header/s_bg.jpg";
 import logo from "./../../images/header/logo.png";
-import downArr from "./../../images/down_arrow.png";
 import el_flag from "./../../images/flags/s_eflag.png";
 import en_flag from "./../../images/flags/s_gflag.png";
 
@@ -61,6 +60,7 @@ function Home({ setPro, pro }) {
     }
     
     const onScroll = (e) => {
+        setShow(false);
         const point1 = window.innerWidth / 2 - 80;
         const point2 = window.innerWidth / 2 + 20;
         const scroll = e.target.scrollTop;
@@ -96,7 +96,7 @@ function Home({ setPro, pro }) {
 
     return (
         <div className="Main">
-            <img src={info_icon} onClick={()=>{
+            <img alt="problem" src={info_icon} onClick={()=>{
                 if(infoShow){
                     document.getElementById("info").classList.remove("moveIn");
                     document.getElementById("info").classList.add("moveOut");
@@ -170,7 +170,9 @@ function Home({ setPro, pro }) {
             {
                 infoShow&&
                 <div id="info" className="infoCont moveIn">
-                    <img onClick={()=>{
+                    <img
+                        alt="problem" 
+                        onClick={()=>{
                         document.getElementById("info").classList.remove("moveIn");
                         document.getElementById("info").classList.add("moveOut");
                         setTimeout(()=>{setInfoShow(false)},1000)
@@ -218,8 +220,7 @@ function Home({ setPro, pro }) {
 
             <div  onScroll={onScroll} className="outerContainer">
                 <div className="menu">
-                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", width: "90%" }}>
-                        <img alt="error" className="downArrow" src={downArr}></img>
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", width: "80%" }}>
 
                         <div style={{display:"flex",justifyContent:"space-between",alignItems:"center"}} >
                             <Switch onChange={changed} color="primary"  checked={menu.isRest}/>
