@@ -14,7 +14,7 @@
 }
 .last{
     border-bottom: none !important;
-} 
+}
 .productInfo{
     width: 60vw;
     height: 100%;
@@ -45,33 +45,7 @@
 .productPhoto{
     height: 100px;
     width: 125px;
-    
+
     object-fit:cover;
     border-radius: 10px;
-}
-.priceAddCont{
-    display: flex;
-    justify-content: space-between;
-}
-.addRemoveCont{
-    margin-right: 30px;
-    background-color: #DEDEDE;
-    width: 10vw;
-    display: flex;
-    justify-content: space-evenly;
-    border-radius: 5px;
-    align-items: center;
-}
-.addRemoveImg{
-    height: 10px;
-    width: auto;
-}
-
-.removeBtn{
-    border: none;
-    background-color: #DEDEDE;
-    padding: 10px;
-    border-radius: 10px;
-    color: black;
-
 }

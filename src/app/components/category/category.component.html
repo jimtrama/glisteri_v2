@@ -1,0 +1,14 @@
+<div class="categoryContainer" [class.extraMargin]="addMargin">
+  <div class="headerContainer">
+    <span class="title">{{ category?.title }}</span>
+    <img alt="" [src]="category?.icon" style="margin-left: 20px; height: 35px; width: auto;">
+  </div>
+  <div class="line"></div>
+  <div class="productsContainer">
+    <app-product
+      *ngFor="let product of category?.products; index as i; let last = last"
+      [product]="product"
+      [isLast]="last"
+    ></app-product>
+  </div>
+</div>

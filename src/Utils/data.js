@@ -1,60 +1,60 @@
-import burger_Gli from "./../images/menu/Glysteri_photos/Food/s_burg_egg.jpg";
-import xoriatiki from "./../images/menu/Glysteri_photos/Food/s_chor_sal.jpg";
+const burger_Gli = "images/menu/Glysteri_photos/Food/s_burg_egg.jpg";
+const xoriatiki = "images/menu/Glysteri_photos/Food/s_chor_sal.jpg";
 
-import club_kot from "./../images/menu/Glysteri_photos/Food/s_club_cea.jpg";
-import pizz_it from "./../images/menu/Glysteri_photos/Food/s_pizz_it.jpg";
+const club_kot = "images/menu/Glysteri_photos/Food/s_club_cea.jpg";
+const pizz_it = "images/menu/Glysteri_photos/Food/s_pizz_it.jpg";
 
 // Change
-import pizz_gr from "./../images/menu/pizza/s_p1big.jpg";
-import past_nap from "./../images/menu/pasta/s_p1big.jpg";
-import ntakos_nap from "./../images/menu/salads/s_p2big.jpg";
+const pizz_gr = "images/menu/pizza/s_p1big.jpg";
+const past_nap = "images/menu/pasta/s_p1big.jpg";
+const ntakos_nap = "images/menu/salads/s_p2big.jpg";
 
 //cange
-import armenovil from "./../images/menu/photos_extra/s_armenovile.jpg";
-import backeta_koto from "./../images/menu/photos_extra/s_bageta_kot.jpg";
-import toast from "./../images/menu/photos_extra/s_toast.jpg";
-import club_clas from "./../images/menu/photos_extra/s_club_kot.jpg";
-import garidomak from "./../images/menu/photos_extra/s_shrimps_pasta.jpg";
-import special_pissa from "./../images/menu/photos_extra/s_special_pissa.jpg";
-import karbonara from "./../images/menu/photos_extra/s_karbonara.jpg";
-import chicken_burger from "./../images/menu/photos_extra/s_chicken.jpg";
+const armenovil = "images/menu/photos_extra/s_armenovile.jpg";
+const backeta_koto = "images/menu/photos_extra/s_bageta_kot.jpg";
+const toast = "images/menu/photos_extra/s_toast.jpg";
+const club_clas = "images/menu/photos_extra/s_club_kot.jpg";
+const garidomak = "images/menu/photos_extra/s_shrimps_pasta.jpg";
+const special_pissa = "images/menu/photos_extra/s_special_pissa.jpg";
+const karbonara = "images/menu/photos_extra/s_karbonara.jpg";
+const chicken_burger = "images/menu/photos_extra/s_chicken.jpg";
 
 //icons
-import coffees_icon from "./../images/icons/beach/coffee.png";
-import beers_icon from "./../images/icons/beach/beer.png";
-import juice_icon from "./../images/icons/beach/juice.png";
-import smothie_icon from "./../images/icons/beach/smoothie.png";
-import soda_icon from "./../images/icons/beach/soda.png";
-import drinks_icon from "./../images/icons/beach/drinks.png";
-import sparkling_icon from "./../images/icons/beach/sparkling-wine.png";
-import clubsand_icon from "./../images/icons/beach/clubsandwich.png";
-import burger_icon from "./../images/icons/beach/burger.png";
-import pizzas_icon from "./../images/icons/beach/pizza.png";
-import pasta_icon from "./../images/icons/beach/pasta.png";
-import cocktail_icon from "./../images/icons/beach/cocktail.png";
-import breakfast_icon from "./../images/icons/beach/breakfast.png";
-import baobun_icon from "./../images/icons/beach/baobun.png";
-import mocktail_icon from "./../images/icons/beach/mocktail.png";
-import pie_icon from "./../images/icons/beach/pie.png";
-import yogurt_icon from "./../images/icons/beach/yogurt.png";
-import wine_icon from "./../images/icons/beach/wine-bottle.png";
-import snak_icon from "./../images/icons/beach/toast.png";
+const coffees_icon = "images/icons/beach/coffee.png";
+const beers_icon = "images/icons/beach/beer.png";
+const juice_icon = "images/icons/beach/juice.png";
+const smothie_icon = "images/icons/beach/smoothie.png";
+const soda_icon = "images/icons/beach/soda.png";
+const drinks_icon = "images/icons/beach/drinks.png";
+const sparkling_icon = "images/icons/beach/sparkling-wine.png";
+const clubsand_icon = "images/icons/beach/clubsandwich.png";
+const burger_icon = "images/icons/beach/burger.png";
+const pizzas_icon = "images/icons/beach/pizza.png";
+const pasta_icon = "images/icons/beach/pasta.png";
+const cocktail_icon = "images/icons/beach/cocktail.png";
+const breakfast_icon = "images/icons/beach/breakfast.png";
+const baobun_icon = "images/icons/beach/baobun.png";
+const mocktail_icon = "images/icons/beach/mocktail.png";
+const pie_icon = "images/icons/beach/pie.png";
+const yogurt_icon = "images/icons/beach/yogurt.png";
+const wine_icon = "images/icons/beach/wine-bottle.png";
+const snak_icon = "images/icons/beach/toast.png";
 
-import salads_icon from "./../images/icons/rest/salad.png";
-import meat_icon from "./../images/icons/rest/meat.png";
-import starters_icon from "./../images/icons/rest/starters.png";
-import fish_icon from "./../images/icons/rest/fish.png";
-import sweet_icon from "./../images/icons/rest/cake.png";
+const salads_icon = "images/icons/rest/salad.png";
+const meat_icon = "images/icons/rest/meat.png";
+const starters_icon = "images/icons/rest/starters.png";
+const fish_icon = "images/icons/rest/fish.png";
+const sweet_icon = "images/icons/rest/cake.png";
 
 //new
-import aperol from "./../images/menu/resized_images/aperol_sort.jpg";
-import brumble from "./../images/menu/resized_images/brumb_sort.jpg";
-import lager from "./../images/menu/resized_images/lager_sort.jpg";
-import mai_tai from "./../images/menu/resized_images/mai_tai_free_sort.jpg";
-import passionito from "./../images/menu/resized_images/passionito_sort.jpg";
-import pils from "./../images/menu/resized_images/pils_sort.jpg";
-import pizza_marg from "./../images/menu/resized_images/pissa_mag_sort.jpg";
-import weis from "./../images/menu/resized_images/weis_sort.jpg";
+const aperol = "images/menu/resized_images/aperol_sort.jpg";
+const brumble = "images/menu/resized_images/brumb_sort.jpg";
+const lager = "images/menu/resized_images/lager_sort.jpg";
+const mai_tai = "images/menu/resized_images/mai_tai_free_sort.jpg";
+const passionito = "images/menu/resized_images/passionito_sort.jpg";
+const pils = "images/menu/resized_images/pils_sort.jpg";
+const pizza_marg = "images/menu/resized_images/pissa_mag_sort.jpg";
+const weis = "images/menu/resized_images/weis_sort.jpg";
 
 const photo = null;
 const data = {

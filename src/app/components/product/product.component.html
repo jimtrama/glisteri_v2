@@ -1,0 +1,26 @@
+<div class="productCont" [class.last]="isLast">
+  <div class="productInfo">
+    <span class="productTitle">{{ product?.title }}</span>
+    <span *ngIf="product?.desc !== ''" class="productDesc">{{ product?.desc }}</span>
+    <span class="productPrice">{{ product?.price }}</span>
+  </div>
+
+  <div class="productPhotoCont">
+    <img
+      *ngIf="product?.photo && product?.isVideo !== true"
+      alt=""
+      loading="lazy"
+      class="productPhoto"
+      [src]="product?.photo"
+    >
+    <video
+      *ngIf="product?.isVideo"
+      playsinline
+      muted
+      autoplay
+      loop
+      class="productPhoto"
+      [src]="product?.photo"
+    ></video>
+  </div>
+</div>

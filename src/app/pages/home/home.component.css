@@ -21,14 +21,14 @@
 }
 .buttonModal{
     color: black;
-    background-color:transparent; 
-    
+    background-color:transparent;
+
     padding:2px ;
     width:60%;
     font-size:20px;
     border-radius:3px;
     border:2px solid #7FA3FF;
-    font-family: titleFont; 
+    font-family: titleFont;
 }
 
 .Main{
@@ -45,14 +45,14 @@
     background-color: rgba(255, 255, 255, 0.801);
     border-radius: 50%;
     padding: 5px;
-    
+
 }
 @font-face {
     font-family: titleFont;
-    src: url("./../../fonts/r.ttf");
+    src: url("/fonts/r.ttf");
 }
 #gg{
-    font-family: titleFont; 
+    font-family: titleFont;
 }
 .header{
     height: auto;
@@ -63,7 +63,7 @@
     left: 50vw;
     transform: translateX(-50vw);
     z-index: 0;
-    
+
     animation-name: head;
     animation-duration: 2s;
     animation-fill-mode: forwards;
@@ -109,7 +109,7 @@
     animation-name: contAn;
     animation-duration: 1.6s;
     animation-fill-mode: forwards;
-   
+
 }
 .contOut{
     animation-name: contAnR !important;
@@ -158,7 +158,7 @@
     width: auto;
     height: 100%;
 }
-.menu{   
+.menu{
     overflow: scroll ;
     padding-top: 10vw;
     position: relative;
@@ -170,7 +170,7 @@
     flex-direction: column;
     align-items: center;
     transform: translateY(50vw);
-    z-index: 3; 
+    z-index: 3;
     border-radius: 10px;
     padding-bottom: 200px;
 }
@@ -194,7 +194,7 @@
     background-color: white;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
-   
+
 }
 .closeIcon{
     position: absolute;
@@ -231,10 +231,6 @@
     height: 40px;
     width: 40px;
 }
-a{
-    text-decoration: none;
-    color: black;
-}
 .reserve_icon{
     position: absolute;
     top: 30%;
@@ -259,7 +255,7 @@ a{
     animation-name: moveOutThe;
     animation-duration: 1s;
     animation-fill-mode: forwards;
-   
+
 }
 @keyframes moveInThe {
     0%{
@@ -277,4 +273,3 @@ a{
         top:-50vh;
     }
 }
-

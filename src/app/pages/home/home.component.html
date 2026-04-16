@@ -1,0 +1,147 @@
+<div class="Main">
+  <img alt="info" [src]="infoIcon" (click)="toggleInfo()" class="info">
+
+  <div *ngIf="show" class="modalContainer">
+    <div style="width: 100%; text-align: center;">
+      <div
+        style="width: 100%; display: flex; justify-content: space-evenly; align-items: center; margin-top: 10px;"
+      >
+        <img
+          alt="english"
+          style="height: 10vw; width: auto;"
+          [src]="enFlag"
+          (click)="switchLang(false)"
+        >
+        <img alt="language" [src]="langIcon" style="height: 40px; width: auto;">
+        <img
+          alt="greek"
+          style="height: 10vw; width: auto;"
+          [src]="elFlag"
+          (click)="switchLang(true)"
+        >
+      </div>
+    </div>
+
+    <div
+      style="height: 30%; width: 100%; text-align: center; display: flex; flex-direction: column; justify-content: space-between; align-items: center;"
+    >
+      <button
+        style="display: flex; justify-content: center; align-items: center;"
+        class="buttonModal"
+        (click)="changed(true); show = false"
+      >
+        <img alt="menu" style="height: 30px; width: auto;" [src]="menuIcon">
+        {{ isEl ? "Εστιατορίου" : "Restaurant" }}
+      </button>
+
+      <button
+        style="display: flex; justify-content: center; align-items: center;"
+        class="buttonModal"
+        (click)="changed(false); show = false"
+      >
+        <img alt="menu" style="height: 30px; width: auto;" [src]="menuIcon">
+        {{ isEl ? "Παραλίας" : "Beach" }}
+      </button>
+    </div>
+
+    <button class="buttonModal" style="color: black;" (click)="show = false">
+      {{ isEl ? "Κλείσιμο" : "Close" }}
+    </button>
+  </div>
+
+  <div
+    *ngIf="infoShow || infoAnimatingOut"
+    id="info"
+    class="infoCont"
+    [class.moveIn]="infoShow && !infoAnimatingOut"
+    [class.moveOut]="infoAnimatingOut"
+  >
+    <img alt="close" (click)="closeInfo()" [src]="closeIcon" class="closeIcon">
+    <a href="tel:+306937604194">
+      <img alt="reserve" [src]="reserveIcon" class="reserve_icon">
+    </a>
+
+    <img alt="sunbeds" [src]="sunbedIcon" class="sun_icon">
+
+    <div class="taxi_cont">
+      <img alt="taxi" [src]="taxiIcon" class="taxi_icon">
+      <a href="tel:+306972429568">CLICK TO CALL</a>
+    </div>
+
+    <div class="social_cont">
+      <a target="_blank" rel="noreferrer" href="https://web.facebook.com/glysteriskopelos">
+        <img alt="facebook" [src]="fbIcon" class="social_icon">
+      </a>
+      <a target="_blank" rel="noreferrer" href="https://www.instagram.com/glysteribeachbar/">
+        <img alt="instagram" [src]="instaIcon" class="social_icon">
+      </a>
+      <a target="_blank" rel="noreferrer" href="https://goo.gl/maps/EJ2KNv4JvEXsi8128">
+        <img alt="maps" [src]="googleIcon" class="social_icon">
+      </a>
+    </div>
+  </div>
+
+  <div class="header">
+    <img
+      alt="background"
+      [src]="bg"
+      class="bgim"
+      style="border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;"
+    >
+    <img alt="logo" [src]="logo" class="logoImg">
+  </div>
+
+  <div *ngIf="levelOne" class="headerLevOne">
+    <img alt="logo" [src]="logo" class="logoInHeader">
+  </div>
+
+  <app-header
+    *ngIf="levelTwo"
+    [menu]="menu"
+    [selected]="selectedCategory"
+    [isEl]="isEl"
+    (categoryClick)="clicked($event)"
+    (languageToggle)="switchLang($event)"
+    (menuToggle)="changed($event)"
+  ></app-header>
+
+  <div #outerContainer (scroll)="onScroll($event)" class="outerContainer">
+    <div class="menu">
+      <div style="display: flex; justify-content: space-between; align-items: center; width: 80%;">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <label class="switch-toggle">
+            <input
+              class="switch-toggle__input"
+              type="checkbox"
+              [checked]="menu.isRest"
+              (change)="changed($any($event.target).checked)"
+            >
+            <span class="switch-toggle__slider"></span>
+          </label>
+          <img alt="menu" style="height: 40px; width: auto;" [src]="menuIcon">
+          <span id="gg" style="margin-left: 15px;">
+            {{ !isEl ? (menu.isRest ? "Beach" : "Restaurant") : (menu.isRest ? "Παραλιας" : "Εστιατοριου") }}
+          </span>
+        </div>
+
+        <div
+          style="display: flex; flex-direction: column; align-items: center; justify-content: center;"
+          (click)="switchLang(isEl)"
+        >
+          <img alt="language" style="height: 30px; width: auto; margin-right: 10px;" [src]="langIcon">
+          <img
+            alt="language flag"
+            style="height: 2.2vh; width: auto;"
+            [src]="isEl ? elFlag : enFlag"
+          >
+        </div>
+      </div>
+
+      <app-category
+        *ngFor="let category of menu.categories; index as i"
+        [category]="category"
+        [addMargin]="i === 0 && levelTwo"
+      ></app-category>
+    </div>
+  </div>
+</div>

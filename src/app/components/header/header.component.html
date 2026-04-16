@@ -1,0 +1,40 @@
+<div class="mainHeaderContainer">
+  <div class="topHeader">
+    <div class="headerSwitchContainer">
+      <img alt="menu" [src]="menuIcon" style="height: 40px; width: auto;">
+      <label class="switch-toggle">
+        <input
+          class="switch-toggle__input"
+          type="checkbox"
+          [checked]="menu?.isRest"
+          (change)="onMenuToggle($event)"
+        >
+        <span class="switch-toggle__slider"></span>
+      </label>
+    </div>
+
+    <img alt="logo" class="imageL" [src]="logo">
+
+    <div class="headerLanguageCont" (click)="onLanguageToggle()">
+      <img alt="language" [src]="langIcon" style="height: 20px; width: auto; margin-right: 20px;">
+      <img
+        alt="language flag"
+        [src]="isEl ? elFlag : enFlag"
+        style="height: 1.5vh; width: auto;"
+      >
+    </div>
+  </div>
+
+  <div class="headerLevTwo">
+    <div *ngFor="let category of menu?.categories; index as i" style="display: flex; align-items: center;">
+      <div
+        class="categoryHeaderContainer"
+        [class.selected]="selected === i"
+        (click)="onCategoryClick(i)"
+      >
+        {{ category.title }}
+      </div>
+      <img alt="" [src]="category.icon" style="height: 25px; width: auto; margin-right: 10px;">
+    </div>
+  </div>
+</div>
