@@ -1,7 +1,10 @@
 <div class="categoryContainer" [class.extraMargin]="addMargin">
   <div class="headerContainer">
-    <span class="title">{{ category?.title }}</span>
-    <img alt="" [src]="category?.icon" style="margin-left: 20px; height: 35px; width: auto;">
+    <div>
+      <span class="title">{{ category?.title }}</span>
+      <div class="categorySub">{{ category?.products?.length }} {{ category?.products?.length === 1 ? 'item' : 'items' }}</div>
+    </div>
+    <img alt="" [src]="category?.icon" class="categoryArt">
   </div>
   <div class="line"></div>
   <div class="productsContainer">

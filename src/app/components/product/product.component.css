@@ -1,51 +1,81 @@
 .productCont{
     width: 100%;
-    height: 25vw;
-    min-height: fit-content;
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    padding-top: 20px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid lightgray;
-
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.7rem;
+    padding: 0.9rem 0;
 }
 .last{
     border-bottom: none !important;
 }
+.productMain{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 0.9rem;
+}
 .productInfo{
-    width: 60vw;
-    height: 100%;
+    flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    gap: 0.55rem;
+    min-width: 0;
+}
+.productTop{
+    display: block;
 }
 .productTitle{
     font-size: 1rem;
-    font-weight: bolder;
+    font-weight: 700;
+    line-height: 1.35;
+    color: #24170f;
 }
 .productDesc{
-    margin-top: 5px;
-    margin-bottom: 10px;
-    margin-right: 5px;
-    font-size: 0.8rem;
-    font-weight:lighter;
+    color: #6d5746;
+    font-size: 0.84rem;
+    line-height: 1.55;
+}
+.productAside{
+    width: 6rem;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
 }
 .productPrice{
-    margin-bottom: 8px;
-    font-size: 0.95rem;
-    font-weight:lighter;
+    padding: 0.3rem 0.65rem;
+    border-radius: 999px;
+    background: #2a1a10;
+    color: #f7efe5;
+    font-size: 0.88rem;
+    letter-spacing: 0.08em;
+    align-self: flex-start;
 }
 .productPhotoCont{
-    height: 100px;
-    width: 125px;
+    width: 6rem;
+    height: 6rem;
 }
 .productPhoto{
-    height: 100px;
-    width: 125px;
-
+    width: 100%;
+    height: 100%;
     object-fit:cover;
-    border-radius: 10px;
+    border-radius: 18px;
+    box-shadow: 0 10px 20px rgba(53, 31, 15, 0.12);
+}
+
+@media (max-width: 360px) {
+    .productCont{
+        gap: 0.75rem;
+    }
+
+    .productAside,
+    .productPhotoCont{
+        width: 5.25rem;
+    }
+
+    .productPhotoCont{
+        height: 5.25rem;
+    }
 }

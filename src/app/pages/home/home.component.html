@@ -1,52 +1,44 @@
 <div class="Main">
-  <img alt="info" [src]="infoIcon" (click)="toggleInfo()" class="info">
+  <button type="button" (click)="toggleInfo()" class="infoButton">
+    <img alt="info" style="filter: invert(1);" [src]="infoIcon" class="infoButton__icon">
+  </button>
 
-  <div *ngIf="show" class="modalContainer">
-    <div style="width: 100%; text-align: center;">
-      <div
-        style="width: 100%; display: flex; justify-content: space-evenly; align-items: center; margin-top: 10px;"
-      >
-        <img
-          alt="english"
-          style="height: 10vw; width: auto;"
-          [src]="enFlag"
-          (click)="switchLang(false)"
-        >
-        <img alt="language" [src]="langIcon" style="height: 40px; width: auto;">
-        <img
-          alt="greek"
-          style="height: 10vw; width: auto;"
-          [src]="elFlag"
-          (click)="switchLang(true)"
-        >
+  <div *ngIf="show" class="modalBackdrop">
+    <div class="modalContainer">
+      <div class="modalEyebrow">Glisteri</div>
+      <h2 class="modalTitle">{{ discoverCopy }}</h2>
+      <p class="modalText">{{ experienceCopy }}</p>
+
+      <div class="modalLanguage">
+        <button type="button" class="langButton" [class.active]="!isEl" (click)="switchLang(false)">
+          <img alt="english" [src]="enFlag">
+          <span>EN</span>
+        </button>
+        <div class="langDivider">
+          <img alt="language" [src]="langIcon">
+        </div>
+        <button type="button" class="langButton" [class.active]="isEl" (click)="switchLang(true)">
+          <img alt="greek" [src]="elFlag">
+          <span>GR</span>
+        </button>
       </div>
-    </div>
 
-    <div
-      style="height: 30%; width: 100%; text-align: center; display: flex; flex-direction: column; justify-content: space-between; align-items: center;"
-    >
-      <button
-        style="display: flex; justify-content: center; align-items: center;"
-        class="buttonModal"
-        (click)="changed(true); show = false"
-      >
-        <img alt="menu" style="height: 30px; width: auto;" [src]="menuIcon">
-        {{ isEl ? "Εστιατορίου" : "Restaurant" }}
-      </button>
+      <div class="modalActions">
+        <button type="button" class="buttonModal primary" (click)="changed(true); show = false">
+          <img alt="menu" [src]="menuIcon">
+          <span>{{ restaurantLabel }}</span>
+        </button>
 
-      <button
-        style="display: flex; justify-content: center; align-items: center;"
-        class="buttonModal"
-        (click)="changed(false); show = false"
-      >
-        <img alt="menu" style="height: 30px; width: auto;" [src]="menuIcon">
-        {{ isEl ? "Παραλίας" : "Beach" }}
+        <button type="button" class="buttonModal" (click)="changed(false); show = false">
+          <img alt="menu" [src]="menuIcon">
+          <span>{{ beachLabel }}</span>
+        </button>
+      </div>
+
+      <button type="button" class="buttonModal buttonModal--ghost" (click)="show = false">
+        {{ closeLabel }}
       </button>
     </div>
-
-    <button class="buttonModal" style="color: black;" (click)="show = false">
-      {{ isEl ? "Κλείσιμο" : "Close" }}
-    </button>
   </div>
 
   <div
@@ -55,17 +47,41 @@
     class="infoCont"
     [class.moveIn]="infoShow && !infoAnimatingOut"
     [class.moveOut]="infoAnimatingOut"
+    [class.dragging]="infoDragging"
+    [style.transform]="infoDragOffset ? 'translateY(' + infoDragOffset + 'px)' : null"
+    (touchstart)="onInfoTouchStart($event)"
+    (touchmove)="onInfoTouchMove($event)"
+    (touchend)="onInfoTouchEnd()"
+    (touchcancel)="onInfoTouchEnd()"
   >
-    <img alt="close" (click)="closeInfo()" [src]="closeIcon" class="closeIcon">
-    <a href="tel:+306937604194">
-      <img alt="reserve" [src]="reserveIcon" class="reserve_icon">
-    </a>
+    <div class="infoSheet__handle"></div>
+    <button type="button" (click)="closeInfo()" class="closeButton">
+      <img alt="close" [src]="closeIcon" class="closeIcon">
+    </button>
 
-    <img alt="sunbeds" [src]="sunbedIcon" class="sun_icon">
+    <div class="infoSheet__hero">
+      <div>
+        <div class="infoSheet__eyebrow">Concierge</div>
+        <h3>Glysteri Beach Bar</h3>
+        <p>{{ experienceCopy }}</p>
+      </div>
+      <div class="infoSheet__art">
+        <img alt="reserve" [src]="reserveIcon" class="reserve_icon">
+        <img alt="sunbeds" [src]="sunbedIcon" class="sun_icon">
+      </div>
+    </div>
+
+    <a class="infoCard infoCard--phone" href="tel:+306937604194">
+      <span class="infoCard__label">{{ isEl ? 'Κρατήσεις' : 'Reservations' }}</span>
+      <strong>+30 693 760 4194</strong>
+    </a>
 
     <div class="taxi_cont">
       <img alt="taxi" [src]="taxiIcon" class="taxi_icon">
-      <a href="tel:+306972429568">CLICK TO CALL</a>
+      <div>
+        <span class="infoCard__label">Taxi</span>
+        <a href="tel:+306972429568">+30 697 242 9568</a>
+      </div>
     </div>
 
     <div class="social_cont">
@@ -82,17 +98,18 @@
   </div>
 
   <div class="header">
-    <img
-      alt="background"
-      [src]="bg"
-      class="bgim"
-      style="border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;"
-    >
-    <img alt="logo" [src]="logo" class="logoImg">
+    <div class="heroContent">
+      <div class="heroBadge">{{ currentMenuLabel }}</div>
+      <img alt="logo" [src]="logo" class="logoImg">
+      <p class="heroTagline">{{ experienceCopy }}</p>
+    </div>
   </div>
 
   <div *ngIf="levelOne" class="headerLevOne">
-    <img alt="logo" [src]="logo" class="logoInHeader">
+    <div class="headerLevOne__inner">
+      <img alt="logo" [src]="logo" class="logoInHeader">
+      <span>{{ currentMenuLabel }}</span>
+    </div>
   </div>
 
   <app-header
@@ -107,41 +124,52 @@
 
   <div #outerContainer (scroll)="onScroll($event)" class="outerContainer">
     <div class="menu">
-      <div style="display: flex; justify-content: space-between; align-items: center; width: 80%;">
-        <div style="display: flex; justify-content: space-between; align-items: center;">
-          <label class="switch-toggle">
-            <input
-              class="switch-toggle__input"
-              type="checkbox"
-              [checked]="menu.isRest"
-              (change)="changed($any($event.target).checked)"
-            >
-            <span class="switch-toggle__slider"></span>
-          </label>
-          <img alt="menu" style="height: 40px; width: auto;" [src]="menuIcon">
-          <span id="gg" style="margin-left: 15px;">
-            {{ !isEl ? (menu.isRest ? "Beach" : "Restaurant") : (menu.isRest ? "Παραλιας" : "Εστιατοριου") }}
-          </span>
+      <section class="introCard">
+        <div class="introCard__top">
+          <div class="introCard__copy">
+            <span class="introCard__eyebrow">Curated for mobile</span>
+            <h1>{{ currentMenuLabel }}</h1>
+            <p>{{ experienceCopy }}</p>
+          </div>
+          <button type="button" class="langBadge" (click)="switchLang(isEl)">
+            <img alt="language flag" [src]="isEl ? elFlag : enFlag">
+          </button>
         </div>
 
-        <div
-          style="display: flex; flex-direction: column; align-items: center; justify-content: center;"
-          (click)="switchLang(isEl)"
-        >
-          <img alt="language" style="height: 30px; width: auto; margin-right: 10px;" [src]="langIcon">
-          <img
-            alt="language flag"
-            style="height: 2.2vh; width: auto;"
-            [src]="isEl ? elFlag : enFlag"
-          >
-        </div>
-      </div>
+        <div class="introCard__controls">
+          <div class="modeCard">
+            <span class="modeCard__label">{{ isEl ? 'Κατάλογος' : 'Catalog' }}</span>
+            <strong>{{ currentMenuLabel }}</strong>
+          </div>
 
-      <app-category
-        *ngFor="let category of menu.categories; index as i"
-        [category]="category"
-        [addMargin]="i === 0 && levelTwo"
-      ></app-category>
+          <div class="toggleWrap">
+            <span>{{ beachLabel }}</span>
+            <label class="switch-toggle">
+              <input
+                class="switch-toggle__input"
+                type="checkbox"
+                [checked]="menu.isRest"
+                (change)="changed($any($event.target).checked)"
+              >
+              <span class="switch-toggle__slider"></span>
+            </label>
+            <span>{{ restaurantLabel }}</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="menuShell">
+        <div class="menuShell__heading">
+          <span class="menuShell__eyebrow">Selection</span>
+          <h2>{{ isEl ? 'Κατηγορίες' : 'Categories' }}</h2>
+        </div>
+
+        <app-category
+          *ngFor="let category of menu.categories; index as i"
+          [category]="category"
+          [addMargin]="i === 0 && levelTwo"
+        ></app-category>
+      </section>
     </div>
   </div>
 </div>

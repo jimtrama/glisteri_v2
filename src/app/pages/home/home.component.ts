@@ -10,6 +10,9 @@ import Menu from '../../../Utils/Menu';
 export class HomeComponent {
   @ViewChild('outerContainer') outerContainerRef?: ElementRef<HTMLDivElement>;
 
+  private infoTouchStartY = 0;
+  private infoTouchStartTime = 0;
+
   levelOne = false;
   levelTwo = false;
   selectedCategory = 0;
@@ -18,6 +21,8 @@ export class HomeComponent {
   show = true;
   infoShow = false;
   infoAnimatingOut = false;
+  infoDragging = false;
+  infoDragOffset = 0;
 
   readonly bg = 'images/header/s_bg.jpg';
   readonly closeIcon = 'images/close.png';
@@ -33,6 +38,32 @@ export class HomeComponent {
   readonly reserveIcon = 'images/reserve.png';
   readonly sunbedIcon = 'images/sunbed.png';
   readonly taxiIcon = 'images/taxi.png';
+
+  get restaurantLabel(): string {
+    return this.isEl ? 'Εστιατόριο' : 'Restaurant';
+  }
+
+  get beachLabel(): string {
+    return this.isEl ? 'Παραλία' : 'Beach';
+  }
+
+  get closeLabel(): string {
+    return this.isEl ? 'Κλείσιμο' : 'Close';
+  }
+
+  get currentMenuLabel(): string {
+    return this.menu.isRest ? this.restaurantLabel : this.beachLabel;
+  }
+
+  get experienceCopy(): string {
+    return this.isEl
+      ? 'Απολαύστε αυτη την εμπειρία σας μαζί μας.'
+      : 'Enjoy this expireance with us.';
+  }
+
+  get discoverCopy(): string {
+    return this.isEl ? 'Δείτε τον κατάλογο' : 'Explore the catalog';
+  }
 
   switchLang(value: boolean): void {
     if (value) {
@@ -126,16 +157,64 @@ export class HomeComponent {
       return;
     }
 
+    this.infoDragOffset = 0;
+    this.infoDragging = false;
     this.infoAnimatingOut = false;
     this.infoShow = true;
   }
 
   closeInfo(): void {
+    this.infoDragging = false;
+    this.infoDragOffset = 0;
     this.infoAnimatingOut = true;
 
     window.setTimeout(() => {
       this.infoShow = false;
       this.infoAnimatingOut = false;
-    }, 1000);
+    }, 350);
+  }
+
+  onInfoTouchStart(event: TouchEvent): void {
+    if (!event.touches.length || this.infoAnimatingOut) {
+      return;
+    }
+
+    this.infoDragging = true;
+    this.infoDragOffset = 0;
+    this.infoTouchStartY = event.touches[0].clientY;
+    this.infoTouchStartTime = Date.now();
+  }
+
+  onInfoTouchMove(event: TouchEvent): void {
+    if (!this.infoDragging || !event.touches.length) {
+      return;
+    }
+
+    const deltaY = event.touches[0].clientY - this.infoTouchStartY;
+
+    if (deltaY <= 0) {
+      this.infoDragOffset = 0;
+      return;
+    }
+
+    this.infoDragOffset = Math.min(deltaY, 240);
+  }
+
+  onInfoTouchEnd(): void {
+    if (!this.infoDragging) {
+      return;
+    }
+
+    const elapsed = Date.now() - this.infoTouchStartTime;
+    const shouldClose = this.infoDragOffset > 110 || (this.infoDragOffset > 50 && elapsed < 220);
+
+    this.infoDragging = false;
+
+    if (shouldClose) {
+      this.closeInfo();
+      return;
+    }
+
+    this.infoDragOffset = 0;
   }
 }

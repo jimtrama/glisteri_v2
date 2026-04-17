@@ -1,5 +1,6 @@
 body {
   margin: 0;
+  background: #efe3d4;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
@@ -16,11 +17,28 @@ code {
   padding: 0;
   margin: 0;
   font-family: myFirstFont;
+  box-sizing: border-box;
 }
 
 @font-face {
   font-family: myFirstFont;
   src: url("/fonts/mono.ttf");
+}
+
+@font-face {
+  font-family: titleFont;
+  src: url("/fonts/r.ttf");
+}
+
+:root {
+  --wood-950: #160f09;
+  --wood-900: #24170f;
+  --wood-800: #3a2619;
+  --wood-700: #5a3a24;
+  --wood-500: #a06d42;
+  --sand-100: #f7efe5;
+  --sand-200: #efe3d4;
+  --sand-300: #e5d3bf;
 }
 
 *::-webkit-scrollbar {
@@ -55,8 +73,9 @@ a {
   position: absolute;
   inset: 0;
   border-radius: 999px;
-  background: #c9d6f7;
-  transition: background-color 0.2s ease;
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
 .switch-toggle__slider::before {
@@ -73,7 +92,8 @@ a {
 }
 
 .switch-toggle__input:checked + .switch-toggle__slider {
-  background: #7fa3ff;
+  background: linear-gradient(135deg, var(--wood-500) 0%, #815331 100%);
+  border-color: transparent;
 }
 
 .switch-toggle__input:checked + .switch-toggle__slider::before {
