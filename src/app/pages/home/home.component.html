@@ -10,15 +10,15 @@
       <p class="modalText">{{ experienceCopy }}</p>
 
       <div class="modalLanguage">
-        <button type="button" class="langButton" [class.active]="!isEl" (click)="switchLang(false)">
-          <img alt="english" [src]="enFlag">
+        <button type="button" class="langButton" [class.active]="!isEl" (click)="switchLang(true)">
+          <img alt="greek" [src]="elFlag">
           <span>EN</span>
         </button>
         <div class="langDivider">
           <img alt="language" [src]="langIcon">
         </div>
-        <button type="button" class="langButton" [class.active]="isEl" (click)="switchLang(true)">
-          <img alt="greek" [src]="elFlag">
+        <button type="button" class="langButton" [class.active]="isEl" (click)="switchLang(false)">
+          <img alt="english" [src]="enFlag">
           <span>GR</span>
         </button>
       </div>
