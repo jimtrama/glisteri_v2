@@ -1,17 +1,19 @@
-<div class="categoryContainer" [class.extraMargin]="addMargin">
-  <div class="headerContainer">
-    <div>
-      <span class="title">{{ category?.title }}</span>
-      <div class="categorySub">{{ category?.products?.length }} {{ category?.products?.length === 1 ? 'item' : 'items' }}</div>
+<div class="categoryContainer" [class.extraMargin]="addMargin" [class.isVisible]="isVisible">
+  <div class="categoryInner">
+    <div class="headerContainer">
+      <div>
+        <span class="title">{{ category?.title }}</span>
+        <div class="categorySub">{{ category?.products?.length }} {{ category?.products?.length === 1 ? 'item' : 'items' }}</div>
+      </div>
+      <img alt="" [src]="category?.icon" class="categoryArt">
     </div>
-    <img alt="" [src]="category?.icon" class="categoryArt">
-  </div>
-  <div class="line"></div>
-  <div class="productsContainer">
-    <app-product
-      *ngFor="let product of category?.products; index as i; let last = last"
-      [product]="product"
-      [isLast]="last"
-    ></app-product>
+    <div class="line"></div>
+    <div class="productsContainer">
+      <app-product
+        *ngFor="let product of category?.products; index as i; let last = last"
+        [product]="product"
+        [isLast]="last"
+      ></app-product>
+    </div>
   </div>
 </div>

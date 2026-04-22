@@ -55,12 +55,34 @@ a {
   color: black;
 }
 
+button {
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    transform 0.14s ease,
+    filter 0.14s ease,
+    box-shadow 0.14s ease,
+    opacity 0.14s ease;
+}
+
+button:active {
+  transform: scale(0.96) !important;
+  filter: brightness(0.92);
+}
+
 .switch-toggle {
   position: relative;
   display: inline-flex;
   width: 48px;
   height: 28px;
   cursor: pointer;
+  transition: transform 0.14s ease, filter 0.14s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.switch-toggle:active {
+  transform: scale(0.95);
+  filter: brightness(0.94);
 }
 
 .switch-toggle__input {
@@ -205,5 +227,15 @@ a {
 
   100% {
     transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
   }
 }

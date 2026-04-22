@@ -1,8 +1,25 @@
 .categoryContainer{
+    position: relative;
+    opacity: 0;
+    transform: translateX(-56px);
+    overflow: hidden;
     width: 100%;
     display: flex;
     flex-direction: column;
     margin-top: 0.95rem;
+    transition:
+      opacity 0.72s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.72s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
+}
+
+.categoryContainer.isVisible{
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.categoryInner{
+    position: relative;
     padding: 1rem;
     border-radius: 24px;
     background: linear-gradient(180deg, rgba(255, 252, 248, 0.985) 0%, rgba(248, 239, 229, 0.985) 100%);
@@ -25,6 +42,7 @@
     font-family: titleFont;
     font-size: 1.45rem;
     color: #2d1d12;
+    animation: categoryHeadingDrift 5.8s ease-in-out infinite;
 }
 .line{
     border: none;
@@ -32,6 +50,8 @@
     height: 1px;
     margin-top: 0.8rem;
     background: linear-gradient(90deg, rgba(126, 86, 50, 0.22), rgba(126, 86, 50, 0));
+    transform-origin: left center;
+    animation: categoryLineGrow 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .productsContainer{
@@ -41,6 +61,25 @@
     gap: 0.75rem;
     padding-top: 0.85rem;
 }
+
+app-product{
+    display: block;
+    opacity: 0;
+    transform: translateY(14px);
+}
+
+.categoryContainer.isVisible app-product{
+    animation: productCascadeIn 0.52s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.categoryContainer.isVisible app-product:nth-of-type(1){ animation-delay: 0.08s; }
+.categoryContainer.isVisible app-product:nth-of-type(2){ animation-delay: 0.12s; }
+.categoryContainer.isVisible app-product:nth-of-type(3){ animation-delay: 0.16s; }
+.categoryContainer.isVisible app-product:nth-of-type(4){ animation-delay: 0.2s; }
+.categoryContainer.isVisible app-product:nth-of-type(5){ animation-delay: 0.24s; }
+.categoryContainer.isVisible app-product:nth-of-type(6){ animation-delay: 0.28s; }
+.categoryContainer.isVisible app-product:nth-of-type(7){ animation-delay: 0.32s; }
+.categoryContainer.isVisible app-product:nth-of-type(8){ animation-delay: 0.36s; }
 
 .categorySub{
     margin-top: 0.22rem;
@@ -53,4 +92,45 @@
 .categoryArt{
     width: 1.8rem;
     height: 1.8rem;
+    animation: categoryIconBob 4.2s ease-in-out infinite;
+}
+
+@keyframes categoryHeadingDrift {
+    0%, 100%{
+        transform: translateY(0);
+    }
+    50%{
+        transform: translateY(-2px);
+    }
+}
+
+@keyframes categoryLineGrow {
+    from{
+        opacity: 0;
+        transform: scaleX(0.2);
+    }
+    to{
+        opacity: 1;
+        transform: scaleX(1);
+    }
+}
+
+@keyframes productCascadeIn {
+    from{
+        opacity: 0;
+        transform: translateY(14px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes categoryIconBob {
+    0%, 100%{
+        transform: translateY(0) rotate(0deg);
+    }
+    50%{
+        transform: translateY(-3px) rotate(4deg);
+    }
 }

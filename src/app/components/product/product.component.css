@@ -1,4 +1,5 @@
 .productCont{
+    position: relative;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -31,6 +32,7 @@
     font-weight: 700;
     line-height: 1.35;
     color: #24170f;
+    animation: textDrift 6.2s ease-in-out infinite;
 }
 .productDesc{
     color: #6d5746;
@@ -52,6 +54,7 @@
     font-size: 0.88rem;
     letter-spacing: 0.08em;
     align-self: flex-start;
+    animation: pricePulse 4.6s ease-in-out infinite;
 }
 .productPhotoCont{
     width: 6rem;
@@ -63,6 +66,7 @@
     object-fit:cover;
     border-radius: 18px;
     box-shadow: 0 10px 20px rgba(53, 31, 15, 0.12);
+    animation: photoBreath 6.6s ease-in-out infinite;
 }
 
 @media (max-width: 360px) {
@@ -77,5 +81,32 @@
 
     .productPhotoCont{
         height: 5.25rem;
+    }
+}
+
+@keyframes photoBreath {
+    0%, 100%{
+        transform: scale(1) translateY(0);
+    }
+    50%{
+        transform: scale(1.04) translateY(-2px);
+    }
+}
+
+@keyframes pricePulse {
+    0%, 100%{
+        transform: translateY(0) scale(1);
+    }
+    50%{
+        transform: translateY(-2px) scale(1.03);
+    }
+}
+
+@keyframes textDrift {
+    0%, 100%{
+        transform: translateY(0);
+    }
+    50%{
+        transform: translateY(-1px);
     }
 }

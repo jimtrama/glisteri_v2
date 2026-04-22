@@ -84,11 +84,10 @@ export class HomeComponent {
       return;
     }
 
-    const y = this.getPos(element).y;
-    const offset = window.innerWidth / 6;
+    const y = this.getPos(element).y - 200;
 
     this.outerContainerRef.nativeElement.scrollTo({
-      top: y + offset,
+      top: y ,
       behavior: 'smooth',
     });
 
@@ -113,7 +112,7 @@ export class HomeComponent {
     const target = event.target as HTMLElement;
     const point1 = window.innerWidth / 2 - 80;
     const point2 = window.innerWidth / 2 + 20;
-    const scroll = target.scrollTop;
+    const scroll = target.scrollTop + 200;
     const categories = document.getElementsByClassName('categoryContainer');
 
     this.show = false;
@@ -131,7 +130,7 @@ export class HomeComponent {
     for (let i = categories.length - 1; i >= 0; i -= 1) {
       const category = categories.item(i) as HTMLElement | null;
 
-      if (category && this.getPos(category).y < scroll) {
+      if (category && this.getPos(category).y - 200 < scroll) {
         const header = document.getElementsByClassName('categoryHeaderContainer').item(i) as HTMLElement | null;
         const headerLevelTwo = document.getElementsByClassName('headerLevTwo').item(0) as HTMLElement | null;
         const x = header ? this.getPos(header).x : 0;
@@ -149,6 +148,16 @@ export class HomeComponent {
 
   changed(checked: boolean): void {
     this.menu = new Menu(this.isEl ? 'el' : 'en', checked);
+    this.selectedCategory = 0;
+
+    const outerContainer = this.outerContainerRef?.nativeElement;
+
+    if (outerContainer) {
+      outerContainer.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
+    }
   }
 
   toggleInfo(): void {
