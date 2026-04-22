@@ -79,19 +79,29 @@ export class HomeComponent {
   clicked(index: number): void {
     const categories = document.getElementsByClassName('categoryContainer');
     const element = categories.item(index) as HTMLElement | null;
+    const outerContainer = this.outerContainerRef?.nativeElement;
 
-    if (!element || !this.outerContainerRef) {
+    if (!element || !outerContainer) {
       return;
     }
 
-    const y = this.getPos(element).y - 200;
+    const containerRect = outerContainer.getBoundingClientRect();
+    const elementRect = element.getBoundingClientRect();
+    const y = outerContainer.scrollTop + (elementRect.top - containerRect.top) - this.getCategoryScrollOffset();
 
-    this.outerContainerRef.nativeElement.scrollTo({
-      top: y ,
+    outerContainer.scrollTo({
+      top: Math.max(0, y),
       behavior: 'smooth',
     });
 
     this.selectedCategory = index;
+  }
+
+  getCategoryScrollOffset(): number {
+    const stickyHeader = document.getElementsByClassName('mainHeaderContainer').item(0) as HTMLElement | null;
+    const stickyHeaderHeight = stickyHeader?.offsetHeight ?? 0;
+
+    return stickyHeaderHeight + 16;
   }
 
   getPos(el: HTMLElement | null): { x: number; y: number } {
@@ -112,7 +122,7 @@ export class HomeComponent {
     const target = event.target as HTMLElement;
     const point1 = window.innerWidth / 2 - 80;
     const point2 = window.innerWidth / 2 + 20;
-    const scroll = target.scrollTop + 200;
+    const scroll = target.scrollTop + this.getCategoryScrollOffset();
     const categories = document.getElementsByClassName('categoryContainer');
 
     this.show = false;
@@ -130,7 +140,7 @@ export class HomeComponent {
     for (let i = categories.length - 1; i >= 0; i -= 1) {
       const category = categories.item(i) as HTMLElement | null;
 
-      if (category && this.getPos(category).y - 200 < scroll) {
+      if (category && this.getPos(category).y < scroll) {
         const header = document.getElementsByClassName('categoryHeaderContainer').item(i) as HTMLElement | null;
         const headerLevelTwo = document.getElementsByClassName('headerLevTwo').item(0) as HTMLElement | null;
         const x = header ? this.getPos(header).x : 0;

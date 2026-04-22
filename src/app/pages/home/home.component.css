@@ -303,6 +303,7 @@
     background: rgba(24, 16, 11, 0.86);
     backdrop-filter: blur(14px);
     border-bottom: 1px solid rgba(227, 198, 165, 0.16);
+    animation: stickyHeaderIn 0.38s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .headerLevOne__inner{
@@ -314,6 +315,7 @@
     font-size: 0.78rem;
     letter-spacing: 0.18em;
     text-transform: uppercase;
+    animation: stickyHeaderFloat 5.8s ease-in-out infinite;
 }
 
 .logoInHeader{
@@ -329,6 +331,20 @@
     flex-direction: column;
     gap: 1rem;
     animation: menuLiftIn 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.08s both;
+}
+
+.menu::before{
+    content: "";
+    position: absolute;
+    top: 26vh;
+    left: 50%;
+    width: min(88vw, 32rem);
+    height: 16rem;
+    transform: translateX(-50%);
+    border-radius: 32px;
+    background: radial-gradient(circle, rgba(255, 246, 232, 0.22) 0%, rgba(255, 246, 232, 0) 72%);
+    pointer-events: none;
+    animation: menuAura 10s ease-in-out infinite alternate;
 }
 
 .introCard,
@@ -429,6 +445,12 @@
     border-radius: 20px;
     background: rgba(255, 252, 247, 0.96);
     border: 1px solid rgba(126, 86, 50, 0.09);
+    animation-name: introItemIn, cardGlowShift;
+    animation-duration: 0.58s, 7.4s;
+    animation-delay: 0.5s, 1.2s;
+    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1), ease-in-out;
+    animation-fill-mode: forwards, none;
+    animation-iteration-count: 1, infinite;
 }
 
 .modeCard__label,
@@ -456,6 +478,12 @@
     font-size: 0.82rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;
+    animation-name: introItemIn, togglePanelFloat;
+    animation-duration: 0.58s, 5.6s;
+    animation-delay: 0.58s, 1.32s;
+    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1), ease-in-out;
+    animation-fill-mode: forwards, none;
+    animation-iteration-count: 1, infinite;
 }
 
 .menuShell{
@@ -491,6 +519,7 @@
     will-change: transform;
     transition: transform 0.22s ease;
     touch-action: pan-y;
+    animation: sheetAmbient 8.5s ease-in-out infinite;
 }
 
 .infoSheet__handle{
@@ -567,14 +596,17 @@
     border-radius: 20px;
     background: rgba(255, 251, 246, 0.96);
     border: 1px solid rgba(126, 86, 50, 0.08);
+    animation: infoCardFloat 6.2s ease-in-out infinite;
 }
 
 .infoCard--phone{
     justify-content: space-between;
+    animation-delay: 0.2s;
 }
 
 .taxi_cont{
     position: relative;
+    animation-delay: 0.45s;
 }
 
 .taxi_icon{
@@ -597,6 +629,10 @@
     background: rgba(45, 29, 18, 0.08);
     animation: socialPulse 4.5s ease-in-out infinite;
 }
+
+.social_cont a:nth-child(1){ animation-delay: 0.1s; }
+.social_cont a:nth-child(2){ animation-delay: 0.24s; }
+.social_cont a:nth-child(3){ animation-delay: 0.38s; }
 
 .social_icon{
     width: 1.7rem;
@@ -817,6 +853,37 @@
     }
 }
 
+@keyframes stickyHeaderIn {
+    from{
+        opacity: 0;
+        transform: translateY(-12px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes stickyHeaderFloat {
+    0%, 100%{
+        transform: translateY(0);
+    }
+    50%{
+        transform: translateY(-2px);
+    }
+}
+
+@keyframes menuAura {
+    0%{
+        opacity: 0.45;
+        transform: translateX(-50%) scale(1);
+    }
+    100%{
+        opacity: 0.9;
+        transform: translateX(-50%) scale(1.08);
+    }
+}
+
 @keyframes introCardReveal {
     from{
         opacity: 0;
@@ -834,6 +901,24 @@
     }
     50%{
         transform: translateY(-6px);
+    }
+}
+
+@keyframes cardGlowShift {
+    0%, 100%{
+        box-shadow: 0 0 0 rgba(126, 86, 50, 0);
+    }
+    50%{
+        box-shadow: 0 0 0 0.5rem rgba(188, 158, 128, 0.08);
+    }
+}
+
+@keyframes togglePanelFloat {
+    0%, 100%{
+        transform: translateY(0);
+    }
+    50%{
+        transform: translateY(-3px);
     }
 }
 
@@ -856,6 +941,15 @@
     50%{
         transform: scaleX(1.08);
         opacity: 1;
+    }
+}
+
+@keyframes sheetAmbient {
+    0%, 100%{
+        box-shadow: 0 -18px 40px rgba(20, 10, 4, 0.24);
+    }
+    50%{
+        box-shadow: 0 -24px 54px rgba(20, 10, 4, 0.3);
     }
 }
 
@@ -883,6 +977,15 @@
     }
     50%{
         transform: translateY(-3px);
+    }
+}
+
+@keyframes infoCardFloat {
+    0%, 100%{
+        transform: translateY(0);
+    }
+    50%{
+        transform: translateY(-4px);
     }
 }
 

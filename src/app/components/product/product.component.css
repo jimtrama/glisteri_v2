@@ -6,6 +6,7 @@
     align-items: flex-start;
     gap: 0.7rem;
     padding: 0.9rem 0;
+    animation: productRowFloat 7s ease-in-out infinite;
 }
 .last{
     border-bottom: none !important;
@@ -38,6 +39,7 @@
     color: #6d5746;
     font-size: 0.84rem;
     line-height: 1.55;
+    animation: descBreath 6.6s ease-in-out infinite;
 }
 .productAside{
     width: 6rem;
@@ -47,6 +49,8 @@
     align-items: flex-end;
 }
 .productPrice{
+    position: relative;
+    overflow: hidden;
     padding: 0.3rem 0.65rem;
     border-radius: 999px;
     background: #2a1a10;
@@ -54,11 +58,22 @@
     font-size: 0.88rem;
     letter-spacing: 0.08em;
     align-self: flex-start;
-    animation: pricePulse 4.6s ease-in-out infinite;
+    box-shadow: 0 8px 18px rgba(42, 26, 16, 0.16);
+    animation: pricePulse 3.2s ease-in-out infinite;
+}
+
+.productPrice::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(115deg, transparent 16%, rgba(255, 255, 255, 0.24) 50%, transparent 84%);
+    transform: translateX(-150%);
+    animation: priceSweep 3.8s ease-in-out infinite;
 }
 .productPhotoCont{
     width: 6rem;
     height: 6rem;
+    animation: photoFrameFloat 6.8s ease-in-out infinite;
 }
 .productPhoto{
     width: 100%;
@@ -93,12 +108,50 @@
     }
 }
 
+@keyframes productRowFloat {
+    0%, 100%{
+        transform: translateY(0);
+    }
+    50%{
+        transform: translateY(-2px);
+    }
+}
+
+@keyframes descBreath {
+    0%, 100%{
+        opacity: 0.86;
+    }
+    50%{
+        opacity: 1;
+    }
+}
+
+@keyframes photoFrameFloat {
+    0%, 100%{
+        transform: translateY(0);
+    }
+    50%{
+        transform: translateY(-3px);
+    }
+}
+
 @keyframes pricePulse {
     0%, 100%{
         transform: translateY(0) scale(1);
+        box-shadow: 0 8px 18px rgba(42, 26, 16, 0.14);
     }
     50%{
-        transform: translateY(-2px) scale(1.03);
+        transform: translateY(-3px) scale(1.08);
+        box-shadow: 0 12px 24px rgba(42, 26, 16, 0.28);
+    }
+}
+
+@keyframes priceSweep {
+    0%, 100%{
+        transform: translateX(-150%);
+    }
+    42%, 60%{
+        transform: translateX(150%);
     }
 }
 
