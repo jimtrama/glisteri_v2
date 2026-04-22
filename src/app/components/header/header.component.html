@@ -2,7 +2,11 @@
   <div class="topHeader">
     <div class="headerSwitchContainer">
       <span class="headerChip">{{ menu?.isRest ? (isEl ? 'Εστιατόριο' : 'Resturant'): (isEl ? 'Παραλία' : 'Beach') }}</span>
-      <label class="switch-toggle">
+      <label
+        class="switch-toggle"
+        (touchstart)="onToggleTouchStart($event)"
+        (touchend)="onToggleTouchEnd($event)"
+      >
         <input
           class="switch-toggle__input"
           type="checkbox"

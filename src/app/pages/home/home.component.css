@@ -519,7 +519,6 @@
     will-change: transform;
     transition: transform 0.22s ease;
     touch-action: pan-y;
-    animation: sheetAmbient 8.5s ease-in-out infinite;
 }
 
 .infoSheet__handle{
@@ -941,15 +940,6 @@
     50%{
         transform: scaleX(1.08);
         opacity: 1;
-    }
-}
-
-@keyframes sheetAmbient {
-    0%, 100%{
-        box-shadow: 0 -18px 40px rgba(20, 10, 4, 0.24);
-    }
-    50%{
-        box-shadow: 0 -24px 54px rgba(20, 10, 4, 0.3);
     }
 }
 

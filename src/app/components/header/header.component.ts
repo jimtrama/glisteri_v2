@@ -6,6 +6,9 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrl: './header.component.css',
 })
 export class HeaderComponent {
+  private toggleTouchStartX = 0;
+  private toggleTouchStartY = 0;
+
   @Input() menu: any;
   @Input() selected = 0;
   @Input() isEl = true;
@@ -19,6 +22,30 @@ export class HeaderComponent {
   readonly enFlag = 'images/flags/s_gflag.png';
   readonly langIcon = 'images/icons/general/language.png';
   readonly menuIcon = 'images/icons/general/menu.png';
+
+  onToggleTouchStart(event: TouchEvent): void {
+    if (!event.touches.length) {
+      return;
+    }
+
+    this.toggleTouchStartX = event.touches[0].clientX;
+    this.toggleTouchStartY = event.touches[0].clientY;
+  }
+
+  onToggleTouchEnd(event: TouchEvent): void {
+    if (!event.changedTouches.length) {
+      return;
+    }
+
+    const deltaX = event.changedTouches[0].clientX - this.toggleTouchStartX;
+    const deltaY = event.changedTouches[0].clientY - this.toggleTouchStartY;
+
+    if (Math.abs(deltaX) < 28 || Math.abs(deltaX) <= Math.abs(deltaY)) {
+      return;
+    }
+
+    this.menuToggle.emit(deltaX > 0);
+  }
 
   onCategoryClick(index: number): void {
     this.categoryClick.emit(index);

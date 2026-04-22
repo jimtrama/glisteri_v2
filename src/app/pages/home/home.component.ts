@@ -12,6 +12,8 @@ export class HomeComponent {
 
   private infoTouchStartY = 0;
   private infoTouchStartTime = 0;
+  private menuToggleTouchStartX = 0;
+  private menuToggleTouchStartY = 0;
 
   levelOne = false;
   levelTwo = false;
@@ -23,6 +25,7 @@ export class HomeComponent {
   infoAnimatingOut = false;
   infoDragging = false;
   infoDragOffset = 0;
+  menuToggleSwiping = false;
 
   readonly bg = 'images/header/s_bg.jpg';
   readonly closeIcon = 'images/close.png';
@@ -37,7 +40,6 @@ export class HomeComponent {
   readonly menuIcon = 'images/icons/general/menu.png';
   readonly reserveIcon = 'images/reserve.png';
   readonly sunbedIcon = 'images/sunbed.png';
-  readonly taxiIcon = 'images/taxi.png';
 
   get restaurantLabel(): string {
     return this.isEl ? 'Εστιατόριο' : 'Restaurant';
@@ -168,6 +170,33 @@ export class HomeComponent {
         behavior: 'smooth',
       });
     }
+  }
+
+  onMenuToggleTouchStart(event: TouchEvent): void {
+    if (!event.touches.length) {
+      return;
+    }
+
+    this.menuToggleSwiping = true;
+    this.menuToggleTouchStartX = event.touches[0].clientX;
+    this.menuToggleTouchStartY = event.touches[0].clientY;
+  }
+
+  onMenuToggleTouchEnd(event: TouchEvent): void {
+    if (!this.menuToggleSwiping || !event.changedTouches.length) {
+      return;
+    }
+
+    const deltaX = event.changedTouches[0].clientX - this.menuToggleTouchStartX;
+    const deltaY = event.changedTouches[0].clientY - this.menuToggleTouchStartY;
+
+    this.menuToggleSwiping = false;
+
+    if (Math.abs(deltaX) < 28 || Math.abs(deltaX) <= Math.abs(deltaY)) {
+      return;
+    }
+
+    this.changed(deltaX > 0);
   }
 
   toggleInfo(): void {

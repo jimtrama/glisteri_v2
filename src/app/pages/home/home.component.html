@@ -76,13 +76,11 @@
       <strong>+30 693 760 4194</strong>
     </a>
 
-    <div class="taxi_cont">
-      <img alt="taxi" [src]="taxiIcon" class="taxi_icon">
-      <div>
-        <span class="infoCard__label">Taxi</span>
-        <a href="tel:+306972429568">+30 697 242 9568</a>
-      </div>
-    </div>
+    <a class="infoCard infoCard--phone" href="tel:+306972429568">
+      <span class="infoCard__label">Taxi</span>
+      <strong>+30 697 242 9568</strong>
+    </a>
+
 
     <div class="social_cont">
       <a target="_blank" rel="noreferrer" href="https://web.facebook.com/glysteriskopelos">
@@ -142,7 +140,12 @@
             <strong>{{ currentMenuLabel }}</strong>
           </div>
 
-          <div class="toggleWrap">
+          <div
+            class="toggleWrap"
+            (touchstart)="onMenuToggleTouchStart($event)"
+            (touchend)="onMenuToggleTouchEnd($event)"
+            (touchcancel)="menuToggleSwiping = false"
+          >
             <span>{{ beachLabel }}</span>
             <label class="switch-toggle">
               <input
