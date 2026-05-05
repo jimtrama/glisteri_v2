@@ -89,7 +89,7 @@ export class HomeComponent {
 
     const containerRect = outerContainer.getBoundingClientRect();
     const elementRect = element.getBoundingClientRect();
-    const y = outerContainer.scrollTop + (elementRect.top - containerRect.top) - this.getCategoryScrollOffset();
+    const y = outerContainer.scrollTop + (elementRect.top - containerRect.top) - this.getCategoryScrollOffset() + 20;
 
     outerContainer.scrollTo({
       top: Math.max(0, y),
@@ -142,7 +142,7 @@ export class HomeComponent {
     for (let i = categories.length - 1; i >= 0; i -= 1) {
       const category = categories.item(i) as HTMLElement | null;
 
-      if (category && this.getPos(category).y < scroll) {
+      if (!!category && this.getPos(category).y < scroll) {
         const header = document.getElementsByClassName('categoryHeaderContainer').item(i) as HTMLElement | null;
         const headerLevelTwo = document.getElementsByClassName('headerLevTwo').item(0) as HTMLElement | null;
         const x = header ? this.getPos(header).x : 0;

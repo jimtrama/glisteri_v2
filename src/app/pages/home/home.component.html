@@ -3,6 +3,15 @@
     <img alt="info" style="filter: invert(1);" [src]="infoIcon" class="infoButton__icon">
   </button>
 
+  <div class="ambientStage" aria-hidden="true">
+    <span class="ambientOrb ambientOrb--one"></span>
+    <span class="ambientOrb ambientOrb--two"></span>
+    <span class="ambientOrb ambientOrb--three"></span>
+    <span class="ambientLine ambientLine--one"></span>
+    <span class="ambientLine ambientLine--two"></span>
+    <span class="ambientLine ambientLine--three"></span>
+  </div>
+
   <div *ngIf="show" class="modalBackdrop">
     <div class="modalContainer">
       <div class="modalEyebrow">Glisteri</div>
@@ -98,7 +107,14 @@
   <div class="header">
     <div class="heroContent">
       <div class="heroBadge">{{ currentMenuLabel }}</div>
-      <img alt="logo" [src]="logo" class="logoImg">
+      <div class="heroLogoFrame">
+        <span class="heroHalo heroHalo--one"></span>
+        <span class="heroHalo heroHalo--two"></span>
+        <span class="heroSpark heroSpark--one"></span>
+        <span class="heroSpark heroSpark--two"></span>
+        <span class="heroSpark heroSpark--three"></span>
+        <img alt="logo" [src]="logo" class="logoImg">
+      </div>
       <p class="heroTagline">{{ experienceCopy }}</p>
     </div>
   </div>
@@ -170,7 +186,6 @@
         <app-category
           *ngFor="let category of menu.categories; index as i"
           [category]="category"
-          [addMargin]="i === 0 && levelTwo"
         ></app-category>
       </section>
     </div>

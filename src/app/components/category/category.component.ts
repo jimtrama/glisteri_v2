@@ -13,7 +13,6 @@ import {
 })
 export class CategoryComponent implements AfterViewInit, OnDestroy {
   @Input() category: any;
-  @Input() addMargin = false;
 
   isVisible = false;
 

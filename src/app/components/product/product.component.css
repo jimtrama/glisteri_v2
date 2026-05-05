@@ -1,5 +1,6 @@
 .productCont{
     position: relative;
+    overflow: hidden;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -7,6 +8,30 @@
     gap: 0.7rem;
     padding: 0.9rem 0;
     animation: productRowFloat 7s ease-in-out infinite;
+}
+
+.productCont::before,
+.productCont::after{
+    content: "";
+    position: absolute;
+    pointer-events: none;
+}
+
+.productCont::before{
+    inset: 0;
+    background: linear-gradient(115deg, transparent 14%, rgba(255, 255, 255, 0.16) 48%, transparent 82%);
+    transform: translateX(-150%);
+    animation: productSweep 8.2s ease-in-out infinite;
+}
+
+.productCont::after{
+    right: -2rem;
+    bottom: -2rem;
+    width: 7rem;
+    height: 7rem;
+    border-radius: 999px;
+    background: radial-gradient(circle, rgba(214, 178, 139, 0.12) 0%, rgba(214, 178, 139, 0) 72%);
+    animation: productAura 8.8s ease-in-out infinite alternate;
 }
 .last{
     border-bottom: none !important;
@@ -58,23 +83,45 @@
     font-size: 0.88rem;
     letter-spacing: 0.08em;
     align-self: flex-start;
-    box-shadow: 0 8px 18px rgba(42, 26, 16, 0.16);
-    animation: pricePulse 3.2s ease-in-out infinite;
+    border: 1px solid rgba(255, 239, 220, 0.08);
+    animation: pricePulse 4.6s ease-in-out infinite;
 }
 
 .productPrice::before{
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(115deg, transparent 16%, rgba(255, 255, 255, 0.24) 50%, transparent 84%);
+    background: linear-gradient(115deg, transparent 18%, rgba(255, 255, 255, 0.14) 50%, transparent 82%);
     transform: translateX(-150%);
-    animation: priceSweep 3.8s ease-in-out infinite;
+    animation: priceSweep 5s ease-in-out infinite;
+}
+
+.productPrice::after{
+    content: "";
+    position: absolute;
+    inset: -0.2rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 239, 220, 0.1);
+    opacity: 0;
+    animation: priceRing 5s ease-out infinite;
 }
 .productPhotoCont{
+    position: relative;
     width: 6rem;
     height: 6rem;
     animation: photoFrameFloat 6.8s ease-in-out infinite;
 }
+
+.productPhotoCont::before{
+    content: "";
+    position: absolute;
+    inset: -0.4rem;
+    border-radius: 22px;
+    background: radial-gradient(circle, rgba(255, 232, 198, 0.18) 0%, rgba(255, 232, 198, 0) 72%);
+    filter: blur(10px);
+    animation: photoGlow 6.2s ease-in-out infinite;
+}
+
 .productPhoto{
     width: 100%;
     height: 100%;
@@ -108,12 +155,48 @@
     }
 }
 
+@keyframes photoGlow {
+    0%, 100%{
+        transform: scale(0.96);
+        opacity: 0.3;
+    }
+    50%{
+        transform: scale(1.08);
+        opacity: 0.72;
+    }
+}
+
 @keyframes productRowFloat {
     0%, 100%{
         transform: translateY(0);
     }
     50%{
         transform: translateY(-2px);
+    }
+}
+
+@keyframes productSweep {
+    0%, 100%{
+        transform: translateX(-150%);
+        opacity: 0;
+    }
+    8%{
+        opacity: 0.08;
+    }
+    42%, 58%{
+        transform: translateX(150%);
+        opacity: 0.2;
+    }
+}
+
+@keyframes productAura {
+    0%{
+        transform: translate3d(0, 0, 0) scale(1);
+        opacity: 0.24;
+    }
+    100%{
+        transform: translate3d(-0.8rem, -0.6rem, 0) scale(1.16);
+        opacity: 0.82;
     }
 }
 
@@ -138,11 +221,9 @@
 @keyframes pricePulse {
     0%, 100%{
         transform: translateY(0) scale(1);
-        box-shadow: 0 8px 18px rgba(42, 26, 16, 0.14);
     }
     50%{
-        transform: translateY(-3px) scale(1.08);
-        box-shadow: 0 12px 24px rgba(42, 26, 16, 0.28);
+        transform: translateY(-1px) scale(1.02);
     }
 }
 
@@ -152,6 +233,20 @@
     }
     42%, 60%{
         transform: translateX(150%);
+    }
+}
+
+@keyframes priceRing {
+    0%{
+        transform: scale(0.98);
+        opacity: 0;
+    }
+    18%{
+        opacity: 0.1;
+    }
+    48%, 100%{
+        transform: scale(1.06);
+        opacity: 0;
     }
 }
 
