@@ -3,10 +3,20 @@
   "version": "1.0.2",
   "private": true,
   "scripts": {
+    "prestart": "node ./scripts/sync-env.mjs catalog",
+    "prebuild": "node ./scripts/sync-env.mjs catalog",
+    "prewatch": "node ./scripts/sync-env.mjs catalog",
+    "preadmin:dev": "node ./scripts/sync-env.mjs admin",
+    "preadmin:build": "node ./scripts/sync-env.mjs admin",
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --host 192.168.68.104",
     "build": "ng build",
-    "watch": "ng build --watch --configuration development"
+    "watch": "ng build --watch --configuration development",
+    "admin:dev": "npm --prefix admin run start",
+    "admin:build": "npm --prefix admin run build",
+    "backend:dev": "npm --prefix backend run dev",
+    "backend:build": "npm --prefix backend run build",
+    "backend:start": "npm --prefix backend run start"
   },
   "dependencies": {
     "@angular/common": "^18.2.0",

@@ -58,16 +58,11 @@ a {
 button {
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
-  transition:
-    transform 0.14s ease,
-    filter 0.14s ease,
-    box-shadow 0.14s ease,
-    opacity 0.14s ease;
 }
 
 button:active {
-  transform: scale(0.96) !important;
-  filter: brightness(0.92);
+  transform: none !important;
+  filter: none;
 }
 
 .switch-toggle {
@@ -76,13 +71,12 @@ button:active {
   width: 48px;
   height: 28px;
   cursor: pointer;
-  transition: transform 0.14s ease, filter 0.14s ease;
   -webkit-tap-highlight-color: transparent;
 }
 
 .switch-toggle:active {
-  transform: scale(0.95);
-  filter: brightness(0.94);
+  transform: none;
+  filter: none;
 }
 
 .switch-toggle__input {
@@ -97,7 +91,6 @@ button:active {
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.18);
   border: 1px solid rgba(255, 255, 255, 0.16);
-  transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
 .switch-toggle__slider::before {
@@ -110,7 +103,6 @@ button:active {
   border-radius: 50%;
   background: white;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
-  transition: transform 0.2s ease;
 }
 
 .switch-toggle__input:checked + .switch-toggle__slider {
@@ -135,6 +127,14 @@ button:active {
 .lds-roller div {
   animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
   transform-origin: 40px 40px;
+}
+
+*,
+*::before,
+*::after {
+  animation: none !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
 }
 
 .lds-roller div::after {

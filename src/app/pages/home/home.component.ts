@@ -1,6 +1,7 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 
 import Menu from '../../../Utils/Menu';
+import { runtimeConfig } from '../../../environments/runtime-config';
 
 @Component({
   selector: 'app-home',
@@ -14,6 +15,8 @@ export class HomeComponent {
   private infoTouchStartTime = 0;
   private menuToggleTouchStartX = 0;
   private menuToggleTouchStartY = 0;
+  private waiterTouchStartY = 0;
+  private waiterTouchStartTime = 0;
 
   levelOne = false;
   levelTwo = false;
@@ -21,6 +24,13 @@ export class HomeComponent {
   menu = new Menu('el', false);
   isEl = true;
   show = true;
+  waiterModalOpen = false;
+  waiterSending = false;
+  waiterStatusMessage = '';
+  waiterStatusError = false;
+  waiterSunbedNumber = '';
+  waiterDragging = false;
+  waiterDragOffset = 0;
   infoShow = false;
   infoAnimatingOut = false;
   infoDragging = false;
@@ -40,6 +50,7 @@ export class HomeComponent {
   readonly menuIcon = 'images/icons/general/menu.png';
   readonly reserveIcon = 'images/reserve.png';
   readonly sunbedIcon = 'images/sunbed.png';
+  readonly waiterApiUrl = `${runtimeConfig.catalogBackendUrl}/api/call-waiter`;
 
   get restaurantLabel(): string {
     return this.isEl ? 'Εστιατόριο' : 'Restaurant';
@@ -67,6 +78,32 @@ export class HomeComponent {
     return this.isEl ? 'Δείτε τον κατάλογο' : 'Explore the catalog';
   }
 
+  get callWaiterLabel(): string {
+    return this.isEl ? 'Κάλεσε Σερβιτόρο' : 'Call Waiter';
+  }
+
+  get waiterModalTitle(): string {
+    return this.isEl ? 'Κλήση Σερβιτόρου' : 'Call Waiter';
+  }
+
+  get waiterModalCopy(): string {
+    return this.isEl
+      ? 'Στείλτε τον αριθμό ξαπλώστρας για να ειδοποιηθεί η ομάδα.'
+      : 'Send the sunbed number so the team can be notified.';
+  }
+
+  get sunbedLabel(): string {
+    return this.isEl ? 'Αριθμός Ξαπλώστρας' : 'Sunbed Number';
+  }
+
+  get sunbedPlaceholder(): string {
+    return this.isEl ? 'π.χ. 12' : 'e.g. 12';
+  }
+
+  get sendWaiterLabel(): string {
+    return this.isEl ? 'Αποστολή' : 'Send Request';
+  }
+
   switchLang(value: boolean): void {
     if (value) {
       this.menu = new Menu('en', this.menu.isRest);
@@ -76,6 +113,113 @@ export class HomeComponent {
 
     this.menu = new Menu('el', this.menu.isRest);
     this.isEl = true;
+  }
+
+  openWaiterModal(): void {
+    this.waiterModalOpen = true;
+    this.waiterStatusMessage = '';
+    this.waiterStatusError = false;
+    this.waiterDragging = false;
+    this.waiterDragOffset = 0;
+  }
+
+  closeWaiterModal(): void {
+    this.waiterModalOpen = false;
+    this.waiterSending = false;
+    this.waiterStatusMessage = '';
+    this.waiterStatusError = false;
+    this.waiterDragging = false;
+    this.waiterDragOffset = 0;
+  }
+
+  async submitWaiterCall(): Promise<void> {
+    const sunbedNumber = this.waiterSunbedNumber.trim();
+
+    if (!sunbedNumber) {
+      this.waiterStatusError = true;
+      this.waiterStatusMessage = this.isEl
+        ? 'Συμπληρώστε πρώτα τον αριθμό ξαπλώστρας.'
+        : 'Please enter a sunbed number first.';
+      return;
+    }
+
+    this.waiterSending = true;
+    this.waiterStatusMessage = '';
+    this.waiterStatusError = false;
+
+    try {
+      const response = await fetch(this.waiterApiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ sunbedNumber }),
+      });
+
+      const payload = await response.json().catch(() => ({}));
+
+      if (!response.ok) {
+        throw new Error(payload?.message || 'Request failed');
+      }
+
+      this.waiterStatusError = false;
+      this.waiterStatusMessage = payload?.message || (this.isEl
+        ? 'Το αίτημα στάλθηκε επιτυχώς.'
+        : 'The request was sent successfully.');
+      this.waiterSunbedNumber = '';
+    } catch (error) {
+      this.waiterStatusError = true;
+      this.waiterStatusMessage = this.isEl
+        ? 'Η αποστολή απέτυχε. Ελέγξτε αν τρέχει ο server.'
+        : 'Sending failed. Please check that the server is running.';
+      console.error(error);
+    } finally {
+      this.waiterSending = false;
+    }
+  }
+
+  onWaiterTouchStart(event: TouchEvent): void {
+    if (!event.touches.length) {
+      return;
+    }
+
+    this.waiterDragging = true;
+    this.waiterDragOffset = 0;
+    this.waiterTouchStartY = event.touches[0].clientY;
+    this.waiterTouchStartTime = Date.now();
+  }
+
+  onWaiterTouchMove(event: TouchEvent): void {
+    if (!this.waiterDragging || !event.touches.length) {
+      return;
+    }
+
+    const deltaY = event.touches[0].clientY - this.waiterTouchStartY;
+
+    if (deltaY <= 0) {
+      this.waiterDragOffset = 0;
+      return;
+    }
+
+    this.waiterDragOffset = Math.min(deltaY, 240);
+  }
+
+  onWaiterTouchEnd(): void {
+    if (!this.waiterDragging) {
+      return;
+    }
+
+    const elapsed = Date.now() - this.waiterTouchStartTime;
+    const shouldClose = this.waiterDragOffset > 110 || (this.waiterDragOffset > 50 && elapsed < 220);
+
+    this.waiterDragging = false;
+
+    if (shouldClose) {
+      this.closeWaiterModal();
+      return;
+    }
+
+    this.waiterDragOffset = 0;
   }
 
   clicked(index: number): void {
@@ -93,7 +237,7 @@ export class HomeComponent {
 
     outerContainer.scrollTo({
       top: Math.max(0, y),
-      behavior: 'smooth',
+      behavior: 'auto',
     });
 
     this.selectedCategory = index;
@@ -148,7 +292,7 @@ export class HomeComponent {
         const x = header ? this.getPos(header).x : 0;
 
         headerLevelTwo?.scrollTo({
-          behavior: 'smooth',
+          behavior: 'auto',
           left: x - 50,
         });
 
@@ -167,7 +311,7 @@ export class HomeComponent {
     if (outerContainer) {
       outerContainer.scrollTo({
         top: 0,
-        behavior: 'smooth',
+        behavior: 'auto',
       });
     }
   }
@@ -214,12 +358,8 @@ export class HomeComponent {
   closeInfo(): void {
     this.infoDragging = false;
     this.infoDragOffset = 0;
-    this.infoAnimatingOut = true;
-
-    window.setTimeout(() => {
-      this.infoShow = false;
-      this.infoAnimatingOut = false;
-    }, 350);
+    this.infoShow = false;
+    this.infoAnimatingOut = false;
   }
 
   onInfoTouchStart(event: TouchEvent): void {

@@ -61,15 +61,26 @@
     animation: switchClusterFloat 5.6s ease-in-out infinite;
 }
 
-.headerChip{
-    padding: 0.45rem 0.7rem;
+.headerWaiterButton{
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.55rem 0.8rem;
     border-radius: 999px;
-    background: rgba(255, 255, 255, 0.08);
-    color: #f6eadb;
+    border: 1px solid rgba(255, 226, 193, 0.16);
+    background: linear-gradient(135deg, #a06d42 0%, #815331 100%);
+    color: #fff6ed;
     font-size: 0.68rem;
+    font-weight: 700;
     letter-spacing: 0.18em;
     text-transform: uppercase;
     animation: chipFloat 4.6s ease-in-out infinite;
+}
+
+.headerWaiterButton__icon{
+    width: 0.95rem;
+    height: 0.95rem;
+    filter: brightness(0) invert(1);
 }
 
 .headerLanguageCont{
@@ -337,4 +348,9 @@
         transform: translate3d(-0.8rem, 1rem, 0) scale(1.18);
         opacity: 0.86;
     }
+}
+
+.headerCategory {
+    opacity: 1;
+    transform: none;
 }
