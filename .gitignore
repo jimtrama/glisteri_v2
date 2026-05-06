@@ -46,6 +46,9 @@ build/Release
 node_modules/
 build/
 jspm_packages/
+mobile_app/.gradle/
+mobile_app/build/
+mobile_app/app/build/
 
 # Snowpack dependency directory (https://snowpack.dev/)
 web_modules/
@@ -105,6 +108,7 @@ dist
 
 # Serverless directories
 .serverless/
+.firebase/
 
 # FuseBox cache
 .fusebox/
@@ -124,3 +128,10 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# Firebase and local machine secrets
+backend/firebase-service-account.json
+backend/*service-account*.json
+backend/data/device-tokens.txt
+mobile_app/app/google-services.json
+mobile_app/local.properties
