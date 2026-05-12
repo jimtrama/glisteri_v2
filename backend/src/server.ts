@@ -180,6 +180,8 @@ async function sendWaiterPushNotification(sunbedNumber: string): Promise<{ attem
       body: `Sunbed ${sunbedNumber} requested service.`,
     },
     data: {
+      title: 'New waiter request',
+      body: `Sunbed ${sunbedNumber} requested service.`,
       type: 'waiter_call',
       sunbedNumber,
       sentAt: new Date().toISOString(),

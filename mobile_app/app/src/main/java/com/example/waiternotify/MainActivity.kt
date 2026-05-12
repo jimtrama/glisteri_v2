@@ -1,6 +1,7 @@
 package com.example.waiternotify
 
 import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
@@ -49,15 +50,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
-import androidx.lifecycle.lifecycleScope
 import com.example.waiternotify.ui.theme.WaiterNotifyTheme
 import com.google.firebase.messaging.FirebaseMessaging
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.isActive
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import kotlin.concurrent.thread
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -68,7 +62,6 @@ class MainActivity : ComponentActivity() {
     private var settingsState by mutableStateOf(DeviceRegistrationUiState())
     private var requestsState by mutableStateOf(WaiterRequestsUiState())
     private var removingRequestIds by mutableStateOf(setOf<String>())
-    private var pollingJob: Job? = null
 
     private val notificationPermissionLauncher = registerForActivityResult(
         ActivityResultContracts.RequestPermission()
@@ -88,7 +81,8 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         requestNotificationPermissionIfNeeded()
         registerDevice()
-        startRequestsPolling()
+        processNotificationIntent(intent)
+        refreshWaiterRequests()
 
         setContent {
             WaiterNotifyTheme {
@@ -112,9 +106,16 @@ class MainActivity : ComponentActivity() {
         }
     }
 
-    override fun onDestroy() {
-        pollingJob?.cancel()
-        super.onDestroy()
+    override fun onResume() {
+        super.onResume()
+        refreshWaiterRequests()
+    }
+
+    override fun onNewIntent(intent: Intent) {
+        super.onNewIntent(intent)
+        setIntent(intent)
+        processNotificationIntent(intent)
+        refreshWaiterRequests()
     }
 
     private fun requestNotificationPermissionIfNeeded() {
@@ -197,40 +198,34 @@ class MainActivity : ComponentActivity() {
         }
     }
 
-    private fun startRequestsPolling() {
-        pollingJob?.cancel()
-        pollingJob = lifecycleScope.launch {
-            while (isActive) {
-                refreshWaiterRequests()
-                delay(5_000)
+    private fun refreshWaiterRequests() {
+        val requests = WaiterRequestsRepository.getRequests(applicationContext)
+
+        requestsState = requestsState.copy(
+            isLoading = false,
+            requests = requests,
+            lastUpdatedLabel = formatNowLabel(),
+            errorMessage = if (requests.isEmpty()) {
+                getString(R.string.requests_empty_message)
+            } else {
+                ""
             }
-        }
+        )
     }
 
-    private fun refreshWaiterRequests() {
-        lifecycleScope.launch {
-            val firstLoad = requestsState.requests.isEmpty()
+    private fun processNotificationIntent(intent: Intent?) {
+        val sunbedNumber = intent?.getStringExtra("sunbedNumber")?.trim().orEmpty()
+        val sentAt = intent?.getStringExtra("sentAt")?.trim().orEmpty()
 
-            requestsState = requestsState.copy(
-                isLoading = firstLoad,
-                errorMessage = ""
-            )
-
-            val requests = withContext(Dispatchers.IO) {
-                WaiterRequestsRepository.fetchRequests()
-            }
-
-            requestsState = requestsState.copy(
-                isLoading = false,
-                requests = requests,
-                lastUpdatedLabel = formatNowLabel(),
-                errorMessage = if (requests.isEmpty()) {
-                    if (firstLoad) getString(R.string.requests_empty_message) else ""
-                } else {
-                    ""
-                }
-            )
+        if (sunbedNumber.isBlank() || sentAt.isBlank()) {
+            return
         }
+
+        WaiterRequestsRepository.addRequestIfMissing(
+            context = applicationContext,
+            sunbedNumber = sunbedNumber,
+            receivedAt = sentAt
+        )
     }
 
     private fun removeRequest(requestId: String) {
@@ -239,31 +234,26 @@ class MainActivity : ComponentActivity() {
         }
 
         removingRequestIds = removingRequestIds + requestId
+        val removed = WaiterRequestsRepository.removeRequest(applicationContext, requestId)
 
-        lifecycleScope.launch {
-            val removed = withContext(Dispatchers.IO) {
-                WaiterRequestsRepository.removeRequest(requestId)
-            }
-
-            if (removed) {
-                val remainingRequests = requestsState.requests.filterNot { it.id == requestId }
-                requestsState = requestsState.copy(
-                    requests = remainingRequests,
-                    lastUpdatedLabel = formatNowLabel(),
-                    errorMessage = if (remainingRequests.isEmpty()) {
-                        getString(R.string.requests_empty_message)
-                    } else {
-                        ""
-                    }
-                )
-            } else {
-                requestsState = requestsState.copy(
-                    errorMessage = getString(R.string.request_remove_failed_message)
-                )
-            }
-
-            removingRequestIds = removingRequestIds - requestId
+        if (removed) {
+            val remainingRequests = requestsState.requests.filterNot { it.id == requestId }
+            requestsState = requestsState.copy(
+                requests = remainingRequests,
+                lastUpdatedLabel = formatNowLabel(),
+                errorMessage = if (remainingRequests.isEmpty()) {
+                    getString(R.string.requests_empty_message)
+                } else {
+                    ""
+                }
+            )
+        } else {
+            requestsState = requestsState.copy(
+                errorMessage = getString(R.string.request_remove_failed_message)
+            )
         }
+
+        removingRequestIds = removingRequestIds - requestId
     }
 
     private fun formatNowLabel(): String {
@@ -409,9 +399,9 @@ private fun RequestsPage(
         StatusCard(
             title = "Live requests",
             body = if (state.lastUpdatedLabel.isBlank()) {
-                "Waiting for the first sync with the backend."
+                "Waiting for the first waiter notification on this device."
             } else {
-                "Last synced at ${state.lastUpdatedLabel}. ${state.requests.size} active request(s)."
+                "Last refreshed at ${state.lastUpdatedLabel}. ${state.requests.size} stored request(s) on this device."
             },
             accent = Color(0xFF80B26A)
         )
@@ -424,7 +414,7 @@ private fun RequestsPage(
             ),
             shape = RoundedCornerShape(18.dp)
         ) {
-            Text("Refresh")
+            Text("Reload inbox")
         }
 
         if (state.errorMessage.isNotBlank() && state.requests.isNotEmpty()) {

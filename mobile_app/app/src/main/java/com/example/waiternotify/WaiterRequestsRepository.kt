@@ -1,12 +1,12 @@
 package com.example.waiternotify
 
-import android.util.Log
+import android.content.Context
 import org.json.JSONArray
 import org.json.JSONObject
-import java.io.BufferedReader
-import java.io.InputStreamReader
-import java.net.HttpURLConnection
-import java.net.URL
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
+import java.util.UUID
 
 data class WaiterRequest(
     val id: String,
@@ -15,80 +15,103 @@ data class WaiterRequest(
 )
 
 object WaiterRequestsRepository {
-    private const val tag = "WaiterRequestsRepository"
+    private const val preferencesName = "waiter_requests_store"
+    private const val requestsKey = "requests"
+    private const val maxStoredRequests = 50
 
-    fun fetchRequests(): List<WaiterRequest> {
-        val connection = (URL("${BuildConfig.BACKEND_BASE_URL}/api/call-waiter").openConnection() as HttpURLConnection).apply {
-            requestMethod = "GET"
-            connectTimeout = 8_000
-            readTimeout = 8_000
-            setRequestProperty("Accept", "application/json")
-        }
+    fun getRequests(context: Context): List<WaiterRequest> {
+        val raw = context.getSharedPreferences(preferencesName, Context.MODE_PRIVATE)
+            .getString(requestsKey, "[]")
+            .orEmpty()
 
-        return try {
-            val responseCode = connection.responseCode
-            val stream = if (responseCode in 200..299) connection.inputStream else connection.errorStream
-            val body = stream?.use { input ->
-                BufferedReader(InputStreamReader(input)).readText()
-            }.orEmpty()
+        val requests = JSONArray(raw)
 
-            if (responseCode !in 200..299) {
-                Log.w(tag, "Fetch requests failed: $responseCode $body")
-                return emptyList()
-            }
-
-            val payload = JSONObject(body)
-            val requests = payload.optJSONArray("requests") ?: JSONArray()
-            buildList {
-                for (index in 0 until requests.length()) {
-                    val item = requests.optJSONObject(index) ?: continue
-                    add(
-                        WaiterRequest(
-                            id = item.optString("id"),
-                            sunbedNumber = item.optString("sunbedNumber"),
-                            receivedAt = item.optString("receivedAt")
-                        )
+        return buildList {
+            for (index in 0 until requests.length()) {
+                val item = requests.optJSONObject(index) ?: continue
+                add(
+                    WaiterRequest(
+                        id = item.optString("id"),
+                        sunbedNumber = item.optString("sunbedNumber"),
+                        receivedAt = item.optString("receivedAt")
                     )
-                }
+                )
             }
-        } catch (error: Exception) {
-            Log.e(tag, "Failed to fetch waiter requests", error)
-            emptyList()
-        } finally {
-            connection.disconnect()
         }
     }
 
-    fun removeRequest(requestId: String): Boolean {
+    fun addRequest(
+        context: Context,
+        sunbedNumber: String,
+        receivedAt: String = timestampNow()
+    ): WaiterRequest {
+        val request = WaiterRequest(
+            id = UUID.randomUUID().toString(),
+            sunbedNumber = sunbedNumber,
+            receivedAt = receivedAt
+        )
+
+        val updatedRequests = listOf(request) + getRequests(context)
+        saveRequests(context, updatedRequests.take(maxStoredRequests))
+        return request
+    }
+
+    fun addRequestIfMissing(
+        context: Context,
+        sunbedNumber: String,
+        receivedAt: String
+    ): WaiterRequest {
+        val currentRequests = getRequests(context)
+        val existingRequest = currentRequests.firstOrNull {
+            it.sunbedNumber == sunbedNumber && it.receivedAt == receivedAt
+        }
+
+        if (existingRequest != null) {
+            return existingRequest
+        }
+
+        return addRequest(
+            context = context,
+            sunbedNumber = sunbedNumber,
+            receivedAt = receivedAt
+        )
+    }
+
+    fun removeRequest(context: Context, requestId: String): Boolean {
         if (requestId.isBlank()) {
             return false
         }
 
-        val connection = (URL("${BuildConfig.BACKEND_BASE_URL}/api/call-waiter/$requestId").openConnection() as HttpURLConnection).apply {
-            requestMethod = "DELETE"
-            connectTimeout = 8_000
-            readTimeout = 8_000
-            setRequestProperty("Accept", "application/json")
+        val currentRequests = getRequests(context)
+        val updatedRequests = currentRequests.filterNot { it.id == requestId }
+
+        if (updatedRequests.size == currentRequests.size) {
+            return false
         }
 
-        return try {
-            val responseCode = connection.responseCode
-            val stream = if (responseCode in 200..299) connection.inputStream else connection.errorStream
-            val body = stream?.use { input ->
-                BufferedReader(InputStreamReader(input)).readText()
-            }.orEmpty()
+        saveRequests(context, updatedRequests)
+        return true
+    }
 
-            if (responseCode !in 200..299) {
-                Log.w(tag, "Remove request failed: $responseCode $body")
-                return false
-            }
+    private fun saveRequests(context: Context, requests: List<WaiterRequest>) {
+        val payload = JSONArray()
 
-            true
-        } catch (error: Exception) {
-            Log.e(tag, "Failed to remove waiter request", error)
-            false
-        } finally {
-            connection.disconnect()
+        requests.forEach { request ->
+            payload.put(
+                JSONObject()
+                    .put("id", request.id)
+                    .put("sunbedNumber", request.sunbedNumber)
+                    .put("receivedAt", request.receivedAt)
+            )
         }
+
+        context.getSharedPreferences(preferencesName, Context.MODE_PRIVATE)
+            .edit()
+            .putString(requestsKey, payload.toString())
+            .apply()
+    }
+
+    private fun timestampNow(): String {
+        return SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(Date())
     }
 }
