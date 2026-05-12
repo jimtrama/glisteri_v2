@@ -107,6 +107,55 @@
     </div>
   </div>
 
+  <div *ngIf="askWaiterModalOpen" class="modalBackdrop" (click)="closeAskWaiterModal()">
+    <div class="modalContainer waiterModal" (click)="$event.stopPropagation()">
+      <button type="button" class="waiterModal__close" (click)="closeAskWaiterModal()">
+        <img alt="close" [src]="closeIcon" class="closeIcon">
+      </button>
+
+      <div class="modalEyebrow">Service</div>
+      <h2 class="modalTitle">{{ askWaiterModalTitle }}</h2>
+      <p class="modalText">{{ askWaiterModalCopy }}</p>
+
+      <label class="waiterModal__field">
+        <span class="waiterModal__label">{{ sunbedLabel }}</span>
+        <input
+          class="waiterModal__input"
+          type="number"
+          min="1"
+          inputmode="numeric"
+          [placeholder]="sunbedPlaceholder"
+          [value]="askWaiterSunbedNumber"
+          (input)="askWaiterSunbedNumber = $any($event.target).value"
+        >
+      </label>
+
+      <label class="waiterModal__field">
+        <span class="waiterModal__label">{{ questionLabel }}</span>
+        <textarea
+          class="waiterModal__input waiterModal__textarea"
+          rows="4"
+          maxlength="240"
+          [placeholder]="questionPlaceholder"
+          [value]="askWaiterQuestion"
+          (input)="askWaiterQuestion = $any($event.target).value"
+        ></textarea>
+      </label>
+
+      <div
+        *ngIf="askWaiterStatusMessage"
+        class="waiterModal__status"
+        [class.waiterModal__status--error]="askWaiterStatusError"
+      >
+        {{ askWaiterStatusMessage }}
+      </div>
+
+      <button type="button" class="buttonModal primary waiterModal__send" [disabled]="askWaiterSending" (click)="submitWaiterQuestion()">
+        <span>{{ askWaiterSending ? '...' : sendQuestionLabel }}</span>
+      </button>
+    </div>
+  </div>
+
   <div
     *ngIf="infoShow || infoAnimatingOut"
     id="info"
@@ -192,6 +241,7 @@
     (languageToggle)="switchLang($event)"
     (menuToggle)="changed($event)"
     (waiterClick)="openWaiterModal()"
+    (askWaiterClick)="openAskWaiterModal()"
   ></app-header>
 
   <div #outerContainer (scroll)="onScroll($event)" class="outerContainer">

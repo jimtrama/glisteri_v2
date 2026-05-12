@@ -84,6 +84,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+        createWaiterNotificationChannel()
         requestNotificationPermissionIfNeeded()
         registerDevice()
         processNotificationIntent(intent)
@@ -223,6 +224,10 @@ class MainActivity : ComponentActivity() {
     private fun processNotificationIntent(intent: Intent?) {
         val sunbedNumber = intent?.getStringExtra("sunbedNumber")?.trim().orEmpty()
         val sentAt = intent?.getStringExtra("sentAt")?.trim().orEmpty()
+        val type = intent?.getStringExtra("type")?.trim().orEmpty().ifBlank {
+            REQUEST_TYPE_CALL
+        }
+        val question = intent?.getStringExtra("question")?.trim().orEmpty()
 
         if (sunbedNumber.isBlank() || sentAt.isBlank()) {
             return
@@ -231,7 +236,9 @@ class MainActivity : ComponentActivity() {
         WaiterRequestsRepository.addRequestIfMissing(
             context = applicationContext,
             sunbedNumber = sunbedNumber,
-            receivedAt = sentAt
+            receivedAt = sentAt,
+            type = type,
+            question = question
         )
     }
 
@@ -597,7 +604,11 @@ private fun RequestCard(
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Text(
-                    text = "Sunbed ${request.sunbedNumber}",
+                    text = if (request.type == REQUEST_TYPE_QUESTION) {
+                        "Question from sunbed ${request.sunbedNumber}"
+                    } else {
+                        "Sunbed ${request.sunbedNumber}"
+                    },
                     style = MaterialTheme.typography.titleLarge,
                     color = Color(0xFF2A1B12),
                     fontWeight = FontWeight.SemiBold
@@ -614,10 +625,21 @@ private fun RequestCard(
                 }
             }
             Text(
-                text = "Request ID: ${request.id.take(8)}",
+                text = if (request.type == REQUEST_TYPE_QUESTION) {
+                    "Guest question"
+                } else {
+                    "Waiter call"
+                },
                 style = MaterialTheme.typography.bodyMedium,
                 color = Color(0xFF8A6B54)
             )
+            if (request.question.isNotBlank()) {
+                Text(
+                    text = request.question,
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = Color(0xFF60493B)
+                )
+            }
             Text(
                 text = if (removing) "Removing..." else request.receivedAt,
                 style = MaterialTheme.typography.bodyMedium,

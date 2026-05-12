@@ -8,10 +8,15 @@ import java.util.Date
 import java.util.Locale
 import java.util.UUID
 
+const val REQUEST_TYPE_CALL = "waiter_call"
+const val REQUEST_TYPE_QUESTION = "waiter_question"
+
 data class WaiterRequest(
     val id: String,
     val sunbedNumber: String,
-    val receivedAt: String
+    val receivedAt: String,
+    val type: String = REQUEST_TYPE_CALL,
+    val question: String = ""
 )
 
 object WaiterRequestsRepository {
@@ -33,7 +38,9 @@ object WaiterRequestsRepository {
                     WaiterRequest(
                         id = item.optString("id"),
                         sunbedNumber = item.optString("sunbedNumber"),
-                        receivedAt = item.optString("receivedAt")
+                        receivedAt = item.optString("receivedAt"),
+                        type = item.optString("type", REQUEST_TYPE_CALL),
+                        question = item.optString("question")
                     )
                 )
             }
@@ -43,12 +50,16 @@ object WaiterRequestsRepository {
     fun addRequest(
         context: Context,
         sunbedNumber: String,
-        receivedAt: String = timestampNow()
+        receivedAt: String = timestampNow(),
+        type: String = REQUEST_TYPE_CALL,
+        question: String = ""
     ): WaiterRequest {
         val request = WaiterRequest(
             id = UUID.randomUUID().toString(),
             sunbedNumber = sunbedNumber,
-            receivedAt = receivedAt
+            receivedAt = receivedAt,
+            type = type,
+            question = question
         )
 
         val updatedRequests = listOf(request) + getRequests(context)
@@ -59,11 +70,13 @@ object WaiterRequestsRepository {
     fun addRequestIfMissing(
         context: Context,
         sunbedNumber: String,
-        receivedAt: String
+        receivedAt: String,
+        type: String = REQUEST_TYPE_CALL,
+        question: String = ""
     ): WaiterRequest {
         val currentRequests = getRequests(context)
         val existingRequest = currentRequests.firstOrNull {
-            it.sunbedNumber == sunbedNumber && it.receivedAt == receivedAt
+            it.sunbedNumber == sunbedNumber && it.receivedAt == receivedAt && it.type == type
         }
 
         if (existingRequest != null) {
@@ -73,7 +86,9 @@ object WaiterRequestsRepository {
         return addRequest(
             context = context,
             sunbedNumber = sunbedNumber,
-            receivedAt = receivedAt
+            receivedAt = receivedAt,
+            type = type,
+            question = question
         )
     }
 
@@ -102,6 +117,8 @@ object WaiterRequestsRepository {
                     .put("id", request.id)
                     .put("sunbedNumber", request.sunbedNumber)
                     .put("receivedAt", request.receivedAt)
+                    .put("type", request.type)
+                    .put("question", request.question)
             )
         }
 

@@ -5,6 +5,10 @@
         <img alt="sunbed" [src]="sunbedIcon" class="headerWaiterButton__icon">
         <span>{{ callWaiterLabel }}</span>
       </button>
+      <button type="button" class="headerWaiterButton headerWaiterButton--ask" (click)="onAskWaiterClick()">
+        <span class="headerWaiterButton__mark">?</span>
+        <span>{{ askWaiterLabel }}</span>
+      </button>
     </div>
 
     <div class="headerLanguageCont" (click)="onLanguageToggle()">

@@ -35,6 +35,12 @@ export class HomeComponent implements OnInit, OnDestroy {
   waiterStatusMessage = '';
   waiterStatusError = false;
   waiterSunbedNumber = '';
+  askWaiterModalOpen = false;
+  askWaiterSending = false;
+  askWaiterStatusMessage = '';
+  askWaiterStatusError = false;
+  askWaiterSunbedNumber = '';
+  askWaiterQuestion = '';
   waiterDragging = false;
   waiterDragOffset = 0;
   infoShow = false;
@@ -57,6 +63,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   readonly reserveIcon = 'images/reserve.png';
   readonly sunbedIcon = 'images/sunbed.png';
   readonly waiterApiUrl = `${runtimeConfig.catalogBackendUrl}/api/call-waiter`;
+  readonly askWaiterApiUrl = `${runtimeConfig.catalogBackendUrl}/api/ask-waiter`;
 
   ngOnInit(): void {
     const minimumLoading = new Promise<void>((resolve) => {
@@ -125,10 +132,20 @@ export class HomeComponent implements OnInit, OnDestroy {
     return this.isEl ? 'Κλήση Σερβιτόρου' : 'Call Waiter';
   }
 
+  get askWaiterModalTitle(): string {
+    return this.isEl ? 'Ερώτηση σε Σερβιτόρο' : 'Ask Waiter';
+  }
+
   get waiterModalCopy(): string {
     return this.isEl
       ? 'Στείλτε τον αριθμό ξαπλώστρας για να ειδοποιηθεί η ομάδα.'
       : 'Send the sunbed number so the team can be notified.';
+  }
+
+  get askWaiterModalCopy(): string {
+    return this.isEl
+      ? 'Στείλτε την ερώτησή σας μαζί με τον αριθμό ξαπλώστρας.'
+      : 'Send your question with your sunbed number.';
   }
 
   get sunbedLabel(): string {
@@ -141,6 +158,18 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   get sendWaiterLabel(): string {
     return this.isEl ? 'Αποστολή' : 'Send Request';
+  }
+
+  get questionLabel(): string {
+    return this.isEl ? 'Ερώτηση' : 'Question';
+  }
+
+  get questionPlaceholder(): string {
+    return this.isEl ? 'π.χ. Έχετε πετσέτες;' : 'e.g. Do you have towels?';
+  }
+
+  get sendQuestionLabel(): string {
+    return this.isEl ? 'Αποστολή Ερώτησης' : 'Send Question';
   }
 
   private preloadStartupAssets(): Promise<void> {
@@ -237,6 +266,19 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.waiterDragOffset = 0;
   }
 
+  openAskWaiterModal(): void {
+    this.askWaiterModalOpen = true;
+    this.askWaiterStatusMessage = '';
+    this.askWaiterStatusError = false;
+  }
+
+  closeAskWaiterModal(): void {
+    this.askWaiterModalOpen = false;
+    this.askWaiterSending = false;
+    this.askWaiterStatusMessage = '';
+    this.askWaiterStatusError = false;
+  }
+
   async submitWaiterCall(): Promise<void> {
     const sunbedNumber = this.waiterSunbedNumber.trim();
 
@@ -280,6 +322,54 @@ export class HomeComponent implements OnInit, OnDestroy {
       console.error(error);
     } finally {
       this.waiterSending = false;
+    }
+  }
+
+  async submitWaiterQuestion(): Promise<void> {
+    const sunbedNumber = this.askWaiterSunbedNumber.trim();
+    const question = this.askWaiterQuestion.trim();
+
+    if (!sunbedNumber || !question) {
+      this.askWaiterStatusError = true;
+      this.askWaiterStatusMessage = this.isEl
+        ? 'Συμπληρώστε αριθμό ξαπλώστρας και ερώτηση.'
+        : 'Please enter both a sunbed number and a question.';
+      return;
+    }
+
+    this.askWaiterSending = true;
+    this.askWaiterStatusMessage = '';
+    this.askWaiterStatusError = false;
+
+    try {
+      const response = await fetch(this.askWaiterApiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ sunbedNumber, question }),
+      });
+
+      const payload = await response.json().catch(() => ({}));
+
+      if (!response.ok) {
+        throw new Error(payload?.message || 'Request failed');
+      }
+
+      this.askWaiterStatusError = false;
+      this.askWaiterStatusMessage = payload?.message || (this.isEl
+        ? 'Η ερώτηση στάλθηκε επιτυχώς.'
+        : 'Your question was sent successfully.');
+      this.askWaiterSunbedNumber = '';
+      this.askWaiterQuestion = '';
+    } catch (error) {
+      this.askWaiterStatusError = true;
+      this.askWaiterStatusMessage = this.isEl
+        ? 'Η αποστολή απέτυχε. Ελέγξτε αν τρέχει ο server.'
+        : 'Sending failed. Please check that the server is running.';
+      console.error(error);
+    } finally {
+      this.askWaiterSending = false;
     }
   }
 

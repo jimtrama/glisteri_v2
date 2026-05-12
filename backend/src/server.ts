@@ -10,6 +10,11 @@ type CallWaiterPayload = {
   sunbedNumber?: number | string;
 };
 
+type AskWaiterPayload = {
+  sunbedNumber?: number | string;
+  question?: string;
+};
+
 type DeviceTokenPayload = {
   token?: string;
 };
@@ -152,7 +157,10 @@ function removeDeviceTokens(tokensToRemove: string[]): void {
   }
 }
 
-async function sendWaiterPushNotification(sunbedNumber: string): Promise<{ attempted: number; delivered: number; removedTokens: number; skipped: boolean }> {
+async function sendWaiterPushNotification(
+  sunbedNumber: string,
+  options: { title?: string; body?: string; type?: string; question?: string } = {},
+): Promise<{ attempted: number; delivered: number; removedTokens: number; skipped: boolean }> {
   if (!firebaseMessaging) {
     return {
       attempted: 0,
@@ -175,23 +183,16 @@ async function sendWaiterPushNotification(sunbedNumber: string): Promise<{ attem
 
   const response = await firebaseMessaging.sendEachForMulticast({
     tokens,
-    notification: {
-      title: 'New waiter request',
-      body: `Sunbed ${sunbedNumber} requested service.`,
-    },
     data: {
-      title: 'New waiter request',
-      body: `Sunbed ${sunbedNumber} requested service.`,
-      type: 'waiter_call',
+      title: options.title ?? 'New waiter request',
+      body: options.body ?? `Sunbed ${sunbedNumber} requested service.`,
+      type: options.type ?? 'waiter_call',
       sunbedNumber,
+      question: options.question ?? '',
       sentAt: new Date().toISOString(),
     },
     android: {
       priority: 'high',
-      notification: {
-        channelId: FIREBASE_ANDROID_CHANNEL_ID,
-        sound: 'default',
-      },
     },
   });
 
@@ -250,8 +251,8 @@ function sendJson(response: ServerResponse, statusCode: number, payload: unknown
   response.end(JSON.stringify(payload));
 }
 
-async function readJsonBody(request: IncomingMessage): Promise<CallWaiterPayload> {
-  return await new Promise<CallWaiterPayload>((resolve, reject) => {
+async function readJsonBody<TPayload extends object = CallWaiterPayload>(request: IncomingMessage): Promise<TPayload> {
+  return await new Promise<TPayload>((resolve, reject) => {
     let rawBody = '';
 
     request.on('data', (chunk: Buffer) => {
@@ -260,12 +261,12 @@ async function readJsonBody(request: IncomingMessage): Promise<CallWaiterPayload
 
     request.on('end', () => {
       if (!rawBody) {
-        resolve({});
+        resolve({} as TPayload);
         return;
       }
 
       try {
-        resolve(JSON.parse(rawBody) as CallWaiterPayload);
+        resolve(JSON.parse(rawBody) as TPayload);
       } catch (error) {
         reject(error);
       }
@@ -422,6 +423,62 @@ const httpServer = createServer(async (request, response) => {
       return;
     } catch (error) {
       console.error('[waiter-call] Invalid request body', error);
+      sendJson(response, 400, {
+        ok: false,
+        message: 'Invalid JSON payload.',
+      }, requestOrigin);
+      return;
+    }
+  }
+
+  if (request.method === 'POST' && requestUrl.pathname === '/api/ask-waiter') {
+    try {
+      const payload = await readJsonBody<AskWaiterPayload>(request);
+      const sunbedNumber = String(payload.sunbedNumber ?? '').trim();
+      const question = String(payload.question ?? '').trim();
+
+      if (!sunbedNumber) {
+        sendJson(response, 400, {
+          ok: false,
+          message: 'Sunbed number is required.',
+        }, requestOrigin);
+        return;
+      }
+
+      if (!question) {
+        sendJson(response, 400, {
+          ok: false,
+          message: 'Question is required.',
+        }, requestOrigin);
+        return;
+      }
+
+      const notificationBody = `Sunbed ${sunbedNumber}: ${question.slice(0, 120)}`;
+      console.log(`[waiter-question] Sunbed ${sunbedNumber}: ${question}`);
+
+      const pushResult = await sendWaiterPushNotification(sunbedNumber, {
+        title: 'New waiter question',
+        body: notificationBody,
+        type: 'waiter_question',
+        question,
+      });
+
+      if (pushResult.skipped) {
+        console.log('[firebase] Push skipped: Firebase not configured or no registered device tokens.');
+      } else {
+        console.log(
+          `[firebase] Question push sent for sunbed ${sunbedNumber}. Delivered ${pushResult.delivered}/${pushResult.attempted}, removed ${pushResult.removedTokens} invalid token(s).`
+        );
+      }
+
+      sendJson(response, 200, {
+        ok: true,
+        message: `Question sent for sunbed ${sunbedNumber}.`,
+        push: pushResult,
+      }, requestOrigin);
+      return;
+    } catch (error) {
+      console.error('[waiter-question] Invalid request body', error);
       sendJson(response, 400, {
         ok: false,
         message: 'Invalid JSON payload.',

@@ -17,6 +17,7 @@ export class HeaderComponent {
   @Output() languageToggle = new EventEmitter<boolean>();
   @Output() menuToggle = new EventEmitter<boolean>();
   @Output() waiterClick = new EventEmitter<void>();
+  @Output() askWaiterClick = new EventEmitter<void>();
 
   readonly logo = 'images/header/s_logo.png';
   readonly elFlag = 'images/flags/s_eflag.png';
@@ -27,6 +28,10 @@ export class HeaderComponent {
 
   get callWaiterLabel(): string {
     return this.isEl ? 'Κάλεσε Σερβιτόρο' : 'Call Waiter';
+  }
+
+  get askWaiterLabel(): string {
+    return this.isEl ? 'Ρώτα Σερβιτόρο' : 'Ask Waiter';
   }
 
   onToggleTouchStart(event: TouchEvent): void {
@@ -68,5 +73,9 @@ export class HeaderComponent {
 
   onWaiterClick(): void {
     this.waiterClick.emit();
+  }
+
+  onAskWaiterClick(): void {
+    this.askWaiterClick.emit();
   }
 }

@@ -77,10 +77,26 @@
     animation: chipFloat 4.6s ease-in-out infinite;
 }
 
+.headerWaiterButton--ask{
+    background: rgba(255, 255, 255, 0.08);
+}
+
 .headerWaiterButton__icon{
     width: 0.95rem;
     height: 0.95rem;
     filter: brightness(0) invert(1);
+}
+
+.headerWaiterButton__mark{
+    width: 0.95rem;
+    height: 0.95rem;
+    display: grid;
+    place-items: center;
+    border-radius: 999px;
+    background: rgba(255, 246, 237, 0.18);
+    color: #fff6ed;
+    font-size: 0.72rem;
+    line-height: 1;
 }
 
 .headerLanguageCont{

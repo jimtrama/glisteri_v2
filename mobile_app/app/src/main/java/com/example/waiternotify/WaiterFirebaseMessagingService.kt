@@ -1,10 +1,7 @@
 package com.example.waiternotify
 
 import android.Manifest
-import android.app.NotificationChannel
-import android.app.NotificationManager
 import android.app.PendingIntent
-import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
@@ -18,7 +15,7 @@ import kotlin.concurrent.thread
 class WaiterFirebaseMessagingService : FirebaseMessagingService() {
     override fun onCreate() {
         super.onCreate()
-        createNotificationChannel()
+        createWaiterNotificationChannel()
     }
 
     override fun onNewToken(token: String) {
@@ -38,37 +35,26 @@ class WaiterFirebaseMessagingService : FirebaseMessagingService() {
             ?: message.data["body"]
             ?: getString(R.string.notification_body_default)
         val sunbedNumber = message.data["sunbedNumber"]?.trim().orEmpty()
+        val type = message.data["type"]?.trim().orEmpty().ifBlank {
+            REQUEST_TYPE_CALL
+        }
+        val question = message.data["question"]?.trim().orEmpty()
         val sentAt = message.data["sentAt"]?.takeIf { it.isNotBlank() } ?: bodyTimestampFallback()
 
         if (sunbedNumber.isNotBlank()) {
             WaiterRequestsRepository.addRequestIfMissing(
                 context = applicationContext,
                 sunbedNumber = sunbedNumber,
-                receivedAt = sentAt
+                receivedAt = sentAt,
+                type = type,
+                question = question
             )
         }
 
-        showNotification(title, body, sunbedNumber, sentAt)
+        showNotification(title, body, sunbedNumber, sentAt, type, question)
     }
 
-    private fun createNotificationChannel() {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
-            return
-        }
-
-        val channel = NotificationChannel(
-            NOTIFICATION_CHANNEL_ID,
-            getString(R.string.notification_channel_name),
-            NotificationManager.IMPORTANCE_HIGH
-        ).apply {
-            description = getString(R.string.notification_channel_description)
-        }
-
-        val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        notificationManager.createNotificationChannel(channel)
-    }
-
-    private fun showNotification(title: String, body: String, sunbedNumber: String, sentAt: String) {
+    private fun showNotification(title: String, body: String, sunbedNumber: String, sentAt: String, type: String, question: String) {
         if (
             Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU &&
             ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED
@@ -80,6 +66,8 @@ class WaiterFirebaseMessagingService : FirebaseMessagingService() {
             flags = Intent.FLAG_ACTIVITY_SINGLE_TOP or Intent.FLAG_ACTIVITY_CLEAR_TOP
             putExtra("sunbedNumber", sunbedNumber)
             putExtra("sentAt", sentAt)
+            putExtra("type", type)
+            putExtra("question", question)
         }
 
         val pendingIntent = PendingIntent.getActivity(
@@ -102,7 +90,7 @@ class WaiterFirebaseMessagingService : FirebaseMessagingService() {
     }
 
     companion object {
-        const val NOTIFICATION_CHANNEL_ID = "waiter_requests"
+        const val NOTIFICATION_CHANNEL_ID = WAITER_NOTIFICATION_CHANNEL_ID
     }
 
     private fun bodyTimestampFallback(): String {

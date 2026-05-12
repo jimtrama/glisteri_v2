@@ -277,6 +277,12 @@
     outline: none;
 }
 
+.waiterModal__textarea{
+    min-height: 7rem;
+    line-height: 1.45;
+    resize: vertical;
+}
+
 .waiterModal__input::placeholder{
     color: rgba(247, 239, 229, 0.38);
 }
