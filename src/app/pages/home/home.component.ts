@@ -68,6 +68,16 @@ export class HomeComponent {
     return this.menu.isRest ? this.restaurantLabel : this.beachLabel;
   }
 
+  get nextMenuLabel(): string {
+    return this.menu.isRest ? this.beachLabel : this.restaurantLabel;
+  }
+
+  get nextMenuButtonLabel(): string {
+    return this.isEl
+      ? `Άνοιγμα ${this.nextMenuLabel}`
+      : `Open ${this.nextMenuLabel}`;
+  }
+
   get experienceCopy(): string {
     return this.isEl
       ? 'Απολαύστε αυτη την εμπειρία σας μαζί μας.'
@@ -314,6 +324,10 @@ export class HomeComponent {
         behavior: 'auto',
       });
     }
+  }
+
+  goToNextCatalog(): void {
+    this.changed(!this.menu.isRest);
   }
 
   onMenuToggleTouchStart(event: TouchEvent): void {

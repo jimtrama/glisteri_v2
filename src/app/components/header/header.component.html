@@ -5,19 +5,6 @@
         <img alt="sunbed" [src]="sunbedIcon" class="headerWaiterButton__icon">
         <span>{{ callWaiterLabel }}</span>
       </button>
-      <label
-        class="switch-toggle"
-        (touchstart)="onToggleTouchStart($event)"
-        (touchend)="onToggleTouchEnd($event)"
-      >
-        <input
-          class="switch-toggle__input"
-          type="checkbox"
-          [checked]="menu?.isRest"
-          (change)="onMenuToggle($event)"
-        >
-        <span class="switch-toggle__slider"></span>
-      </label>
     </div>
 
     <div class="headerLanguageCont" (click)="onLanguageToggle()">

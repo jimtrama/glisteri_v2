@@ -237,6 +237,13 @@
           [category]="category"
         ></app-category>
       </section>
+
+      <section class="menuSwitchFooter">
+        <button type="button" class="menuSwitchFooter__button" (click)="goToNextCatalog()">
+          <span>{{ isEl ? 'Συνέχεια στον άλλο κατάλογο' : 'Continue to the other catalog' }}</span>
+          <strong>{{ nextMenuButtonLabel }}</strong>
+        </button>
+      </section>
     </div>
   </div>
 </div>

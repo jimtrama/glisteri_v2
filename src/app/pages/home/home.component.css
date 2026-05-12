@@ -619,6 +619,7 @@
 }
 
 .introCard,
+.menuSwitchFooter,
 .menuShell{
     width: min(100%, 34rem);
     margin: 0 auto;
@@ -831,6 +832,72 @@
 .menuShell__heading h2{
     font-size: 1.55rem;
     margin-top: 0.25rem;
+}
+
+.menuSwitchFooter{
+    position: relative;
+    padding: 0.35rem 0 1rem;
+}
+
+.menuSwitchFooter__button{
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    border: 1px solid rgba(255, 226, 193, 0.18);
+    border-radius: 22px;
+    background: #2a1a10;
+    color: #f7efe5;
+    box-shadow: 0 18px 36px rgba(31, 17, 8, 0.2);
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    text-align: left;
+}
+
+.menuSwitchFooter__button::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(110deg, transparent 10%, rgba(255, 255, 255, 0.12) 45%, transparent 78%);
+    transform: translateX(-140%);
+    animation: controlSweep 6.4s ease-in-out infinite;
+}
+
+.menuSwitchFooter__button span,
+.menuSwitchFooter__button strong{
+    position: relative;
+    z-index: 1;
+}
+
+.menuSwitchFooter__button span{
+    color: #e2c29f;
+    font-size: 0.74rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    
+}
+
+.menuSwitchFooter__button strong{
+    color: #fff7ed;
+    font-size: 1rem;
+    line-height: 1.35;
+    white-space: nowrap;
+    background: linear-gradient(135deg, #a06d42 0%, #815331 100%);
+    padding: 0.25rem 0.6rem;
+    border-radius: 12px;
+}
+
+@media (max-width: 380px) {
+    .menuSwitchFooter__button{
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .menuSwitchFooter__button strong{
+        white-space: normal;
+    }
 }
 
 .infoCont{
@@ -1625,6 +1692,7 @@
     }
 
     .introCard,
+    .menuSwitchFooter,
     .menuShell{
         width: min(100%, 40rem);
     }
