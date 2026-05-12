@@ -1,4 +1,13 @@
 <div class="Main">
+  <div *ngIf="loading" class="loadingScreen" aria-label="Loading Glisteri catalog">
+    <div class="loadingScreen__halo" aria-hidden="true"></div>
+    <img alt="Glysteri" [src]="logo" class="loadingScreen__logo">
+    <div class="loadingScreen__bar" aria-hidden="true">
+      <span [style.width.%]="loadingProgress"></span>
+    </div>
+    <div class="loadingScreen__progress">{{ loadingProgress }}%</div>
+  </div>
+
   <button type="button" (click)="toggleInfo()" class="infoButton">
     <img alt="info" style="filter: invert(1);" [src]="infoIcon" class="infoButton__icon">
   </button>

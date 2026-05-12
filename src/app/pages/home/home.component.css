@@ -117,6 +117,67 @@
     src: url("/fonts/r.ttf");
 }
 
+.loadingScreen{
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    display: grid;
+    place-items: center;
+    gap: 1.4rem;
+    align-content: center;
+    background:
+      radial-gradient(circle at 50% 38%, rgba(255, 238, 209, 0.18) 0%, rgba(255, 238, 209, 0) 32%),
+      linear-gradient(180deg, #160f09 0%, #24170f 54%, #3a2619 100%);
+    animation: loadingScreenExit 0.45s ease 1.45s forwards;
+}
+
+.loadingScreen__halo{
+    position: absolute;
+    width: min(74vw, 22rem);
+    height: min(74vw, 22rem);
+    border-radius: 999px;
+    background: radial-gradient(circle, rgba(232, 199, 158, 0.28) 0%, rgba(232, 199, 158, 0) 70%);
+    filter: blur(2px);
+    animation: loadingHaloPulse 1.8s ease-in-out infinite;
+}
+
+.loadingScreen__logo{
+    position: relative;
+    z-index: 1;
+    width: min(68vw, 18rem);
+    height: auto;
+    filter: drop-shadow(0 16px 34px rgba(0, 0, 0, 0.32));
+    animation: loadingLogoIn 0.8s cubic-bezier(0.22, 1, 0.36, 1) both, loadingLogoFloat 1.8s ease-in-out 0.8s infinite;
+}
+
+.loadingScreen__bar{
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    width: min(46vw, 10rem);
+    height: 0.22rem;
+    border-radius: 999px;
+    background: rgba(255, 239, 220, 0.18);
+}
+
+.loadingScreen__bar span{
+    display: block;
+    width: 0;
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, #d8aa73 0%, #fff0d4 52%, #d8aa73 100%);
+    transition: width 0.22s ease;
+}
+
+.loadingScreen__progress{
+    position: relative;
+    z-index: 1;
+    color: rgba(255, 239, 220, 0.76);
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
 .modalBackdrop{
     position: absolute;
     inset: 0;
@@ -1122,6 +1183,45 @@
     }
     100%{
         background-position: 18% 8%, 44% 10%, 50% 0%;
+    }
+}
+
+@keyframes loadingLogoIn {
+    from{
+        opacity: 0;
+        transform: translateY(18px) scale(0.92);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes loadingLogoFloat {
+    0%, 100%{
+        transform: translateY(0) scale(1);
+    }
+    50%{
+        transform: translateY(-8px) scale(1.03);
+    }
+}
+
+@keyframes loadingHaloPulse {
+    0%, 100%{
+        transform: scale(0.9);
+        opacity: 0.45;
+    }
+    50%{
+        transform: scale(1.08);
+        opacity: 0.9;
+    }
+}
+
+@keyframes loadingScreenExit {
+    to{
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
     }
 }
 

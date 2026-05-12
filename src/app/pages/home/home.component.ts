@@ -1,6 +1,7 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 
 import Menu from '../../../Utils/Menu';
+import data from '../../../Utils/data';
 import { runtimeConfig } from '../../../environments/runtime-config';
 
 @Component({
@@ -8,9 +9,12 @@ import { runtimeConfig } from '../../../environments/runtime-config';
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit, OnDestroy {
   @ViewChild('outerContainer') outerContainerRef?: ElementRef<HTMLDivElement>;
 
+  private loadingTimer?: ReturnType<typeof setTimeout>;
+  private readonly minimumLoadingMs = 1400;
+  private readonly maximumLoadingMs = 3200;
   private infoTouchStartY = 0;
   private infoTouchStartTime = 0;
   private menuToggleTouchStartX = 0;
@@ -23,6 +27,8 @@ export class HomeComponent {
   selectedCategory = 0;
   menu = new Menu('el', false);
   isEl = true;
+  loading = true;
+  loadingProgress = 0;
   show = true;
   waiterModalOpen = false;
   waiterSending = false;
@@ -51,6 +57,29 @@ export class HomeComponent {
   readonly reserveIcon = 'images/reserve.png';
   readonly sunbedIcon = 'images/sunbed.png';
   readonly waiterApiUrl = `${runtimeConfig.catalogBackendUrl}/api/call-waiter`;
+
+  ngOnInit(): void {
+    const minimumLoading = new Promise<void>((resolve) => {
+      this.loadingTimer = setTimeout(resolve, this.minimumLoadingMs);
+    });
+    const maximumLoading = new Promise<void>((resolve) => {
+      setTimeout(resolve, this.maximumLoadingMs);
+    });
+    const preloadWork = this.preloadStartupAssets();
+
+    Promise.race([
+      Promise.all([minimumLoading, preloadWork]),
+      maximumLoading,
+    ]).then(() => {
+      this.loading = false;
+    });
+  }
+
+  ngOnDestroy(): void {
+    if (this.loadingTimer) {
+      clearTimeout(this.loadingTimer);
+    }
+  }
 
   get restaurantLabel(): string {
     return this.isEl ? 'Εστιατόριο' : 'Restaurant';
@@ -112,6 +141,72 @@ export class HomeComponent {
 
   get sendWaiterLabel(): string {
     return this.isEl ? 'Αποστολή' : 'Send Request';
+  }
+
+  private preloadStartupAssets(): Promise<void> {
+    const urls = [
+      this.logo,
+      this.bg,
+      this.elFlag,
+      this.enFlag,
+      this.langIcon,
+      this.menuIcon,
+      this.infoIcon,
+      this.closeIcon,
+      this.reserveIcon,
+      this.sunbedIcon,
+      this.fbIcon,
+      this.instaIcon,
+      this.googleIcon,
+      ...this.getMenuAssetUrls(),
+    ];
+    const uniqueUrls = [...new Set(urls.filter((url): url is string => typeof url === 'string' && !!url))];
+    const priorityUrls = uniqueUrls.slice(0, 36);
+
+    if (!priorityUrls.length) {
+      this.loadingProgress = 100;
+      return Promise.resolve();
+    }
+
+    let completedAssets = 0;
+    const updateProgress = () => {
+      completedAssets += 1;
+      this.loadingProgress = Math.round((completedAssets / priorityUrls.length) * 100);
+    };
+
+    return Promise.all(
+      priorityUrls.map((url) => this.preloadAsset(url).then(updateProgress)),
+    ).then(() => undefined);
+  }
+
+  private getMenuAssetUrls(): string[] {
+    return data.categories.flatMap((category: any) => [
+      category.icon,
+      ...(category.products ?? []).map((product: any) => product.photo),
+    ]);
+  }
+
+  private preloadAsset(url: string): Promise<void> {
+    return new Promise((resolve) => {
+      if (this.isVideoAsset(url)) {
+        const video = document.createElement('video');
+        video.preload = 'metadata';
+        video.muted = true;
+        video.onloadedmetadata = () => resolve();
+        video.onerror = () => resolve();
+        video.src = url;
+        return;
+      }
+
+      const image = new Image();
+      image.onload = () => resolve();
+      image.onerror = () => resolve();
+      image.src = url;
+    });
+  }
+
+  private isVideoAsset(url: string): boolean {
+    return /\.(mp4|webm|ogg)$/i.test(url);
   }
 
   switchLang(value: boolean): void {
