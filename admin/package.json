@@ -1,0 +1,31 @@
+{
+  "name": "glisteri-admin",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "prestart": "node ../scripts/sync-env.mjs admin",
+    "prebuild": "node ../scripts/sync-env.mjs admin",
+    "prewatch": "node ../scripts/sync-env.mjs admin",
+    "ng": "ng",
+    "start": "ng serve --port 4201 --host 192.168.68.104 ",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development"
+  },
+  "dependencies": {
+    "@angular/common": "^18.2.0",
+    "@angular/compiler": "^18.2.0",
+    "@angular/core": "^18.2.0",
+    "@angular/platform-browser": "^18.2.0",
+    "@angular/platform-browser-dynamic": "^18.2.0",
+    "rxjs": "~7.8.0",
+    "socket.io-client": "^4.8.1",
+    "tslib": "^2.3.0",
+    "zone.js": "~0.14.10"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^18.2.12",
+    "@angular/cli": "^18.2.12",
+    "@angular/compiler-cli": "^18.2.0",
+    "typescript": "~5.5.2"
+  }
+}

@@ -1,0 +1,243 @@
+.adminShell {
+  width: min(100%, 56rem);
+  margin: 0 auto;
+  padding: 1.5rem 1rem 2rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.heroCard,
+.requestsCard {
+  position: relative;
+  overflow: hidden;
+  border-radius: 28px;
+  border: 1px solid rgba(255, 239, 219, 0.12);
+  background:
+    linear-gradient(180deg, rgba(39, 25, 16, 0.94) 0%, rgba(24, 15, 9, 0.98) 100%);
+  box-shadow: 0 22px 48px rgba(0, 0, 0, 0.22);
+}
+
+.heroCard {
+  padding: 1.25rem;
+}
+
+.heroCard::before,
+.requestsCard::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent 20%, rgba(255, 255, 255, 0.08) 48%, transparent 76%);
+  transform: translateX(-140%);
+  animation: panelSweep 8.4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.heroCard__eyebrow {
+  color: #d7b48b;
+  font-size: 0.76rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.heroCard__top {
+  margin-top: 0.8rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.heroCard h1,
+.requestsCard h2 {
+  margin: 0;
+  font-size: clamp(1.8rem, 5vw, 2.7rem);
+  line-height: 1.02;
+}
+
+.heroCard p {
+  margin: 0.5rem 0 0;
+  color: rgba(247, 239, 229, 0.76);
+  max-width: 24rem;
+  line-height: 1.6;
+}
+
+.statusPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.7rem 0.95rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  color: #f7efe5;
+  white-space: nowrap;
+  font-size: 0.88rem;
+}
+
+.statusPill__dot {
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 999px;
+  background: #d17a6a;
+  box-shadow: 0 0 0 0.35rem rgba(209, 122, 106, 0.18);
+}
+
+.statusPill--online .statusPill__dot {
+  background: var(--green-300);
+  box-shadow: 0 0 0 0.35rem rgba(168, 199, 146, 0.18);
+}
+
+.requestsCard {
+  padding: 1.2rem;
+}
+
+.requestsCard__header {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: baseline;
+  margin-bottom: 1rem;
+}
+
+.requestsCard__caption {
+  color: rgba(247, 239, 229, 0.6);
+  font-size: 0.85rem;
+}
+
+.requestsCard__error {
+  margin-bottom: 0.9rem;
+  padding: 0.85rem 0.95rem;
+  border-radius: 16px;
+  background: rgba(177, 78, 65, 0.18);
+  color: #ffd8d2;
+  line-height: 1.45;
+}
+
+.emptyState {
+  padding: 1.5rem;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px dashed rgba(255, 239, 219, 0.16);
+  color: rgba(247, 239, 229, 0.78);
+}
+
+.emptyState__title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #fff7ed;
+}
+
+.emptyState p {
+  margin: 0.5rem 0 0;
+  line-height: 1.55;
+}
+
+.requestList {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.requestItem {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 0.9rem;
+  align-items: center;
+  padding: 1rem;
+  border-radius: 22px;
+  background: rgba(255, 251, 246, 0.94);
+  color: #23160e;
+}
+
+.requestItem__index {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: rgba(160, 109, 66, 0.16);
+  color: #7a4b28;
+  font-weight: 700;
+}
+
+.requestItem__label {
+  color: #87664d;
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.requestItem__number {
+  margin-top: 0.2rem;
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #2d1d12;
+}
+
+.requestItem__time {
+  color: #7b604d;
+  font-size: 0.88rem;
+  white-space: nowrap;
+}
+
+.requestItem__actions {
+  display: grid;
+  justify-items: end;
+  gap: 0.55rem;
+}
+
+.requestItem__remove {
+  border: none;
+  border-radius: 999px;
+  padding: 0.55rem 0.85rem;
+  background: #a06d42;
+  color: #fff8ef;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.requestItem__remove[disabled] {
+  opacity: 0.72;
+  cursor: default;
+}
+
+@keyframes panelSweep {
+  0%,
+  100% {
+    transform: translateX(-140%);
+    opacity: 0;
+  }
+  12% {
+    opacity: 0.12;
+  }
+  44%,
+  58% {
+    transform: translateX(140%);
+    opacity: 0.2;
+  }
+}
+
+@media (max-width: 640px) {
+  .heroCard__top,
+  .requestsCard__header,
+  .requestItem {
+    grid-template-columns: 1fr;
+    display: grid;
+  }
+
+  .heroCard__top {
+    gap: 0.9rem;
+  }
+
+  .statusPill,
+  .requestItem__time {
+    justify-self: start;
+  }
+
+  .requestItem__actions {
+    justify-items: start;
+  }
+
+  .requestItem__index {
+    margin-bottom: 0.15rem;
+  }
+}

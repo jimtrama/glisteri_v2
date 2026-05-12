@@ -1,0 +1,6 @@
+dist
+node_modules
+secret.json
+firebase-service-account.json
+*service-account*.json
+data/device-tokens.txt

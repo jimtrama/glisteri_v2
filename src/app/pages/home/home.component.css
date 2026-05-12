@@ -171,6 +171,82 @@
     animation: modalAura 10s ease-in-out infinite alternate;
 }
 
+.waiterModal{
+    gap: 0.9rem;
+    touch-action: pan-y;
+    will-change: translate;
+    transition: translate 0.22s ease;
+}
+
+.waiterModal--dragging{
+    transition: none;
+}
+
+.waiterModal__close{
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 2.4rem;
+    height: 2.4rem;
+    border: none;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.waiterModal__field{
+    display: grid;
+    gap: 0.5rem;
+}
+
+.waiterModal__label{
+    color: #d5b48b;
+    font-size: 0.76rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+.waiterModal__input{
+    width: 100%;
+    border: 1px solid rgba(226, 202, 170, 0.18);
+    border-radius: 18px;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.04);
+    color: #f7efe5;
+    font-size: 1rem;
+    outline: none;
+}
+
+.waiterModal__input::placeholder{
+    color: rgba(247, 239, 229, 0.38);
+}
+
+.waiterModal__input:focus{
+    border-color: rgba(213, 180, 139, 0.56);
+    box-shadow: 0 0 0 1px rgba(213, 180, 139, 0.3);
+}
+
+.waiterModal__status{
+    padding: 0.85rem 0.95rem;
+    border-radius: 16px;
+    background: rgba(118, 154, 100, 0.18);
+    color: #eef6e5;
+    font-size: 0.92rem;
+    line-height: 1.45;
+}
+
+.waiterModal__status--error{
+    background: rgba(177, 78, 65, 0.18);
+    color: #ffd8d2;
+}
+
+.waiterModal__send{
+    width: 100%;
+}
+
+.waiterModal__send[disabled]{
+    opacity: 0.7;
+}
+
 .modalEyebrow,
 .introCard__eyebrow,
 .menuShell__eyebrow,
@@ -1513,6 +1589,30 @@
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+.modalEyebrow,
+.modalTitle,
+.modalText,
+.modalLanguage,
+.modalActions,
+.buttonModal--ghost,
+.logoImg,
+.heroTagline,
+.introCard,
+.introCard__eyebrow,
+.introCard__copy h1,
+.introCard__copy p,
+.langBadge,
+.modeCard,
+.toggleWrap,
+.menuShell__heading,
+.moveIn .infoSheet__hero,
+.moveIn .infoCard--phone,
+.moveIn .taxi_cont,
+.moveIn .social_cont {
+    opacity: 1;
+    transform: none;
 }
 
 @media (min-width: 768px) {

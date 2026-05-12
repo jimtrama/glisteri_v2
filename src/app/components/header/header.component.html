@@ -1,7 +1,10 @@
 <div class="mainHeaderContainer">
   <div class="topHeader">
     <div class="headerSwitchContainer">
-      <span class="headerChip">{{ menu?.isRest ? (isEl ? 'Εστιατόριο' : 'Resturant'): (isEl ? 'Παραλία' : 'Beach') }}</span>
+      <button type="button" class="headerWaiterButton" (click)="onWaiterClick()">
+        <img alt="sunbed" [src]="sunbedIcon" class="headerWaiterButton__icon">
+        <span>{{ callWaiterLabel }}</span>
+      </button>
       <label
         class="switch-toggle"
         (touchstart)="onToggleTouchStart($event)"

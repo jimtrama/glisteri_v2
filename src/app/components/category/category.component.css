@@ -206,3 +206,10 @@ app-product{
         opacity: 1;
     }
 }
+
+.categoryContainer,
+.categoryContainer.isVisible,
+app-product {
+    opacity: 1;
+    transform: none;
+}

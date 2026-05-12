@@ -1,0 +1,57 @@
+<main class="adminShell">
+  <section class="heroCard">
+    <div class="heroCard__eyebrow">Glisteri Admin</div>
+    <div class="heroCard__top">
+      <div>
+        <h1>Sunbed Requests</h1>
+        <p>Live waiter calls streamed from the beach catalog.</p>
+      </div>
+
+      <div class="statusPill" [class.statusPill--online]="connected$ | async">
+        <span class="statusPill__dot"></span>
+        <span>{{ (connected$ | async) ? 'Socket Live' : 'Disconnected' }}</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="requestsCard">
+    <div class="requestsCard__header">
+      <h2>Incoming Requests</h2>
+      <span class="requestsCard__caption">Newest first</span>
+    </div>
+
+    <div *ngIf="removeErrorMessage" class="requestsCard__error">
+      {{ removeErrorMessage }}
+    </div>
+
+    <ng-container *ngIf="calls$ | async as calls">
+      <div *ngIf="calls.length === 0" class="emptyState">
+        <div class="emptyState__title">No requests yet</div>
+        <p>The first waiter call will appear here as soon as a guest sends one.</p>
+      </div>
+
+      <div *ngIf="calls.length > 0" class="requestList">
+        <article *ngFor="let call of calls; index as i" class="requestItem">
+          <div class="requestItem__index">{{ i + 1 }}</div>
+
+          <div class="requestItem__body">
+            <div class="requestItem__label">Sunbed</div>
+            <div class="requestItem__number">{{ call.sunbedNumber }}</div>
+          </div>
+
+          <div class="requestItem__actions">
+            <time class="requestItem__time">{{ call.receivedAt | date:'shortTime' }}</time>
+            <button
+              type="button"
+              class="requestItem__remove"
+              [disabled]="isRemoving(call.id)"
+              (click)="removeCall(call.id)"
+            >
+              {{ isRemoving(call.id) ? 'Removing...' : 'Remove' }}
+            </button>
+          </div>
+        </article>
+      </div>
+    </ng-container>
+  </section>
+</main>

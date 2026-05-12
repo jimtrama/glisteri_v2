@@ -50,6 +50,54 @@
     </div>
   </div>
 
+  <div *ngIf="waiterModalOpen" class="modalBackdrop" (click)="closeWaiterModal()">
+    <div
+      class="modalContainer waiterModal"
+      [class.waiterModal--dragging]="waiterDragging"
+      [style.translate]="waiterDragOffset ? '0 ' + waiterDragOffset + 'px' : null"
+      (click)="$event.stopPropagation()"
+      (touchstart)="onWaiterTouchStart($event)"
+      (touchmove)="onWaiterTouchMove($event)"
+      (touchend)="onWaiterTouchEnd()"
+      (touchcancel)="onWaiterTouchEnd()"
+    >
+      <button type="button" class="waiterModal__close" (click)="closeWaiterModal()">
+        <img alt="close" [src]="closeIcon" class="closeIcon">
+      </button>
+
+      <div class="modalEyebrow">Service</div>
+      <h2 class="modalTitle">{{ waiterModalTitle }}</h2>
+      <p class="modalText">{{ waiterModalCopy }}</p>
+
+      <label class="waiterModal__field">
+        <span class="waiterModal__label">{{ sunbedLabel }}</span>
+        <input
+          class="waiterModal__input"
+          type="number"
+          min="1"
+          inputmode="numeric"
+          [placeholder]="sunbedPlaceholder"
+          [value]="waiterSunbedNumber"
+          (input)="waiterSunbedNumber = $any($event.target).value"
+          (keyup.enter)="submitWaiterCall()"
+        >
+      </label>
+
+      <div
+        *ngIf="waiterStatusMessage"
+        class="waiterModal__status"
+        [class.waiterModal__status--error]="waiterStatusError"
+      >
+        {{ waiterStatusMessage }}
+      </div>
+
+      <button type="button" class="buttonModal primary waiterModal__send" [disabled]="waiterSending" (click)="submitWaiterCall()">
+        <img alt="service" [src]="menuIcon">
+        <span>{{ waiterSending ? '...' : sendWaiterLabel }}</span>
+      </button>
+    </div>
+  </div>
+
   <div
     *ngIf="infoShow || infoAnimatingOut"
     id="info"
@@ -134,6 +182,7 @@
     (categoryClick)="clicked($event)"
     (languageToggle)="switchLang($event)"
     (menuToggle)="changed($event)"
+    (waiterClick)="openWaiterModal()"
   ></app-header>
 
   <div #outerContainer (scroll)="onScroll($event)" class="outerContainer">
