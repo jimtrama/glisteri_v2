@@ -9,7 +9,7 @@
     "preadmin:dev": "node ./scripts/sync-env.mjs admin",
     "preadmin:build": "node ./scripts/sync-env.mjs admin",
     "ng": "ng",
-    "start": "ng serve --host 192.168.68.104",
+    "start": "ng serve --host 192.168.1.6",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "admin:dev": "npm --prefix admin run start",

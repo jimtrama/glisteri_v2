@@ -11,6 +11,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.layout.Arrangement
@@ -45,7 +46,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalClipboardManager
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -56,6 +60,7 @@ import kotlin.concurrent.thread
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
+import android.widget.Toast
 
 class MainActivity : ComponentActivity() {
     private var selectedPage by mutableStateOf(AppPage.Requests)
@@ -140,6 +145,7 @@ class MainActivity : ComponentActivity() {
         settingsState = settingsState.copy(
             isLoading = true,
             registrationMessage = getString(R.string.registration_loading),
+            token = "",
             tokenPreview = "",
             backendReachable = false
         )
@@ -167,6 +173,7 @@ class MainActivity : ComponentActivity() {
                     }
 
                     settingsState = settingsState.copy(
+                        token = token,
                         tokenPreview = token.take(18) + "...",
                         registrationMessage = getString(R.string.registration_sending)
                     )
@@ -271,6 +278,7 @@ data class DeviceRegistrationUiState(
     val notificationsGranted: Boolean = false,
     val backendReachable: Boolean = false,
     val registeredDevices: Int? = null,
+    val token: String = "",
     val tokenPreview: String = "",
     val registrationMessage: String = "",
     val permissionMessage: String = ""
@@ -475,6 +483,8 @@ private fun SettingsPage(
     onRetry: () -> Unit
 ) {
     val scrollState = rememberScrollState()
+    val clipboardManager = LocalClipboardManager.current
+    val context = LocalContext.current
 
     Column(
         modifier = Modifier
@@ -511,7 +521,15 @@ private fun SettingsPage(
         )
         InfoCard(
             label = "Token preview",
-            value = if (state.tokenPreview.isBlank()) "Will appear after Firebase connects" else state.tokenPreview
+            value = if (state.tokenPreview.isBlank()) "Will appear after Firebase connects" else state.tokenPreview,
+            onClick = if (state.token.isBlank()) {
+                null
+            } else {
+                {
+                    clipboardManager.setText(AnnotatedString(state.token))
+                    Toast.makeText(context, "Token copied", Toast.LENGTH_SHORT).show()
+                }
+            }
         )
 
         if (state.isLoading) {
@@ -669,8 +687,13 @@ private fun StatusCard(title: String, body: String, accent: Color) {
 }
 
 @Composable
-private fun InfoCard(label: String, value: String) {
+private fun InfoCard(label: String, value: String, onClick: (() -> Unit)? = null) {
     Card(
+        modifier = if (onClick == null) {
+            Modifier
+        } else {
+            Modifier.clickable(onClick = onClick)
+        },
         colors = CardDefaults.cardColors(
             containerColor = Color(0x26FFFFFF)
         ),
