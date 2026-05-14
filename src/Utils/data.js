@@ -109,18 +109,9 @@ const data = {
           photo: photo,
         },
         {
-          title: { el: "Tόνικ εσπρέσο", en: "Tonic espresso" },
+          title: { el: "Latte ζεστό/κρύο", en: "Latte hot/cold" },
           desc: { el: "", en: "" },
-          price: "7",
-          photo: photo,
-        },
-        {
-          title: { el: "Καφες Brumble", en: "Brumble coffee" },
-          desc: {
-            el: "φρέσκος χύμος προρτοκάλι με εσπρέσο",
-            en: "fresh orange juice with espresso",
-          },
-          price: "7",
+          price: "6",
           photo: photo,
         },
         {
@@ -145,16 +136,10 @@ const data = {
     },
     //Ximoi
     {
-      title: { el: "Χυμοί", en: "Juices" },
+      title: { el: "Smoothies - Χυμοί", en: "Smoothies - Juices" },
       isRest: false,
       icon: juice_icon,
       products: [
-        {
-          title: { el: "Φυσικός Χυμός Πορτοκάλι", en: "Fresh Orange Juice" },
-          desc: { el: "", en: "" },
-          price: "7",
-          photo: photo,
-        },
         {
           title: { el: "Χυμός  Ποτήρι", en: "Cup of carton juice" },
           desc: { el: "", en: "" },
@@ -162,39 +147,13 @@ const data = {
           photo: photo,
         },
         {
-          title: { el: "Παιδικός Χυμός", en: "Carton juice for kids" },
-          desc: { el: "", en: "" },
-          price: "3",
-          photo: photo,
-        },
-      ],
-    },
-    //smoothies
-    {
-      title: { el: "Smoothies", en: "Smoothies" },
-      isRest: false,
-      icon: smothie_icon,
-      products: [
-        {
-          title: { el: "Green Power", en: "Green Power" },
+          title: { el: "Φυσικός Χυμός Πορτοκάλι", en: "Fresh Orange Juice" },
           desc: { el: "", en: "" },
           price: "8",
           photo: photo,
         },
         {
-          title: { el: "Fraulita", en: "Fraulita" },
-          desc: { el: "", en: "" },
-          price: "8",
-          photo: photo,
-        },
-        {
-          title: { el: "Peachy Peachy", en: "Peachy Peachy" },
-          desc: { el: "", en: "" },
-          price: "8",
-          photo: photo,
-        },
-        {
-          title: { el: "Everyday", en: "Everyday" },
+          title: { el: "Smoothies", en: "Smoothies" },
           desc: { el: "", en: "" },
           price: "8",
           photo: photo,
@@ -202,7 +161,7 @@ const data = {
         {
           title: { el: "Smoothies με αλκοόλ", en: "Smoothies with alcohol" },
           desc: { el: "", en: "" },
-          price: "12",
+          price: "14",
           photo: photo,
         },
       ],
@@ -269,7 +228,7 @@ const data = {
         },
         {
           title: { el: "Red Bull", en: "Red Bull" },
-          desc: { el: "Kανονικό", en: "Normal" },
+          desc: { el: "Kανονικό / Zero", en: "Normal / Zero" },
           price: "7",
           photo: photo,
         },
@@ -294,6 +253,12 @@ const data = {
           price: "1 / 2",
           photo: photo,
         },
+        {
+          title: { el: "Aqua Carpatica flavors", en: "Aqua Carpatica flavors" },
+          desc: { el: "", en: "" },
+          price: "5",
+          photo: photo,
+        }
       ],
     },
     //Beers
@@ -327,12 +292,6 @@ const data = {
           photo: photo,
         },
         {
-          title: { el: "Weiss Beer", en: "Weiss Beer" },
-          desc: { el: "500ml", en: "500ml" },
-          price: "8",
-          photo: weis,
-        },
-        {
           title: { el: "Μηλίτης", en: "Cyder" },
           desc: { el: "330ml", en: "330ml" },
           price: "7",
@@ -343,19 +302,7 @@ const data = {
           desc: { el: "330ml", en: "330ml" },
           price: "7",
           photo: photo,
-        },
-        {
-          title: { el: "Odyssey", en: "Odyssey" },
-          desc: { el: "", en: "" },
-          price: "8",
-          photo: photo,
-        },
-        {
-          title: { el: "Gulden Draak", en: "Gulden Draak" },
-          desc: { el: "", en: "" },
-          price: "12",
-          photo: photo,
-        },
+        }
       ],
     },
     //driks
@@ -367,34 +314,13 @@ const data = {
         {
           title: { el: "Ποτό απλό", en: "Simple Drink" },
           desc: { el: "" },
-          price: "9",
+          price: "10",
           photo: photo,
         },
         {
           title: { el: "Ποτό premium", en: "Premium Drink" },
           desc: { el: "" },
           price: "14",
-          photo: photo,
-        },
-        {
-          title: { el: "Σφηνάκι", en: "Shot" },
-          desc: { el: "" },
-          price: "4",
-          photo: photo,
-        },
-        {
-          title: { el: "Σέικερ Σφηνάκια", en: "Shot Shaker" },
-          desc: {
-            el: "",
-            en: "",
-          },
-          price: "30",
-          photo: photo,
-        },
-        {
-          title: { el: "Ούζο - Τσίπουρο", en: "Ouzo - Tsipouro" },
-          desc: { el: "" },
-          price: "6",
           photo: photo,
         },
         {
@@ -407,21 +333,12 @@ const data = {
           photo: photo,
         },
         {
-          title: { el: "Φιάλη σπέσιαλ", en: "Special Bottle" },
-          desc: {
-            el: "",
-            en: "",
-          },
-          price: "120",
-          photo: photo,
-        },
-        {
           title: { el: "Φιάλη premium", en: "Premium Bottle" },
           desc: {
             el: "",
             en: "",
           },
-          price: "160",
+          price: "120",
           photo: photo,
         },
       ],
@@ -432,15 +349,6 @@ const data = {
       isRest: false,
       icon: mocktail_icon,
       products: [
-        {
-          title: { el: "Jack Sparrow Nightmare", en: "Jack Sparrow Nightmare" },
-          desc: {
-            el: "gin 0%, passion fruit puree, almond syrup, lime",
-            en: "gin 0%, passion fruit puree, almond syrup, lime",
-          },
-          price: "10",
-          photo: photo,
-        },
         {
           title: { el: "Mojito 0%", en: "Mojito 0%" },
           desc: {
@@ -468,6 +376,15 @@ const data = {
           price: "10",
           photo: mai_tai,
         },
+        {
+          title: { el: "Jack Sparrow Nightmare", en: "Jack Sparrow Nightmare" },
+          desc: {
+            el: "gin 0%, passion fruit puree, almond syrup, lime",
+            en: "gin 0%, passion fruit puree, almond syrup, lime",
+          },
+          price: "12",
+          photo: photo,
+        }
       ],
     },
     //classic Kokteils
@@ -482,7 +399,7 @@ const data = {
             el: "ρούμι, ζαχάρη, λάιμ, μέντα, σόδα ",
             en: "rum, sugar, lime, mint, soda ",
           },
-          price: "10",
+          price: "12",
           photo: photo,
         },
         {
@@ -491,7 +408,7 @@ const data = {
             el: "malibu, batida de coco, χυμός ανανά , πουρέ ανανά, γάλα καρύδας",
             en: "malibu,  babatida de coco, pinnapple juice, pinnapple puree, coconut milk",
           },
-          price: "10",
+          price: "12",
           photo: photo,
         },
         {
@@ -500,7 +417,7 @@ const data = {
             el: "τεκίλα, σιρόπι αγάβης, σόδα γρέιπφρουτ, λάιμ",
             en: "tekila, agave syrup, soda grapefruit, lime",
           },
-          price: "10",
+          price: "12",
           photo: photo,
         },
         {
@@ -612,8 +529,8 @@ const data = {
         {
           title: { el: "Lollipop", en: "Lollipop" },
           desc: {
-            el: "gin ,fresh basil leaves, lime, simple syrup",
-            en: "gin ,fresh basil leaves, lime, simple syrup",
+            el: "white rum ,strawberry puree, orange liqueur, vanilla syrup, orange bitters",
+            en: "white rum ,strawberry puree, orange liqueur, vanilla syrup, orange bitters",
           },
           price: "15",
           photo: photo,
@@ -621,8 +538,8 @@ const data = {
         {
           title: { el: "Mela verde", en: "Mela verde" },
           desc: {
-            el: "gin ,fresh basil leaves, lime, simple syrup",
-            en: "gin ,fresh basil leaves, lime, simple syrup",
+            el: "gin, green apple puree, annana syrup, almond syrup, lime, angostura bitters",
+            en: "gin, green apple puree, annana syrup, almond syrup, lime, angostura bitters",
           },
           price: "15",
           photo: photo,
@@ -630,8 +547,8 @@ const data = {
         {
           title: { el: "The Dawn Treader", en: "The Dawn Treader" },
           desc: {
-            el: "gin ,fresh basil leaves, lime, simple syrup",
-            en: "gin ,fresh basil leaves, lime, simple syrup",
+            el: "gin , falernam syrup, passion fruit puree, almond syrup, lime",
+            en: "gin , falernam syrup, passion fruit puree, almond syrup, lime",
           },
           price: "15",
           photo: photo,
@@ -775,7 +692,7 @@ const data = {
         {
           title: { el: "Τοστ", en: "Toast" },
           desc: { el: "τυρί, ζαμπόν ή γαλοπούλα", en: "cheese, ham or turkey" },
-          price: "5",
+          price: "6",
           photo: toast,
         },
       ],
@@ -789,34 +706,34 @@ const data = {
         {
           title: { el: "Γιαούρτι", en: "Yoghurt" },
           desc: { el: "μέλι, καρύδια", en: "honey, walnuts" },
-          price: "9",
+          price: "10",
           photo: photo,
         },
         {
           title: { el: "Γιαούρτι", en: "Yoghurt" },
           desc: { el: "μέλι, φρούτα", en: "honey, fruits" },
-          price: "9",
+          price: "10",
           photo: photo,
         },
         {
           title: { el: "Γιαούρτι", en: "Yoghurt" },
           desc: { el: "γκρανόλα, φρούτα, μέλι", en: "granola, fruits, honey" },
-          price: "10",
+          price: "12",
           photo: photo,
         },
         {
           title: { el: "Γιαούρτι", en: "Yoghurt" },
           desc: {
-            el: "τσατνει Δαμασκηνο Σκοπελου",
-            en: "Skopelos traditional plum chutney",
+            el: "Δαμασκηνο Σκοπελου",
+            en: "Skopelos traditional plum",
           },
-          price: "10",
+          price: "12",
           photo: photo,
         },
         {
           title: { el: "Φρουτοσαλάτα", en: "Fruit salad" },
           desc: { el: "", en: "" },
-          price: "10",
+          price: "12",
           photo: photo,
         },
       ],
@@ -891,41 +808,6 @@ const data = {
         },
       ],
     },
-    //bao bans
-    {
-      title: { el: "Bao Bun", en: "Bao Bun" },
-      isRest: false,
-      icon: baobun_icon,
-      products: [
-        {
-          title: { el: "Κοτόπουλο (2 τεμ.)", en: "Chicken (2 pic.)" },
-          desc: {
-            el: "παναρισμένες μπουκιές κοτόπουλου / coleslaw / ραπανάκι / σχοινόπρασο",
-            en: "chicken nuggets / coleslaw / radish / chives",
-          },
-          price: "12",
-          photo: photo,
-        },
-        {
-          title: { el: "Γαριδα (2 τεμ.)", en: "Shrimp (2 pic.)" },
-          desc: {
-            el: "γαριδες tempura, αγγουρι, καροτο, sweet chilli μαγιονεζα, σουσαμι",
-            en: "shrimp tempura, cucumber, carrot, sweet chilli mayonnaise, sesame seeds",
-          },
-          price: "15",
-          photo: photo,
-        },
-        {
-          title: { el: "Vegan (2 τεμ.)", en: "Vegan (2 pic.)" },
-          desc: {
-            el: "αβοκάντο / πιπεριές / αγγούρι / καρότο / παπαρδέλες κολοκυθιού / ραπανάκι / σχοινόπρασο / hoisin sauce",
-            en: "avocado / peppers/ cucumber / carrot / zucchini / radish / chives / hoisin sauce",
-          },
-          price: "12",
-          photo: photo,
-        },
-      ],
-    },
     //Club
     {
       title: { el: "Κλάμπ Σάντουιτς", en: "Club Sandwich" },
@@ -968,15 +850,6 @@ const data = {
           photo: xoriatiki,
         },
         {
-          title: { el: "Kαίσαρα", en: "Ceasar's" },
-          desc: {
-            el: "iceberg, ντοματίνια , καλαμπόκι , κοτόπουλο , κρουτόν , μπέικον , φλοιδες παρμεζάνα , σως caesar's",
-            en: "iceberg, cherry tomatoes , corn , chicken , croutons, parmesan flakes, bacon, caesar's dressing",
-          },
-          price: "14",
-          photo: photo,
-        },
-        {
           title: { el: "Ντάκος", en: "Dakos" },
           desc: {
             el: "παξιμάδι κριθαριού, τριμμένη τομάτα, φέτα, ελιές, ρίγανη, ελαιόλαδο",
@@ -984,6 +857,15 @@ const data = {
           },
           price: "12",
           photo: ntakos_nap,
+        },
+        {
+          title: { el: "Kαίσαρα", en: "Ceasar's" },
+          desc: {
+            el: "μαρούλι, ντοματίνια , καλαμπόκι , κοτόπουλο , κρουτόν , μπέικον , φλοιδες παρμεζάνα , σως caesar's",
+            en: "lettuce, cherry tomatoes , corn , chicken , croutons, parmesan flakes, bacon, caesar's dressing",
+          },
+          price: "15",
+          photo: photo,
         },
       ],
     },
@@ -996,10 +878,10 @@ const data = {
         {
           title: { el: "Cheeseburger", en: "Cheeseburger" },
           desc: {
-            el: "χειροποίητο μπιφτέκι με 100% μοσχαρίσιο κυμά / τσένταρ / μαρούλι / ντομάτα / σως πίκλας / κέτσαπ / μουστάρδα , σερβίρεται με τηγανητές πατάτες ",
+            el: "χειροποίητο μπιφτέκι με 100% μοσχαρίσιο κυμά / τσένταρ / μαρούλι / τομάτα / σως πίκλας / κέτσαπ / μουστάρδα , σερβίρεται με τηγανητές πατάτες ",
             en: "handmade 100% beef burger / cheddar / lettuce / tomato / pickle sauce / ketchup / mustard , served with fried fries ",
           },
-          price: "16",
+          price: "17",
           photo: photo,
         },
         {
@@ -1008,16 +890,16 @@ const data = {
             el: "χειροποίητο μπιφτέκι με 100% μοσχαρίσιο κυμά, τσένταρ, μαρούλι, ντομάτα, σως πίκλας , μπέικον , ντομάτα , τηγανητό αυγό , καραμελωμένα κρεμμύδια , σερβίρεται με τηγανητές πατάτες",
             en: "handmade 100% beef burger / cheddar / lettuce / tomato / pickle sauce / bacon / tomato / lettuce / fried egg / caramelized onions , served with fried fries",
           },
-          price: "18",
+          price: "19",
           photo: burger_Gli,
         },
         {
           title: { el: "Μπέργκερ κοτόπουλο", en: "Chicken burger" },
           desc: {
-            el: "φιλέτο κοτόπουλο σε πάνκο, iceberg , μπέικον , ντομάτα , τηγανητό αυγό , σως μουστάρδας - μελιού, σερβίρεται με τηγανητές πατάτες",
-            en: "chicken fillet in panko, iceberg , bacon, tomato, fried egg , honey - mustard sauce, served with fried fries",
+            el: "φιλέτο μπούτι κοτόπουλο σε πάνκο, iceberg , μπέικον , ντομάτα , τηγανητό αυγό , σως μουστάρδας - μελιού, σερβίρεται με τηγανητές πατάτες",
+            en: "chicken leg fillet in panko, iceberg , bacon, tomato, fried egg , honey - mustard sauce, served with fried fries",
           },
-          price: "17",
+          price: "19",
           photo: chicken_burger,
         },
       ],
@@ -1031,107 +913,53 @@ const data = {
         {
           title: { el: "Μαργαρίτα", en: "Margherita" },
           desc: {
-            el: "σάλτσα ντομάτας , κίτρινα τυριά , μοσταρέλα , βασιλικό",
-            en: "tomato sauce , yellow cheeses , mozzarella , fresh basil",
+            el: "σάλτσα ντομάτας , μοτσαρέλα , μοσταρέλα , βασιλικό",
+            en: "tomato sauce , mozzarella , mozzarella , fresh basil",
           },
-          price: "15",
+          price: "16",
           photo: pizza_marg,
         },
         {
           title: { el: "Σπέσιαλ", en: "Special" },
           desc: {
-            el: "σάλτσα ντομάτας, κίτρινα τυριά, μπέικον, ζαμπόν, μανιτάρια, πιπεριές",
-            en: "tomato sauce, mix of yellow cheeses, bacon, ham, mushrooms, peppers",
+            el: "σάλτσα ντομάτας, μοτσαρέλα, μπέικον, ζαμπόν, μανιτάρια, πιπεριές",
+            en: "tomato sauce, mozzarella, bacon, ham, mushrooms, peppers",
           },
-          price: "17",
+          price: "18",
           photo: special_pissa,
-        },
-        {
-          title: { el: "Πεπερόνι", en: "Pepperoni" },
-          desc: {
-            el: "σάλτσα ντομάτας , κίτρινα τυριά , πεπερόνι",
-            en: "tomato sauce , mix of yellow cheeses, pepperoni ",
-          },
-          price: "17",
-          photo: photo,
         },
         {
           title: { el: "Μεσογειακή", en: "Mediterranean" },
           desc: {
-            el: "σάλτσα ντομάτας , φέτες ντομάτας , πιπεριές , κρεμμύδι , ελιές , φέτα , ρίγανη , ελαιόλαδο",
-            en: "tomato sauce , tomato slices, onions , feta cheese  , olives , peppers , oregano , olive oil",
+            el: "σάλτσα ντομάτας , φέτες ντομάτας , πιπεριές , ελιές, φέτα , ρίγανη , ελαιόλαδο",
+            en: "tomato sauce , tomato slices, feta cheese , olives , peppers , oregano , olive oil",
           },
-          price: "17",
+          price: "18",
           photo: pizz_gr,
+        },
+        {
+          title: { el: "Καρμπονάρα", en: "Carbonara" },
+          desc: {
+            el: "κρέμα γάλακτος , μοτσαρέλα , μπέικον , μανιτάρια ",
+            en: "white sauce , mozzarella, bacon, mushrooms ",
+          },
+          price: "18",
+          photo: photo,
         },
         {
           title: { el: "Ιταλική", en: "Italian" },
           desc: {
-            el: "σάλτσα ντομάτας , τοματίνια , μοτσαρέλα , παρμεζάνα , ρόκα , προσούτο",
-            en: "tomato sauce , cherry tomatoes , mozzarela , parmesan , arugula , prosciutto ",
+            el: "σάλτσα ντομάτας , μοτσαρέλα , ρόκα , προσούτο",
+            en: "tomato sauce , mozzarela ,  arugula , prosciutto ",
           },
-          price: "18",
+          price: "19",
           photo: pizz_it,
-        },
-
-        {
-          title: { el: "Καρμπονάρα", en: "Carbonara" },
-          desc: {
-            el: "λευκή σάλτσα , κίτρινα τυριά , μπέικον , μανιτάρια ",
-            en: "white sauce , mix of yellow cheeses, bacon, mushrooms ",
-          },
-          price: "17",
-          photo: photo,
-        },
-
-        {
-          title: { el: "Kαίσαρα", en: "Caesar's" },
-          desc: {
-            el: "σάλτσα ντομάτας, κίτρινα τυριά, μπέικον, κοτόπουλο, caesar's σως, παρμεζάνα",
-            en: "tomato sauce, mix of yellow cheeses, bacon, chicken, caesar's sauce ,parmesan",
-          },
-          price: "18",
-          photo: photo,
         },
       ],
     },
 
     //RESTAURANT
-    //breakfast
-    {
-      title: { el: "Πρωινά", en: "Breakfast" },
-      isRest: true,
-      icon: breakfast_icon,
-      products: [
-        {
-          title: { el: "CROQUE MONSIEUR", en: "CROQUE MONSIEUR" },
-          desc: { el: "", en: "" },
-          price: "9",
-          photo: photo,
-        },
-        {
-          title: { el: "CROQUE MADAME", en: "CROQUE MADAME" },
-          desc: { el: "", en: "" },
-          price: "10",
-          photo: photo,
-        },
-        {
-          title: { el: "Ομελέτα με λαχανικά", en: "Omelette with vegetables" },
-          desc: { el: "", en: "" },
-          price: "9",
-          photo: photo,
-        },
-        {
-          title: {
-            el: "Scrambled αυγά με κοτόπουλο και δαμάσκηνο",
-            en: "Scrambled eggs with chicken and plum",
-          },
-          desc: { el: "", en: "" },
-          price: "12",
-          photo: photo,
-        },
-      ],
-    },
+
     //orektika
     {
       title: { el: "Ορεκτικά", en: "Starters" },
@@ -1139,57 +967,57 @@ const data = {
       icon: starters_icon,
       products: [
         {
-          title: { el: "Ποικιλία Αλοιφών", en: "Variety of dips" },
-          desc: {
-            el: "ταραμας, τζατζικι, μελιτζανοσαλατα σερβιρεται με πιτακια",
-            en: "taramas, tzatziki, eggplant salad served with pita bread",
-          },
-          price: "12",
-          photo: photo,
-        },
-        {
           title: { el: "Κολοκυθοκεφτέδες", en: "Zucchini Balls" },
           desc: {
-            el: "σερβιρεται με σως γιαουρτιου",
-            en: "served with yoghurt sauce",
+            el: "κολοκύθι, καρότο, κρεμμύδι, κρεμμύδι φρέσκο, μαϊντανός, άνιθος, αυγό, φέτα, ελαιόλαδο",
+            en: "zucchini, carrot, onion, fresh onion, parsley, dill, egg, feta cheese, olive oil",
           },
           price: "12",
-          photo: photo,
-        },
-        {
-          title: { el: "Ρολάκια Μελιτζάνας", en: "Eggplant Rolls" },
-          desc: {
-            el: "μελιτζανα, μοτσαρελα, σαλτσα ντοματας",
-            en: "eggplant, mozzarella, tomato sauce",
-          },
-          price: "14",
-          photo: photo,
-        },
-        {
-          title: { el: "Μπρουσκέτα", en: "Bruschetta" },
-          desc: {
-            el: "φίλετο σαρδελας, ελιες, ντοματινια κονφι, ριγανη, ξυσμα λεμονιου",
-            en: "sardine fillet, tomato confit, olives, oregano, lemon zest",
-          },
-          price: "15",
-          photo: photo,
-        },
-        {
-          title: { el: "Φέτα Πανέ", en: "Fried Feta" },
-          desc: {
-            el: "φετα πανέ σερβιρεται με τσάτνει ντοματας",
-            en: "pan-fried feta cheese served with tomato chutney",
-          },
-          price: "10",
           photo: photo,
         },
         {
           title: { el: "Κεφτεδάκια", en: "Meatballs" },
           desc: {
-            el: "με πατάτες τηγανητές",
-            en: "with french fries",
+            el: "μοσχαρίσιος κιμάς, κρεμμύδι, σκόρδο, διώσμο, άνιθος, μαϊντανός, αυγό",
+            en: "ground beef, onion, garlic, spearmint, dill, parsley, egg",
           },
-          price: "15",
+          price: "14",
+          photo: photo,
+        },
+        {
+          title: { el: "Γαρίδες σαγανάκι", en: "Shrimp saganaki" },
+          desc: {
+            el: "γαρίδες, σαλτσα ντοματας, φέτα, σκόρδο, μαϊντανός, ούζο",
+            en: "shrimps, tomato sauce, feta cheese, garlic, parsley, ouzo",
+          },
+          price: "18",
+          photo: photo,
+        },
+        {
+          title: { el: "Τζατζίκι", en: "Tzatziki sauce" },
+          desc: {
+            el: "γιαούρτι, αγγούρι, σκόρδο, ελαιόλαδο, άνηθος",
+            en: "yogurt, cucumber, garlic, olive oil, dill",
+          },
+          price: "9",
+          photo: photo,
+        },
+        {
+          title: { el: "Μελιτζανοσαλάτα", en: "Eggplant Salad" },
+          desc: {
+            el: "μελιτζάνα ψητή, κοκκινή πιπεργία ψητή, φέτα, κρεμμύδι, μαϊντανός, σκόρδο",
+            en: "grilled eggplant, grilled red pepper, feta cheese, onion, parsley, garlic",
+          },
+          price: "12",
+          photo: photo,
+        },
+        {
+          title: { el: "Κατίκη Σκοπελου", en: "Skopelos Catiki" },
+          desc: {
+            el: "",
+            en: "",
+          },
+          price: "12",
           photo: photo,
         },
       ],
@@ -1201,12 +1029,12 @@ const data = {
       icon: salads_icon,
       products: [
         {
-          title: { el: "BURRATA", en: "BURRATA" },
+          title: { el: "Πατζάρι", en: "Beetroot" },
           desc: {
-            el: "ντοματινια κονφι, πεστο βασιλικου σε χωμα απο παξιμαδια χαρουπιου, burrata",
-            en: "tomato confit, basil pesto on a carob rusk, burrata cheese",
+            el: "πατζάρι με μους σκόρδου",
+            en: "beetroot with garlic mousse",
           },
-          price: "16",
+          price: "12",
           photo: photo,
         },
         {
@@ -1219,23 +1047,24 @@ const data = {
           photo: photo,
         },
         {
+          title: { el: "Σκοπελίτικος Ντάκος", en: "Skopelos Dakos" },
+          desc: {
+            el: "παξιμάδι κριθαριού, τριμμένη τομάτα, κατίκι σκοπέλου, κάπαρη, ελαιόλαδο",
+            en: "barley rusk , grated tomato , Skopelos catiki cheese, caper, olive oil",
+          },
+          price: "14",
+          photo: photo,
+        },
+        {
           title: { el: "Γλυστέρι", en: "Glysteri" },
           desc: {
-            el: "μαρουλι, iceberg, ντοματινια, ψητο ταλαγανη, καρύδι, κρισπι προσούτο, dressing δαμάσκηνο Σκοπελου",
-            en: "lettuce, iceberg, cherry tomatoes, grilled talagani cheese, walnut,crispy prosciutto chips, Skopelos plum dressing",
+            el: "μαρουλι, φράουλα, δαμάσκηνο, ταλαγάνι, σουσάμι, dressing γλυστέρι",
+            en: "lettuce, strawberry, plum, talagani cheese, sesame, glysteri dressing",
           },
           price: "17",
           photo: photo,
         },
-        {
-          title: { el: "CAPRESE", en: "CAPRESE" },
-          desc: {
-            el: "φρεσκια μοτσαρελα, ντοματα, φυλλα βασιλικου, ελαιολαδο",
-            en: "fresh mozzarella, tomato, basil leaves, olive oil",
-          },
-          price: "12",
-          photo: photo,
-        },
+        
       ],
     },
     //Marakonades
@@ -1245,66 +1074,75 @@ const data = {
       icon: pasta_icon,
       products: [
         {
-          title: { el: "Ναπολιτέν", en: "Napoliten" },
+          title: { el: "Aglio olio", en: "Aglio olio" },
           desc: {
-            el: " ",
-            en: "",
+            el: "λιγκουίνι, σκόρδο, τσίλι, ελαιόλαδο, μαϊντανός",
+            en: "linguine, garlic, chili, olive oil, parsley",
           },
-          price: "12",
-          photo: past_nap,
+          price: "14",
+          photo: photo,
         },
         {
           title: { el: "Καρμπονάρα", en: "Carbonara" },
           desc: {
-            el: "κρεμα γαλακτος, μπεικον, μανιταρια, παρμεζανα",
-            en: "heavy cream, bacon, mushrooms, parmesan",
+            el: "λιγκουίνι, κρεμα γαλακτος, μπεικον, μανιταρια, κρεμμυδι",
+            en: "linguine, white sauce, bacon, mushrooms, onion",
           },
-          price: "15",
+          price: "16",
           photo: karbonara,
         },
         {
-          title: { el: "Γαριδομακαρονάδα", en: "Shrimp Pasta" },
+          title: { el: "Μακαρόνια με Κυμα", en: "Bolognese" },
           desc: {
-            el: "γαριδες, μπισκ, σαλτσα ντοματας",
-            en: "shrimps, bisque, tomato sauce",
+            el: "λιγκουίνι, μοσχαρίσιος κιμάς 100%, σάλτσα ντομάτας, ξερή μυζήθρα σκοπέλου",
+            en: "linguine, 100% ground beef, tomato sauce, dry Skopelos mizithra cheese",
           },
-          price: "24",
-          photo: garidomak,
-        },
-        {
-          title: { el: "ΚΑΛΑΜΑΡΑΤΑ ΘΑΛΛΑΣΙΝΩΝ", en: "SEΑ FOOD CALAMARΑΤΑ" },
-          desc: {
-            el: "καλαμαρι, γαριδες, χταποδι, φρεσκο κρεμμυδι, σκορδο, μπισκ,ντοματινια, παρμεζανα, ξυσμα από λαιμ",
-            en: "squid, shrimp, octopus, fresh onion, garlic, bisque,cherry tomatoes, parmesan, lemon zest",
-          },
-          price: "28",
+          price: "16",
           photo: photo,
         },
         {
-          title: { el: "ΡΙΖΟΤΟ ΘΑΛΛΑΣΙΝΩΝ", en: "SEAFOOD RISOTTO" },
+          title: { el: "Pesto", en: "Pesto" },
           desc: {
-            el: "καλαμαρι, γαριδα, χταποδι, φρεσκο κρεμμυδι, σκορδο, μπισκ,βουτυρο, παρμεζανα",
-            en: "squid, shrimp, octopus, fresh onion, garlic, bisque, butter, parmesan",
+            el: "πέννες, χειροποίητη πέστο βασιλικού, κουκουνάρι, παρμεζάνα",
+            en: "pennette, homemade basil pesto, pine, parmesan",
+          },
+          price: "17",
+          photo: photo,
+        },
+        {
+          title: { el: "Κριθαρότο θαλασσινών", en: "Orzo Seafood" },
+          desc: {
+            el: "κριθαράκι, γαρίδα, καλαμάρι, κολοκύθι, ντοματίνια, κρεμμύδι, σκόρδο",
+            en: "orzo, shrimp, squid, zucchini, cherry tomatoes, onion, garlic",
           },
           price: "22",
           photo: photo,
         },
         {
-          title: { el: "ΡΙΖΟΤΟ ΛΑΧΑΝΙΚΩΝ", en: "VEGEΤΑBLE RISOTTO" },
+          title: { el: "Γαριδομακαρονάδα", en: "Shrimp Pasta" },
           desc: {
-            el: "καροτο, κολοκυθι, κοκκινη πιπερια, φρεσκο κρεμυδι, σκορδο, βουτυρο,παρμεζανα",
-            en: "carrot, zucchini, red pepper, fresh onion garlic, butter, parmesan",
+            el: "λιγκουίνι, γαριδες, μπισκ, σαλτσα ντοματας, σκόρδο, μαϊντανός",
+            en: "linguine, shrimps, bisque, tomato sauce, garlic, parsley",
           },
-          price: "15",
+          price: "24",
+          photo: garidomak,
+        },
+        {
+          title: { el: "Γαριδομακαρονάδα λευκή", en: "Shrimp white Pasta" },
+          desc: {
+            el: "λιγκουίνι, γαριδες, κρέμα γαλακτος,χυμό λεμόνι, σκόρδο, μαϊντανός",
+            en: "linguine, shrimps, white sauce, lemon juice, garlic, parsley",
+          },
+          price: "24",
           photo: photo,
         },
         {
-          title: { el: "ΡΙΖΟΤΟ MANITAPIΩN", en: "MUSHROOM RISOTTO" },
+          title: { el: "Αστακομακαρονάδα", en: "Lobster Pasta" },
           desc: {
-            el: "μανιταρια, βουτυρο, παρμεζανα",
-            en: "mushrooms, butter, parmesan",
+            el: "λιγκουίνι, αστακος, μπισκ, σκόρδο, μαϊντανός / για δυο ατομα",
+            en: "linguine, lobster, bisque, garlic, parsley / for two people",
           },
-          price: "16",
+          price: "120",
           photo: photo,
         },
       ],
@@ -1318,48 +1156,50 @@ const data = {
         {
           title: { el: "ΓΑΡΙΔΕΣ ΨΙΤΕΣ", en: "GRILLED SHRIMPS" },
           desc: {
-            el: "γαριδες μαριναρισμενες σε σουβλακι με σως κοκτειλ και σαλατα",
-            en: "marinated shrimps on a skewer with cocktail sauce and salad",
+            el: "γαριδες, σως λαδολέμονου, χοντρο αλάτι",
+            en: "shrimps, lemon-olive oil sauce, coarse salt",
           },
           price: "20",
           photo: photo,
         },
         {
-          title: { el: "ΣΑΡΔΈΛΑ ΠΛΑΚΊ ΦΟΎΡΝΟΥ", en: "ΟVEΝ ΒΑKED SARDINES" },
+          title: { el: "ΚΑΛΑΜΑΡΙ ΨΗΤΟ", en: "GRILLED SQUID" },
           desc: {
-            el: "",
-            en: "",
+            el: "καλαμάρι με σως λαδολέμονου",
+            en: "squid with lemon-olive oil sauce",
           },
-          price: "17",
+          price: "21",
           photo: photo,
         },
         {
-          title: { el: "ΚΑΛΑΜΑΡΙ ΨΗΤΟ", en: "GRILLED SQUID" },
+          title: { el: "ХТАПОΔІ ΨHTO", en: "GRILLED OCTOPUS" },
           desc: {
-            el: "",
-            en: "",
+            el: "χταποδι ψητο, φάβα, φρέσκο κρεμμύδι, ελαιόλαδο",
+            en: "grilled octopus, fava, fresh onion, olive oil",
           },
           price: "22",
           photo: photo,
         },
+
         {
-          title: { el: "ΚΑΛΑΜΑΡΙ ΓΕΜΙΣΤΟ", en: "STUFFED SQUID" },
+          title: { el: "Κοντοσούβλι τόνου", en: "Tuna Skewer" },
           desc: {
-            el: "καλαμαρι γεμιστο με τυρια, ντοματα, πιπερια",
-            en: "squid stuffed with cheese, tomato, pepper",
+            el: "μαριναρισμένος τόνος με λαχανικά",
+            en: "marinated tuna with vegetables",
           },
           price: "24",
           photo: photo,
         },
         {
-          title: { el: "ХТАПОΔІ ФHTO", en: "GRILLED OCTOPUS" },
+          title: { el: "Κοντοσούβλι ξιφία", en: "Swordfish Skewer" },
           desc: {
-            el: "χταποδι ψητο με ταραμα και σαλατα από μαυροματικα φασολια",
-            en: "grilled octopus with tarama and black-eyed pea salad",
+            el: "μαριναρισμένος ξιφίας με λαχανικά",
+            en: "marinated swordfish with vegetables",
           },
-          price: "22",
+          price: "24",
           photo: photo,
         },
+        
       ],
     },
     //meat
@@ -1371,26 +1211,50 @@ const data = {
         {
           title: { el: "Κοτόπουλο φιλέτο", en: "Chicken fillet" },
           desc: {
-            el: "κοτόπουλο φιλέτο με ψητά λαχανικά",
-            en: "chicken fillet with grilled vegetables",
+            el: "κοτόπουλο φιλέτο, baby πατάτες, ανάμηκτη σαλάτα",
+            en: "chicken fillet, baby potatoes, mixed salad",
           },
-          price: "16",
+          price: "17",
           photo: photo,
         },
         {
-          title: { el: "RIB EYE", en: "RIB EYE" },
-          desc: {
-            el: "rib eye με ψητα λαχανικα",
-            en: "rib eye with grilled vegetables",
+          title: {
+            el: "ΜΠΙΦΤΕΚΙ Μοσχαρίσιο",
+            en: "BEEF PATTY",
           },
-          price: "29",
+          desc: {
+            el: "μοχραρίσιο μπιφτέκι 100% χειροποίητο με baby πατάτες και ανάμικτη σαλάτα",
+            en: "100% handmade beef patty with baby potatoes and mixed salad",
+          },
+          price: "18",
+          photo: photo,
+        },
+        {
+          title: { el: "Σουτζουκάκια", en: "Soutzoukakia" },
+          desc: {
+            el: "μοσχαρίσια σουτζουκάκια με πουρέ πατάτας και σαλάτα",
+            en: "beef soutzoukakia with mashed potatoes and salad",
+          },
+          price: "19",
+          photo: photo,
+        },
+        {
+          title: {
+            el: "ΜΠΙΦΤΕΚΙ ΓΕΜΙΣΤΟ",
+            en: "STUFFED PATTY",
+          },
+          desc: {
+            el: "μοχραρίσιο μπιφτέκι 100% χειροποίητο με τυρί reggato, baby πατάτες και ανάμικτη σαλάτα",
+            en: "100% handmade beef patty stuffed with reggato cheese, baby potatoes and mixed salad",
+          },
+          price: "20",
           photo: photo,
         },
         {
           title: { el: "ΚΟΤΟΠΟΥΛΟ ΚΟΝΤΟΣΟΥΒΛΙ", en: "CHICKΕΝ SOUVLAΚΙ" },
           desc: {
-            el: "κοτοπουλο σουβλακι με πιπεριες, ντοματα",
-            en: "chicken souvlaki with peppers, tomato",
+            el: "μπούτι κοτόπουλο με λαχανικά, αναμικτη σαλάτα",
+            en: "chicken leg with vegetables, mixed salad",
           },
           price: "20",
           photo: photo,
@@ -1398,31 +1262,38 @@ const data = {
         {
           title: { el: "ΧΟΙΡΙΝΟ ΚΟΝΤΟΣΟΥΒΛΙ", en: "ΡORK SOUVLAKI" },
           desc: {
-            el: "χοιρινο σουβλακι με πιπεριες,ντοματα",
-            en: "pork souvlaki with peppers,tomatoes",
+            el: "χοιρινος λεμός με λαχανικά, αναμικτη σαλάτα",
+            en: "pork loin with vegetables, mixed salad",
           },
           price: "20",
           photo: photo,
         },
+        
         {
-          title: {
-            el: "ΜΠΙΦΤΕΚΙ ΑΠΛΟ / ΓΕΜΙΣΤΟ",
-            en: "SIMPLE / STUFFED BURGER",
-          },
+          title: { el: "Ψαρονέφρι", en: "Tenderloin" },
           desc: {
-            el: "μπιφτεκι μοσχαρισιο γεμιστο με τυρια",
-            en: "beef burger stuffed with cheese",
+            el: "ψαρονεύρι με σάλτσα κρασιού, πουρέ πατάτας, λαχανικά βουτύρου",
+            en: "tenderloin with wine sauce, mashed potatoes, butter vegetables",
           },
-          price: "18 / 20",
+          price: "22",
           photo: photo,
         },
         {
-          title: { el: "ΚΟΤΟΠΟΥΛΟ ΜΠΙΦΤΕΚΙ", en: "CHICKEN BURGER" },
+          title: { el: "Yakitori Ribs", en: "Yakitori Ribs" },
           desc: {
-            el: "κοτοπουλο μπιφτεκι με ψητα λαχανικα",
-            en: "chicken burger with grilled vegetables",
+            el: "χοιρινά πλευρά με σαλτσα yakitori, πουρέ πατάτας, σουσάμι, λαχανικά βουτύρου",
+            en: "pork ribs with yakitori sauce, mashed potatoes, sesame, butter vegetables",
           },
-          price: "18",
+          price: "22",
+          photo: photo,
+        },
+        {
+          title: { el: "Φιλέτο Μοσχαρίσιο", en: "Beef Fillet" },
+          desc: {
+            el: "φιλέτο μοσχαρίσιο, baby πατάτες φούρνου, λαχανικά βουτύρου",
+            en: "beef fillet, baby potatoes oven, butter vegetables",
+          },
+          price: "32",
           photo: photo,
         },
       ],
@@ -1439,13 +1310,13 @@ const data = {
             el: "",
             en: "",
           },
-          price: "12",
+          price: "10",
           photo: armenovil,
         },
         {
           title: { el: "Προφιτερόλ", en: "Profiterol" },
           desc: { el: "", en: "" },
-          price: "10",
+          price: "12",
           photo: photo,
         },
       ],
