@@ -297,6 +297,16 @@
         ></app-category>
       </section>
 
+      <section class="menuLegend" *ngIf="legendItems.length > 0">
+        <div class="menuLegend__title">{{ isEl ? 'Υπόμνημα' : 'Legend' }}</div>
+        <div class="menuLegend__items">
+          <div class="menuLegend__item" *ngFor="let item of legendItems">
+            <span *ngIf="item.marker" class="menuLegend__marker">{{ item.marker }}</span>
+            <span>{{ item.text }}</span>
+          </div>
+        </div>
+      </section>
+
       <section class="menuSwitchFooter">
         <button type="button" class="menuSwitchFooter__button" (click)="goToNextCatalog()">
           <span>{{ isEl ? 'Συνέχεια στον άλλο κατάλογο' : 'Continue to the other catalog' }}</span>

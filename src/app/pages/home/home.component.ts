@@ -114,6 +114,21 @@ export class HomeComponent implements OnInit, OnDestroy {
       : `Open ${this.nextMenuLabel}`;
   }
 
+  get legendItems(): Array<{ marker: string; text: string }> {
+    const legendCategory = data.categories.find((category: any) => {
+      return String(category.title?.en ?? '').toLowerCase() === 'legent';
+    });
+
+    return (legendCategory?.products ?? [])
+      .slice(1)
+      .map((product: any) => {
+        const marker = String(product.desc?.[this.isEl ? 'el' : 'en'] ?? '').trim();
+        const text = String(product.title?.[this.isEl ? 'el' : 'en'] ?? '').trim();
+        return { marker, text };
+      })
+      .filter((item) => item.text);
+  }
+
   get experienceCopy(): string {
     return this.isEl
       ? 'Απολαύστε αυτη την εμπειρία σας μαζί μας.'

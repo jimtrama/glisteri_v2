@@ -686,6 +686,7 @@
 }
 
 .introCard,
+.menuLegend,
 .menuSwitchFooter,
 .menuShell{
     width: min(100%, 34rem);
@@ -899,6 +900,57 @@
 .menuShell__heading h2{
     font-size: 1.55rem;
     margin-top: 0.25rem;
+}
+
+.menuLegend{
+    position: relative;
+    overflow: hidden;
+    padding: 1rem;
+    border-radius: 20px;
+    background: rgba(255, 252, 247, 0.9);
+    border: 1px solid rgba(126, 86, 50, 0.09);
+    color: #2d1d12;
+}
+
+.menuLegend::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(105deg, transparent 18%, rgba(255, 255, 255, 0.18) 48%, transparent 80%);
+    transform: translateX(-140%);
+    pointer-events: none;
+    animation: controlSweep 7.2s ease-in-out infinite;
+}
+
+.menuLegend__title{
+    position: relative;
+    z-index: 1;
+    color: #8b6c54;
+    font-size: 0.76rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: 0.65rem;
+}
+
+.menuLegend__items{
+    position: relative;
+    z-index: 1;
+    display: grid;
+    gap: 0.5rem;
+}
+
+.menuLegend__item{
+    display: flex;
+    align-items: baseline;
+    gap: 0.55rem;
+    color: #60493b;
+    font-size: 0.9rem;
+    line-height: 1.45;
+}
+
+.menuLegend__marker{
+    color: #a06d42;
+    font-weight: 800;
 }
 
 .menuSwitchFooter{
@@ -1798,6 +1850,7 @@
     }
 
     .introCard,
+    .menuLegend,
     .menuSwitchFooter,
     .menuShell{
         width: min(100%, 40rem);

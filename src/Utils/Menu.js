@@ -11,6 +11,10 @@ class Menu {
 
     init() {
         for (let i = 0; i < data.categories.length; i++) {
+            if (data.categories[i].title.en?.toLowerCase() === "legent") {
+                continue;
+            }
+
             if (this.isRest == data.categories[i].isRest) {
                 const category = new Category(data.categories[i].title[this.lang]);
                 let products = [];
