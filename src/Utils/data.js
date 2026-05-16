@@ -1234,42 +1234,6 @@ const data = {
         
       ],
     },
-    {
-      title: { el: "legent", en: "legent" },
-      isRest: true,
-      icon: starters_icon,
-      products: [
-        {
-          title: { el: "Ψωμί", en: "Bread" },
-          desc: { el: "", en: "" },
-          price: "2",
-          photo: photo,
-        },
-        {
-          title: 
-          { 
-            el: "Σε περίπτωση αλλεργιών, παρακαλούμε ενημερώστε τον σερβιτόρο", 
-            en: "In case of allergies, please inform the waiter"
-          },
-          desc: {
-            el: "",
-            en: "",
-          },
-          price: "12",
-          photo: armenovil,
-        },
-        {
-          title: { el: "Κατεψυγμένα", en: "Frozen" },
-          desc: {
-            el: "*",
-            en: "*",
-          },
-          price: "12",
-          photo: armenovil,
-        },
-        
-      ],
-    },
   ],
 };
 export default data;
