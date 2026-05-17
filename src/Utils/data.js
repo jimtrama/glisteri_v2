@@ -93,6 +93,12 @@ const data = {
           photo: photo,
         },
         {
+          title: { el: "Americano ", en: "Americano" },
+          desc: { el: "", en: "" },
+          price: "5",
+          photo: photo,
+        },
+        {
           title: { el: "Διπλό Kαπουτσίνο", en: "Double Capuccino" },
           desc: { el: "", en: "" },
           price: "6",
@@ -118,6 +124,12 @@ const data = {
         },
         {
           title: { el: "Φραπέ", en: "Frappe" },
+          desc: { el: "", en: "" },
+          price: "5",
+          photo: photo,
+        },
+        {
+          title: { el: "Nes", en: "Nes" },
           desc: { el: "", en: "" },
           price: "5",
           photo: photo,
@@ -404,7 +416,7 @@ const data = {
         {
           title: { el: "Μοχίτο", en: "Mojito" },
           desc: {
-            el: "ρούμι, φύλλα δυόσμου, λάιμ, ζαχάρη, σόδα ",
+            el: "ρούμι, φύλλα δυόσμου, λάιμ, ζάχαρη, σόδα ",
             en: "rum, spearmint leaves, lime, sugar, soda ",
           },
           price: "12",
@@ -933,14 +945,14 @@ const data = {
         {
           title: { el: "Μελιτζανοσαλάτα", en: "Eggplant Salad" },
           desc: {
-            el: "μελιτζάνα ψητή, κοκκινή πιπεριά ψητή, φέτα, κρεμμύδι, μαϊντανός, σκόρδο",
+            el: "μελιτζάνα ψητή, κόκκινη πιπεριά ψητή, φέτα, κρεμμύδι, μαϊντανός, σκόρδο",
             en: "grilled eggplant, grilled red pepper, feta cheese, onion, parsley, garlic",
           },
           price: "12",
           photo: photo,
         },
         {
-          title: { el: "Κατίκι Σκοπελου", en: "Skopelos Katiki cheese" },
+          title: { el: "Κατίκι Σκοπέλου", en: "Skopelos Katiki cheese" },
           desc: {
             el: "",
             en: "",
@@ -995,7 +1007,7 @@ const data = {
         {
           title: { el: "Γλυστέρι", en: "Glysteri" },
           desc: {
-            el: "μαρουλι, ταλαγάνι, φράουλα, δαμάσκηνο, σουσάμι, dressing γλυστέρι",
+            el: "μαρούλι, ταλαγάνι, φράουλα, δαμάσκηνο, σουσάμι, dressing γλυστέρι",
             en: "lettuce, talagani cheese, strawberry, plum, sesame seeds, glysteri dressing",
           },
           price: "17",
@@ -1013,8 +1025,8 @@ const data = {
         {
           title: { el: "Aglio e olio", en: "Aglio e olio" },
           desc: {
-            el: "λιγκουίνι, σκόρδο, τσίλι, ελαιόλαδο,παρμεζάνα, μαϊντανός",
-            en: "linguine, garlic, chilli, olive oil,parmesan, parsley",
+            el: "λιγκουίνι, σκόρδο, τσίλι, ελαιόλαδο, παρμεζάνα, μαϊντανός",
+            en: "linguine, garlic, chilli, olive oil, parmesan, parsley",
           },
           price: "14",
           photo: photo,
@@ -1076,7 +1088,7 @@ const data = {
         {
           title: { el: "Αστακομακαρονάδα", en: "Lobster Pasta" },
           desc: {
-            el: "λιγκουίνι, αστακος, μπισκ, σκόρδο, μαϊντανός / για δύο άτομα",
+            el: "λιγκουίνι, αστακός, μπισκ, σκόρδο, μαϊντανός / για δύο άτομα",
             en: "linguine, lobster, bisque, garlic, parsley / for two people",
           },
           price: "120",
@@ -1086,7 +1098,7 @@ const data = {
     },
     //psaria
     {
-      title: { el: "Θαλλασινά", en: "Seafood" },
+      title: { el: "Θαλασσινά", en: "Seafood" },
       isRest: true,
       icon: fish_icon,
       products: [
@@ -1190,7 +1202,7 @@ const data = {
           title: { el: "Κοντοσούβλι Κοτόπουλο ", en: "Chicken Kontosouvli" },
           desc: {
             el: "από μπούτι κοτόπουλο με λαχανικά και ανάμεικτη πράσινη σαλάτα",
-            en: "madeby chicken leg with vegetables and mixed green salad",
+            en: "made by chicken leg with vegetables and mixed green salad",
           },
           price: "20",
           photo: photo,
@@ -1265,7 +1277,7 @@ const data = {
       products: [
         {
           title: { el: "Ψώμι", en: "Bread" },
-          desc: { el: "το κάθε άτομο", en: "per person" },
+          desc: { el: "ανά άτομο", en: "per person" },
           price: "2",
           photo: photo,
         },
