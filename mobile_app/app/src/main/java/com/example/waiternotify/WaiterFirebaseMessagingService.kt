@@ -41,16 +41,6 @@ class WaiterFirebaseMessagingService : FirebaseMessagingService() {
         val question = message.data["question"]?.trim().orEmpty()
         val sentAt = message.data["sentAt"]?.takeIf { it.isNotBlank() } ?: bodyTimestampFallback()
 
-        if (sunbedNumber.isNotBlank()) {
-            WaiterRequestsRepository.addRequestIfMissing(
-                context = applicationContext,
-                sunbedNumber = sunbedNumber,
-                receivedAt = sentAt,
-                type = type,
-                question = question
-            )
-        }
-
         showNotification(title, body, sunbedNumber, sentAt, type, question)
     }
 

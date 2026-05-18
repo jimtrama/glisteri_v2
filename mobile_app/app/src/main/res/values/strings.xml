@@ -12,5 +12,6 @@
     <string name="registration_failed">The app could not reach your backend. Check the backend URL and local network.</string>
     <string name="firebase_missing_message">Firebase is not fully configured yet. Add google-services.json to mobile_app/app and rebuild.</string>
     <string name="requests_empty_message">No active waiter requests right now.</string>
+    <string name="requests_load_failed_message">Could not load waiter requests from the server. Check the backend connection.</string>
     <string name="request_remove_failed_message">Could not remove this waiter request. Try again.</string>
 </resources>

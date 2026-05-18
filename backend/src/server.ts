@@ -25,6 +25,15 @@ type WaiterCallEvent = {
   receivedAt: string;
 };
 
+type WaiterQuestionEvent = WaiterCallEvent & {
+  question: string;
+};
+
+type WaiterRequestEvent = WaiterCallEvent & {
+  type: 'waiter_call' | 'waiter_question';
+  question?: string;
+};
+
 function loadBackendEnvFile(): void {
   const envPath = resolve(process.cwd(), '.env');
 
@@ -73,6 +82,7 @@ const FIREBASE_SERVICE_ACCOUNT_PATH = process.env.FIREBASE_SERVICE_ACCOUNT_PATH?
   : '';
 const FIREBASE_ANDROID_CHANNEL_ID = process.env.FIREBASE_ANDROID_CHANNEL_ID?.trim() || 'waiter_requests';
 const waiterCallHistory: WaiterCallEvent[] = [];
+const waiterQuestionHistory: WaiterQuestionEvent[] = [];
 const deviceTokens = loadDeviceTokens();
 const firebaseMessaging = createFirebaseMessaging();
 
@@ -251,6 +261,20 @@ function sendJson(response: ServerResponse, statusCode: number, payload: unknown
   response.end(JSON.stringify(payload));
 }
 
+function waiterRequestHistory(): WaiterRequestEvent[] {
+  return [
+    ...waiterCallHistory.map((request): WaiterRequestEvent => ({
+      ...request,
+      type: 'waiter_call',
+      question: '',
+    })),
+    ...waiterQuestionHistory.map((request): WaiterRequestEvent => ({
+      ...request,
+      type: 'waiter_question',
+    })),
+  ].sort((left, right) => Date.parse(right.receivedAt) - Date.parse(left.receivedAt));
+}
+
 async function readJsonBody<TPayload extends object = CallWaiterPayload>(request: IncomingMessage): Promise<TPayload> {
   return await new Promise<TPayload>((resolve, reject) => {
     let rawBody = '';
@@ -307,7 +331,30 @@ const httpServer = createServer(async (request, response) => {
   if (request.method === 'GET' && requestUrl.pathname === '/api/call-waiter') {
     sendJson(response, 200, {
       ok: true,
-      requests: waiterCallHistory,
+      requests: waiterCallHistory.map((request) => ({
+        ...request,
+        type: 'waiter_call',
+        question: '',
+      })),
+    }, requestOrigin);
+    return;
+  }
+
+  if (request.method === 'GET' && requestUrl.pathname === '/api/ask-waiter') {
+    sendJson(response, 200, {
+      ok: true,
+      requests: waiterQuestionHistory.map((request) => ({
+        ...request,
+        type: 'waiter_question',
+      })),
+    }, requestOrigin);
+    return;
+  }
+
+  if (request.method === 'GET' && requestUrl.pathname === '/api/waiter-requests') {
+    sendJson(response, 200, {
+      ok: true,
+      requests: waiterRequestHistory(),
     }, requestOrigin);
     return;
   }
@@ -454,7 +501,21 @@ const httpServer = createServer(async (request, response) => {
       }
 
       const notificationBody = `Sunbed ${sunbedNumber}: ${question.slice(0, 120)}`;
+      const eventPayload: WaiterQuestionEvent = {
+        id: randomUUID(),
+        sunbedNumber,
+        question,
+        receivedAt: new Date().toISOString(),
+      };
+
+      waiterQuestionHistory.unshift(eventPayload);
+      waiterQuestionHistory.splice(25);
+
       console.log(`[waiter-question] Sunbed ${sunbedNumber}: ${question}`);
+      io.emit('waiter:question', {
+        ...eventPayload,
+        type: 'waiter_question',
+      });
 
       const pushResult = await sendWaiterPushNotification(sunbedNumber, {
         title: 'New waiter question',
@@ -509,6 +570,28 @@ const httpServer = createServer(async (request, response) => {
     return;
   }
 
+  if (request.method === 'DELETE' && requestUrl.pathname.startsWith('/api/ask-waiter/')) {
+    const questionId = decodeURIComponent(requestUrl.pathname.replace('/api/ask-waiter/', '')).trim();
+    const questionIndex = waiterQuestionHistory.findIndex((question) => question.id === questionId);
+
+    if (!questionId || questionIndex === -1) {
+      sendJson(response, 404, {
+        ok: false,
+        message: 'Waiter question not found.',
+      }, requestOrigin);
+      return;
+    }
+
+    waiterQuestionHistory.splice(questionIndex, 1);
+    io.emit('waiter:question-removed', { id: questionId });
+
+    sendJson(response, 200, {
+      ok: true,
+      message: 'Waiter question removed.',
+    }, requestOrigin);
+    return;
+  }
+
   sendJson(response, 404, {
     ok: false,
     message: 'Route not found.',
@@ -524,7 +607,7 @@ const io = new SocketIOServer(httpServer, {
 
 io.on('connection', (socket) => {
   console.log(`[socket] Client connected: ${socket.id}`);
-  socket.emit('waiter:history', waiterCallHistory);
+  socket.emit('waiter:history', waiterRequestHistory());
 
   socket.on('disconnect', () => {
     console.log(`[socket] Client disconnected: ${socket.id}`);

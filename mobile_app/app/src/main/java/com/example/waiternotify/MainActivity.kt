@@ -207,39 +207,48 @@ class MainActivity : ComponentActivity() {
     }
 
     private fun refreshWaiterRequests() {
-        val requests = WaiterRequestsRepository.getRequests(applicationContext)
-
         requestsState = requestsState.copy(
-            isLoading = false,
-            requests = requests,
-            lastUpdatedLabel = formatNowLabel(),
-            errorMessage = if (requests.isEmpty()) {
-                getString(R.string.requests_empty_message)
-            } else {
-                ""
-            }
+            isLoading = true,
+            errorMessage = ""
         )
+
+        thread(name = "fetch-waiter-requests") {
+            val result = WaiterRequestsRepository.fetchRequests()
+
+            runOnUiThread {
+                result.fold(
+                    onSuccess = { requests ->
+                        requestsState = requestsState.copy(
+                            isLoading = false,
+                            requests = requests,
+                            lastUpdatedLabel = formatNowLabel(),
+                            errorMessage = if (requests.isEmpty()) {
+                                getString(R.string.requests_empty_message)
+                            } else {
+                                ""
+                            }
+                        )
+                    },
+                    onFailure = {
+                        requestsState = requestsState.copy(
+                            isLoading = false,
+                            lastUpdatedLabel = formatNowLabel(),
+                            errorMessage = getString(R.string.requests_load_failed_message)
+                        )
+                    }
+                )
+            }
+        }
     }
 
     private fun processNotificationIntent(intent: Intent?) {
         val sunbedNumber = intent?.getStringExtra("sunbedNumber")?.trim().orEmpty()
         val sentAt = intent?.getStringExtra("sentAt")?.trim().orEmpty()
-        val type = intent?.getStringExtra("type")?.trim().orEmpty().ifBlank {
-            REQUEST_TYPE_CALL
-        }
         val question = intent?.getStringExtra("question")?.trim().orEmpty()
 
-        if (sunbedNumber.isBlank() || sentAt.isBlank()) {
-            return
+        if (sunbedNumber.isNotBlank() || sentAt.isNotBlank() || question.isNotBlank()) {
+            refreshWaiterRequests()
         }
-
-        WaiterRequestsRepository.addRequestIfMissing(
-            context = applicationContext,
-            sunbedNumber = sunbedNumber,
-            receivedAt = sentAt,
-            type = type,
-            question = question
-        )
     }
 
     private fun removeRequest(requestId: String) {
@@ -247,27 +256,41 @@ class MainActivity : ComponentActivity() {
             return
         }
 
-        removingRequestIds = removingRequestIds + requestId
-        val removed = WaiterRequestsRepository.removeRequest(applicationContext, requestId)
+        val requestToRemove = requestsState.requests.firstOrNull { it.id == requestId }
 
-        if (removed) {
-            val remainingRequests = requestsState.requests.filterNot { it.id == requestId }
-            requestsState = requestsState.copy(
-                requests = remainingRequests,
-                lastUpdatedLabel = formatNowLabel(),
-                errorMessage = if (remainingRequests.isEmpty()) {
-                    getString(R.string.requests_empty_message)
-                } else {
-                    ""
-                }
-            )
-        } else {
+        if (requestToRemove == null) {
             requestsState = requestsState.copy(
                 errorMessage = getString(R.string.request_remove_failed_message)
             )
+            return
         }
 
-        removingRequestIds = removingRequestIds - requestId
+        removingRequestIds = removingRequestIds + requestId
+
+        thread(name = "delete-waiter-request") {
+            val removed = WaiterRequestsRepository.removeRequestFromServer(requestToRemove)
+
+            runOnUiThread {
+                if (removed) {
+                    val remainingRequests = requestsState.requests.filterNot { it.id == requestId }
+                    requestsState = requestsState.copy(
+                        requests = remainingRequests,
+                        lastUpdatedLabel = formatNowLabel(),
+                        errorMessage = if (remainingRequests.isEmpty()) {
+                            getString(R.string.requests_empty_message)
+                        } else {
+                            ""
+                        }
+                    )
+                } else {
+                    requestsState = requestsState.copy(
+                        errorMessage = getString(R.string.request_remove_failed_message)
+                    )
+                }
+
+                removingRequestIds = removingRequestIds - requestId
+            }
+        }
     }
 
     private fun formatNowLabel(): String {
@@ -414,9 +437,9 @@ private fun RequestsPage(
         StatusCard(
             title = "Live requests",
             body = if (state.lastUpdatedLabel.isBlank()) {
-                "Waiting for the first waiter notification on this device."
+                "Loading active waiter requests from the server."
             } else {
-                "Last refreshed at ${state.lastUpdatedLabel}. ${state.requests.size} stored request(s) on this device."
+                "Last refreshed at ${state.lastUpdatedLabel}. ${state.requests.size} active request(s) on the server."
             },
             accent = Color(0xFF80B26A)
         )

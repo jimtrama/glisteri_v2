@@ -339,7 +339,7 @@ const data = {
         },
         {
           title: { el: "Ποτό premium", en: "Premium Drink" },
-          desc: { el: "" },
+          desc: { el: "", en: "" },
           price: "14",
           photo: photo,
         },
@@ -359,6 +359,43 @@ const data = {
             en: "",
           },
           price: "120",
+          photo: photo,
+        },
+        {
+          title: { el: "Σφηνάκι", en: "Shot" },
+          desc: {
+            el: "",
+            en: "",
+          },
+          price: "4",
+          photo: photo,
+        },
+        {
+          title: { el: "Σέικερ", en: "Shaker" },
+          desc: {
+            el: "",
+            en: "",
+          },
+          price: "20",
+          photo: photo,
+        },
+      ],
+    },
+    {
+      title: { el: "Ούζο-Τσίπουρο", en: "Ouzo-Tsipouro" },
+      isRest: false,
+      icon: drinks_icon,
+      products: [
+        {
+          title: { el: "Ούζο", en: "Ouzo" },
+          desc: { el: "Ατομικό", en: "Single Served" },
+          price: "5",
+          photo: photo,
+        },
+        {
+          title: { el: "Τσίπουρο", en: "Tsipouro" },
+          desc: { el: "Ατομικό", en: "Single Served" },
+          price: "5",
           photo: photo,
         },
       ],
