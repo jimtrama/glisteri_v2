@@ -300,6 +300,7 @@ class MainActivity : ComponentActivity() {
 
 enum class AppPage {
     Requests,
+    Questions,
     Settings
 }
 
@@ -360,6 +361,24 @@ private fun WaiterAppScreen(
             when (selectedPage) {
                 AppPage.Requests -> RequestsPage(
                     state = requestsState,
+                    requestType = REQUEST_TYPE_CALL,
+                    title = "Live requests",
+                    loadingBody = "Loading active waiter requests from the server.",
+                    loadedBody = { count, time -> "Last refreshed at $time. $count active call(s) on the server." },
+                    loadingText = "Loading waiter requests...",
+                    emptyMessage = "No active waiter calls right now.",
+                    onRefresh = onRefreshRequests,
+                    onRemoveRequest = onRemoveRequest,
+                    removingRequestIds = removingRequestIds
+                )
+                AppPage.Questions -> RequestsPage(
+                    state = requestsState,
+                    requestType = REQUEST_TYPE_QUESTION,
+                    title = "Guest questions",
+                    loadingBody = "Loading active waiter questions from the server.",
+                    loadedBody = { count, time -> "Last refreshed at $time. $count active question(s) on the server." },
+                    loadingText = "Loading waiter questions...",
+                    emptyMessage = "No active waiter questions right now.",
                     onRefresh = onRefreshRequests,
                     onRemoveRequest = onRemoveRequest,
                     removingRequestIds = removingRequestIds
@@ -397,6 +416,11 @@ private fun AppHeader(
                 onClick = { onPageSelected(AppPage.Requests) }
             )
             HeaderTab(
+                label = "Questions",
+                selected = selectedPage == AppPage.Questions,
+                onClick = { onPageSelected(AppPage.Questions) }
+            )
+            HeaderTab(
                 label = "Settings",
                 selected = selectedPage == AppPage.Settings,
                 onClick = { onPageSelected(AppPage.Settings) }
@@ -426,20 +450,28 @@ private fun HeaderTab(
 @Composable
 private fun RequestsPage(
     state: WaiterRequestsUiState,
+    requestType: String,
+    title: String,
+    loadingBody: String,
+    loadedBody: (Int, String) -> String,
+    loadingText: String,
+    emptyMessage: String,
     onRefresh: () -> Unit,
     onRemoveRequest: (String) -> Unit,
     removingRequestIds: Set<String>
 ) {
+    val visibleRequests = state.requests.filter { request -> request.type == requestType }
+
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.spacedBy(14.dp)
     ) {
         StatusCard(
-            title = "Live requests",
+            title = title,
             body = if (state.lastUpdatedLabel.isBlank()) {
-                "Loading active waiter requests from the server."
+                loadingBody
             } else {
-                "Last refreshed at ${state.lastUpdatedLabel}. ${state.requests.size} active request(s) on the server."
+                loadedBody(visibleRequests.size, state.lastUpdatedLabel)
             },
             accent = Color(0xFF80B26A)
         )
@@ -470,7 +502,7 @@ private fun RequestsPage(
                     modifier = Modifier.height(22.dp)
                 )
                 Text(
-                    text = "Loading waiter requests...",
+                    text = loadingText,
                     color = Color(0xFFF7EEE4),
                     style = MaterialTheme.typography.bodyMedium
                 )
@@ -478,8 +510,8 @@ private fun RequestsPage(
             return
         }
 
-        if (state.requests.isEmpty()) {
-            EmptyStateCard(message = state.errorMessage.ifBlank { "No active waiter requests right now." })
+        if (visibleRequests.isEmpty()) {
+            EmptyStateCard(message = state.errorMessage.ifBlank { emptyMessage })
             return
         }
 
@@ -493,7 +525,7 @@ private fun RequestsPage(
                 verticalArrangement = Arrangement.spacedBy(12.dp)
             ) {
                 items(
-                    items = state.requests,
+                    items = visibleRequests,
                     key = { request -> request.id }
                 ) { request ->
                     RequestCard(

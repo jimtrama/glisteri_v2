@@ -629,13 +629,13 @@ const data = {
         {
           title: { el: "Λευκό Κρασί", en: "White Wine" },
           desc: { el: "187ml", en: "187ml" },
-          price: "7",
+          price: "8",
           photo: photo,
         },
         {
           title: { el: "Ροζέ Κρασί", en: "Rose Wine" },
           desc: { el: "187ml", en: "187ml" },
-          price: "7",
+          price: "8",
           photo: photo,
         },
         {
