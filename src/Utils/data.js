@@ -927,6 +927,12 @@ const data = {
           photo: photo,
         },
         {
+          title: { el: "Έξτρα Σεσλόνγκ", en: "Extra lounge chair" },
+          desc: { el: "", en: "" },
+          price: "2",
+          photo: photo,
+        },
+        {
           title: { el: "Πριβέ", en: "Private" },
           desc: { el: "", en: "" },
           price: "50",

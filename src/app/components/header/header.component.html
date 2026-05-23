@@ -1,4 +1,9 @@
 <div class="mainHeaderContainer">
+
+  <div>
+    <span style="color: #f5eadc;text-transform: uppercase;font-size: 0.78rem;letter-spacing: 0.18em;">{{ headerTitle }}</span>
+  </div>
+
   <div class="topHeader">
     <div class="headerSwitchContainer">
       <button type="button" class="headerWaiterButton" (click)="onWaiterClick()">
@@ -19,11 +24,7 @@
 
   <div class="headerLevTwo">
     <div *ngFor="let category of menu?.categories; index as i" class="headerCategory">
-      <div
-        class="categoryHeaderContainer"
-        [class.selected]="selected === i"
-        (click)="onCategoryClick(i)"
-      >
+      <div class="categoryHeaderContainer" [class.selected]="selected === i" (click)="onCategoryClick(i)">
         {{ category.title }}
       </div>
     </div>

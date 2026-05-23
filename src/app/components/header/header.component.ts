@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import Menu from '../../../Utils/Menu';
 
 @Component({
   selector: 'app-header',
@@ -9,7 +10,7 @@ export class HeaderComponent {
   private toggleTouchStartX = 0;
   private toggleTouchStartY = 0;
 
-  @Input() menu: any;
+  @Input() menu: Menu;
   @Input() selected = 0;
   @Input() isEl = true;
 
@@ -32,6 +33,10 @@ export class HeaderComponent {
 
   get askWaiterLabel(): string {
     return this.isEl ? 'Ρώτα Σερβιτόρο' : 'Ask Waiter';
+  }
+
+  get headerTitle(): string {
+    return this.isEl ? (this.menu.isRest ? 'Εστιατόριο' : 'Παραλία') : (this.menu.isRest ? 'Restaurant' : 'Beach');
   }
 
   onToggleTouchStart(event: TouchEvent): void {
