@@ -19,6 +19,7 @@ export class HeaderComponent {
   @Output() menuToggle = new EventEmitter<boolean>();
   @Output() waiterClick = new EventEmitter<void>();
   @Output() askWaiterClick = new EventEmitter<void>();
+  @Output() categoryStripInteraction = new EventEmitter<void>();
 
   readonly logo = 'images/header/s_logo.png';
   readonly elFlag = 'images/flags/s_eflag.png';
@@ -65,6 +66,10 @@ export class HeaderComponent {
 
   onCategoryClick(index: number): void {
     this.categoryClick.emit(index);
+  }
+
+  onCategoryStripInteraction(): void {
+    this.categoryStripInteraction.emit();
   }
 
   onLanguageToggle(): void {

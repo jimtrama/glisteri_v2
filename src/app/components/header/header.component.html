@@ -22,7 +22,14 @@
     </div>
   </div>
 
-  <div class="headerLevTwo">
+  <div
+    class="headerLevTwo"
+    (pointerdown)="onCategoryStripInteraction()"
+    (pointermove)="onCategoryStripInteraction()"
+    (touchstart)="onCategoryStripInteraction()"
+    (touchmove)="onCategoryStripInteraction()"
+    (wheel)="onCategoryStripInteraction()"
+  >
     <div *ngFor="let category of menu?.categories; index as i" class="headerCategory">
       <div class="categoryHeaderContainer" [class.selected]="selected === i" (click)="onCategoryClick(i)">
         {{ category.title }}

@@ -21,6 +21,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   private menuToggleTouchStartY = 0;
   private waiterTouchStartY = 0;
   private waiterTouchStartTime = 0;
+  private categoryStripUserScrollUntil = 0;
 
   levelOne = false;
   levelTwo = false;
@@ -253,7 +254,10 @@ export class HomeComponent implements OnInit, OnDestroy {
     return /\.(mp4|webm|ogg)$/i.test(url);
   }
 
-  switchLang(value: boolean): void {
+  switchLang(value: boolean, closeModal: boolean = false): void {
+    if(closeModal) {
+      this.show = false;
+    }
     if (value) {
       this.menu = new Menu('en', this.menu.isRest);
       this.isEl = false;
@@ -474,6 +478,10 @@ export class HomeComponent implements OnInit, OnDestroy {
     return { x: lx, y: ly };
   }
 
+  onCategoryStripInteraction(): void {
+    this.categoryStripUserScrollUntil = Date.now() + 900;
+  }
+
   onScroll(event: Event): void {
     const target = event.target as HTMLElement;
     const point1 = window.innerWidth / 2 - 80;
@@ -501,10 +509,12 @@ export class HomeComponent implements OnInit, OnDestroy {
         const headerLevelTwo = document.getElementsByClassName('headerLevTwo').item(0) as HTMLElement | null;
         const x = header ? this.getPos(header).x : 0;
 
-        headerLevelTwo?.scrollTo({
-          behavior: 'auto',
-          left: x - 50,
-        });
+        if (Date.now() > this.categoryStripUserScrollUntil) {
+          headerLevelTwo?.scrollTo({
+            behavior: 'auto',
+            left: x - 50,
+          });
+        }
 
         this.selectedCategory = i;
         break;

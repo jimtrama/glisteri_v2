@@ -620,7 +620,7 @@ const data = {
         },
       ],
     },
-    //white wines
+    //portion wines
     {
       title: { el: "Ατομικά Κρασιά", en: "Single-serve wines" },
       isRest: false,
@@ -642,6 +642,114 @@ const data = {
           title: { el: "Προσέκο", en: "Prosecco" },
           desc: { el: "187 ml", en: "187 ml" },
           price: "10",
+          photo: photo,
+        },
+      ],
+    },
+    //white wines
+    {
+      title: { el: "Λευκά Κρασιά", en: "White wines" },
+      isRest: false,
+      icon: wine_icon,
+      products: [
+        {
+          title: { el: "Terra Strofilia Diadromes", en: "Terra Strofilia Diadromes" },
+          desc: { el: "Malagouzia / Peloponnese", en: "Malagouzia / Peloponnese" },
+          price: "38",
+          photo: photo,
+        },
+        {
+          title: { el: "Domain Zafirakis Logos Bio", en: "Domain Zafirakis Logos Bio" },
+          desc: { el: "Chardonnay / Thessaly", en: "Chardonnay / Thessaly" },
+          price: "44",
+          photo: photo,
+        },
+        {
+          title: { el: "Villa Maria Sauvignon Blanc Private Bin", en: "Villa Maria Sauvignon Blanc Private Bin" },
+          desc: { el: "Sauvignon Blanc / New Zealand", en: "Sauvignon Blanc / New Zealand" },
+          price: "48",
+          photo: photo,
+        },
+        {
+          title: { el: "Estate Gerovasileiou", en: "Estate Gerovasileiou" },
+          desc: { el: "Asyrtiko, Malagouzia / Epanomi", en: "Asyrtiko, Malagouzia / Epanomi" },
+          price: "48",
+          photo: photo,
+        },
+        {
+          title: { el: "Domain Skouras Viognier Eclectique", en: "Domain Skouras Viognier Eclectique" },
+          desc: { el: "Viognier / Peloponnese", en: "Viognier / Peloponnese" },
+          price: "88",
+          photo: photo,
+        },
+      ],
+    },
+    //Roze wines
+    {
+      title: { el: "Ροζέ Κρασιά", en: "Rose wines" },
+      isRest: false,
+      icon: wine_icon,
+      products: [
+        {
+          title: { el: "Strofilia Pink Crush", en: "Strofilia Pink Crush" },
+          desc: { el: "Grenache, Agiorgitiko, Syrah / Peloponnese", en: "Grenache, Agiorgitiko, Syrah / Peloponnese" },
+          price: "36",
+          photo: photo,
+        },
+        {
+          title: { el: "Skouras Peplo", en: "Skouras Peplo" },
+          desc: { el: "Mavrofilero, Agiorgitiko, Syrah / Peloponnese", en: "Mavrofilero, Agiorgitiko, Syrah / Peloponnese" },
+          price: "46",
+          photo: photo,
+        },
+        {
+          title: { el: "Domaine Costa Lazaridi", en: "Domaine Costa Lazaridi" },
+          desc: { el: "Merlot / Drama", en: "Merlot / Drama" },
+          price: "48",
+          photo: photo,
+        },
+        {
+          title: { el: "Miraval Rose", en: "Miraval Rose" },
+          desc: { el: "Cinsault / France", en: "Cinsault / France" },
+          price: "70",
+          photo: photo,
+        },
+      ],
+    },
+    // sanpein
+    {
+      title: { el: "Σαμπανιες", en: "Sparkling Wines" },
+      isRest: false,
+      icon: wine_icon,
+      products: [
+        {
+          title: { el: "L'Antica Quercia Matiu Prosecco Brut", en: "L'Antica Quercia Matiu Prosecco Brut" },
+          desc: { el: "Glera, Conegliano / Italy", en: "Glera, Conegliano / Italy" },
+          price: "48",
+          photo: photo,
+        },
+        {
+          title: { el: "Louis Roederer Collection 246", en: "Louis Roederer Collection 246" },
+          desc: { el: "Chardonnay, Pinot Noir, Pinot Meunier / Reims, France", en: "Chardonnay, Pinot Noir, Pinot Meunier / Reims, France" },
+          price: "140",
+          photo: photo,
+        },
+        {
+          title: { el: "Moët & Chandon Imperial Brut", en: "Moët & Chandon Imperial Brut" },
+          desc: { el: "Chardonnay, Pinot Noir, Pinot Meunier  / Reims, France", en: "Chardonnay, Pinot Noir, Pinot Meunier  / Reims, France" },
+          price: "140",
+          photo: photo,
+        },
+        {
+          title: { el: "Moët & Chandon Ice Imperial", en: "Moët & Chandon Ice Imperial" },
+          desc: { el: "Chardonnay, Pinot Noir, Pinot Meunier  / Reims, France", en: "Chardonnay, Pinot Noir, Pinot Meunier  / Reims, France" },
+          price: "160",
+          photo: photo,
+        },
+        {
+          title: { el: "Louis Roederer Cristal Brut", en: "Louis Roederer Cristal Brut" },
+          desc: { el: "Chardonnay, Pinot Noir, Pinot Meunier  / Reims, France", en: "Chardonnay, Pinot Noir, Pinot Meunier  / Reims, France" },
+          price: "650",
           photo: photo,
         },
       ],
@@ -727,7 +835,7 @@ const data = {
       icon: snak_icon,
       products: [
         {
-          title: { el: "Φοκάτσια", en: "Focaccia" },
+          title: { el: "Φοκάτσια κατίκι", en: "Focaccia katiki" },
           desc: {
             el: "κατίκι σκοπέλου, ντομάτα, ελιές, ρίγανη",
             en: "Skopelos katiki cheese, tomato, olives, oregano",
@@ -1263,8 +1371,8 @@ const data = {
         {
           title: { el: "Ψαρονέφρι", en: "Tenderloin" },
           desc: {
-            el: "ψαρονέφρι με σάλτσα κρασιού, πουρέ πατάτας και λαχανικά βουτύρου",
-            en: "pork tenderloin with wine sauce, mashed potatoes and buttered vegetables",
+            el: "ψαρονέφρι με σάλτσα κρασιού και δαμάσκηνα, πουρέ πατάτας και λαχανικά βουτύρου",
+            en: "pork tenderloin with wine sauce and plums, mashed potatoes and buttered vegetables",
           },
           price: "22",
           photo: photo,
