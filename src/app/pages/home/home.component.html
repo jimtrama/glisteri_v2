@@ -163,7 +163,7 @@
     [class.moveIn]="infoShow && !infoAnimatingOut"
     [class.moveOut]="infoAnimatingOut"
     [class.dragging]="infoDragging"
-    [style.transform]="infoDragOffset ? 'translateY(' + infoDragOffset + 'px)' : null"
+    [style.translate]="infoDragOffset ? '0 ' + infoDragOffset + 'px' : null"
     (touchstart)="onInfoTouchStart($event)"
     (touchmove)="onInfoTouchMove($event)"
     (touchend)="onInfoTouchEnd()"
